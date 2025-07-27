@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Button } from "@repo/ui";
+
 // import "@repo/ui/styles";
 import viteLogo from "/vite.svg";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
+import Button from "@repo/ui/components/Button";
+
 
 function App() {
   const [count, setCount] = useState(0);

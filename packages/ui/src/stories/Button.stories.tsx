@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Button from "../Button";
+import {Button} from "../components"
 
 // 내 Button 컴포넌트 메타데이터
 const meta: Meta<typeof Button> = {

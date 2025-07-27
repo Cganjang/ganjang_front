@@ -1,8 +1,20 @@
-// 스타일시트 export
-import "./styles.scss";
+// Base Components
+export * from "./base";
 
-// 컴포넌트들 export
-export { default as Button } from "./Button";
+// Forms Components (나중에 추가)
+// export * from './forms'
 
-// 타입들 export
-export type { ButtonProps } from "./Button";
+// Layout Components (나중에 추가)
+// export * from './layout'
+
+// Navigation Components (나중에 추가)
+// export * from './navigation'
+
+// Feedback Components (나중에 추가)
+// export * from './feedback'
+
+// Data Display Components (나중에 추가)
+// export * from './data-display'
+
+// Overlay Components (나중에 추가)
+// export * from './overlay'

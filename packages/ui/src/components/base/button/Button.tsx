@@ -6,6 +6,8 @@ export interface ButtonProps {
   size?: "sm" | "md" | "lg";
   onClick?: () => void;
   disabled?: boolean;
+  type?: "button" | "submit" | "reset";
+  className?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -14,11 +16,20 @@ const Button: React.FC<ButtonProps> = ({
   size = "md",
   onClick,
   disabled = false,
+  type = "button",
+  className = "",
 }) => {
-  const classNames = ["btn", `btn--${variant}`, `btn--${size}`].join(" ");
+  const classNames = ["btn", `btn--${variant}`, `btn--${size}`, className]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <button className={classNames} onClick={onClick} disabled={disabled}>
+    <button
+      type={type}
+      className={classNames}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {children}
     </button>
   );

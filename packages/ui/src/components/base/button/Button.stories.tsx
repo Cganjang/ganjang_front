@@ -1,14 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import {Button} from "../components"
+import Button from "./Button";
 
-// 내 Button 컴포넌트 메타데이터
 const meta: Meta<typeof Button> = {
-  title: "My Components/Button", // 사이드바에서 "My Components" 폴더 안에 나타남
+  title: "Base/Button",
   component: Button,
   parameters: {
     docs: {
       description: {
-        component: "SCSS로 스타일링된 재사용 가능한 버튼 컴포넌트입니다.",
+        component: "SCSS 기반 디자인 시스템의 기본 Button 컴포넌트입니다.",
       },
     },
   },
@@ -16,7 +15,7 @@ const meta: Meta<typeof Button> = {
     variant: {
       control: { type: "select" },
       options: ["primary", "secondary"],
-      description: "버튼 스타일",
+      description: "버튼 스타일 variant",
     },
     size: {
       control: { type: "select" },
@@ -29,11 +28,11 @@ const meta: Meta<typeof Button> = {
     },
     children: {
       control: { type: "text" },
-      description: "버튼 텍스트",
+      description: "버튼 내부 텍스트",
     },
     onClick: {
       action: "clicked",
-      description: "클릭 이벤트",
+      description: "클릭 이벤트 핸들러",
     },
   },
 };
@@ -52,7 +51,7 @@ export const Default: Story = {
 export const Primary: Story = {
   args: {
     variant: "primary",
-    children: "Primary 버튼",
+    children: "Primary Button",
   },
 };
 
@@ -60,11 +59,11 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     variant: "secondary",
-    children: "Secondary 버튼",
+    children: "Secondary Button",
   },
 };
 
-// 다양한 크기
+// 크기별 버튼들
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
@@ -75,11 +74,11 @@ export const Sizes: Story = {
   ),
 };
 
-// 모든 조합
-export const AllCombinations: Story = {
+// 모든 조합 보기
+export const AllVariants: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <div style={{ display: "flex", gap: "1rem" }}>
+      <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
         <Button variant="primary" size="sm">
           Primary Small
         </Button>
@@ -90,7 +89,7 @@ export const AllCombinations: Story = {
           Primary Large
         </Button>
       </div>
-      <div style={{ display: "flex", gap: "1rem" }}>
+      <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
         <Button variant="secondary" size="sm">
           Secondary Small
         </Button>
@@ -101,8 +100,8 @@ export const AllCombinations: Story = {
           Secondary Large
         </Button>
       </div>
-      <div style={{ display: "flex", gap: "1rem" }}>
-        <Button disabled>Disabled</Button>
+      <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+        <Button disabled>Primary Disabled</Button>
         <Button variant="secondary" disabled>
           Secondary Disabled
         </Button>

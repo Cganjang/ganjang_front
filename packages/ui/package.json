@@ -27,7 +27,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "clean": "rm -rf dist storybook-static",
-    "build:tokens": "style-dictionary build --config style-dictionary.config.js"
+    "build-tokens": "style-dictionary build --config style-dictionary.config.js",
+    "watch-tokens": "style-dictionary build --watch"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.0.1",

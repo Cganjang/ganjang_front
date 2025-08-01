@@ -19,6 +19,6 @@
     "emitDeclarationOnly": true,
     "outDir": "dist"
   },
-  "include": ["src"],
+  "include": ["src", "style-dictionary.config.js"],
   "exclude": ["dist", "storybook-static", "**/*.stories.*"]
 }

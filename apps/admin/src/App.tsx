@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-// import "@repo/ui/styles";
+import "@repo/ui/styles";
 import viteLogo from "/vite.svg";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
@@ -23,8 +23,8 @@ function App() {
       <div className="card">
         <Button
           onClick={() => setCount((count) => count + 1)}
-          variant="primary"
-          size="md"
+          variant="filled"
+          type="primary"
         >
           Count is {count}
         </Button>
@@ -34,13 +34,13 @@ function App() {
       </div>
 
       <div className="flex gap-4 mt-4">
-        <Button variant="primary" size="sm">
+        <Button variant="outline" type="secondary">
           Primary Small
         </Button>
-        <Button variant="secondary" size="md">
+        <Button variant="outline" type="secondary">
           Secondary Medium
         </Button>
-        <Button variant="primary" size="lg" disabled>
+        <Button variant="outline" type="secondary" loading={true}>
           Disabled Large
         </Button>
       </div>

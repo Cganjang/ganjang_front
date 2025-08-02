@@ -10,8 +10,8 @@ export * from "./base";
 // Navigation Components (나중에 추가)
 // export * from './navigation'
 
-// Feedback Components (나중에 추가)
-// export * from './feedback'
+// Feedback Components
+export * from './feedback'
 
 // Data Display Components (나중에 추가)
 // export * from './data-display'

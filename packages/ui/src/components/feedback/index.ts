@@ -1,2 +1,2 @@
-// 피드백 관련 컴포넌트
-// alert, toast, loading 등
+export { default as Spinner } from "./spinner";
+export type { SpinnerProps } from "./spinner";

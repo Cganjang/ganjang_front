@@ -4,7 +4,7 @@ import "@repo/ui/styles";
 import viteLogo from "/vite.svg";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
-import { Button, Label } from "@repo/ui";
+import { Button, Label, Divider } from "@repo/ui";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -37,13 +37,15 @@ function App() {
           버튼 예제
         </Label>
       </div>
-      <div className="flex gap-4 mt-4">
+      <div className="button_list">
         <Button variant="outline" type="secondary">
           Primary Small
         </Button>
+        <Divider orientation="vertical" />
         <Button variant="outline" type="secondary">
           Secondary Medium
         </Button>
+        <Divider orientation="vertical" />
         <Button variant="outline" type="secondary" loading={true}>
           Disabled Large
         </Button>

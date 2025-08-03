@@ -8,6 +8,9 @@ export type { IconProps, IconName } from "./icon";
 export { default as Label } from "./label";
 export type { LabelProps } from "./label";
 
+export { default as Divider } from "./divider";
+export type { DividerProps } from "./divider";
+
 // 나중에 추가될 컴포넌트들
 // export { default as Input } from './Input'
 // export type { InputProps } from './Input'

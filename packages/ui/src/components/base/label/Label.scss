@@ -1,0 +1,136 @@
+@use "../../../styles/index.scss" as *;
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem; // 4px
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 500;
+  color: $gray-700;
+  cursor: default;
+  
+  // Optional text styling
+  .optional-text {
+    color: $gray-600;
+    font-weight: 400;
+    margin-left: 0.25rem;
+  }
+  
+  // Required asterisk styling
+  .required-asterisk {
+    color: $red-600;
+    font-weight: 600;
+    margin-left: 0.125rem; // 2px
+  }
+  
+  // Info icon styling
+  .icon {
+    margin-left: 0.25rem; // 4px
+    color: $gray-400;
+    display: inline-flex;
+    align-items: center;
+    
+    &:hover {
+      color: $gray-600;
+    }
+  }
+  
+  // Type-specific modifiers
+  &--none {
+    // 기본 스타일 그대로
+  }
+  
+  &--optional {
+    // Optional 특별한 스타일이 필요하면 여기에
+  }
+  
+  &--required {
+    // Required 특별한 스타일이 필요하면 여기에
+  }
+  
+  // Size modifiers
+  &--xs {
+    font-size: 0.75rem; // 12px
+    line-height: 1rem; // 16px
+    gap: 0.125rem; // 2px
+    
+    .optional-text,
+    .required-asterisk {
+      margin-left: 0.125rem; // 2px
+    }
+    
+    .icon {
+      margin-left: 0.125rem; // 2px
+      // xs: 12px 텍스트 + 12px 아이콘 = 1:1 비율
+    }
+  }
+  
+  &--sm {
+    font-size: 0.8125rem; // 13px
+    line-height: 1.125rem; // 18px
+    gap: 0.1875rem; // 3px
+    
+    .optional-text,
+    .required-asterisk {
+      margin-left: 0.1875rem; // 3px
+    }
+    
+    .icon {
+      margin-left: 0.1875rem; // 3px
+      // sm: 13px 텍스트 + 12px 아이콘 = 약간 작은 아이콘
+    }
+  }
+  
+  &--md {
+    font-size: 0.875rem; // 14px (기본값)
+    line-height: 1.25rem; // 20px
+    gap: 0.25rem; // 4px
+    
+    // md: 14px 텍스트 + 14px 아이콘 = 1:1 비율
+  }
+  
+  &--lg {
+    font-size: 1rem; // 16px
+    line-height: 1.5rem; // 24px
+    gap: 0.375rem; // 6px
+    
+    .optional-text,
+    .required-asterisk {
+      margin-left: 0.375rem; // 6px
+    }
+    
+    .icon {
+      margin-left: 0.375rem; // 6px
+      // lg: 16px 텍스트 + 16px 아이콘 = 1:1 비율
+    }
+  }
+}
+
+// 포커스 상태 (접근성)
+.label:focus-within {
+  outline: 2px solid $blue-600;
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+// 비활성화 상태
+.label.disabled {
+  color: $gray-400;
+  cursor: not-allowed;
+  
+  .optional-text {
+    color: $gray-300;
+  }
+  
+  .required-asterisk {
+    color: $gray-400;
+  }
+  
+  .icon {
+    color: $gray-300;
+    
+    &:hover {
+      color: $gray-300;
+    }
+  }
+}

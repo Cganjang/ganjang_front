@@ -4,7 +4,7 @@ import "@repo/ui/styles";
 import viteLogo from "/vite.svg";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
-import { Button } from "@repo/ui";
+import { Button, Label } from "@repo/ui";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -32,7 +32,11 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-
+      <div>
+        <Label type="required" isInfoIcon={true}>
+          버튼 예제
+        </Label>
+      </div>
       <div className="flex gap-4 mt-4">
         <Button variant="outline" type="secondary">
           Primary Small

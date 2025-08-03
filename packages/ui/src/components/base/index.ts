@@ -5,6 +5,9 @@ export type { ButtonProps } from "./button";
 export { default as Icon } from "./icon";
 export type { IconProps, IconName } from "./icon";
 
+export { default as Label } from "./label";
+export type { LabelProps } from "./label";
+
 // 나중에 추가될 컴포넌트들
 // export { default as Input } from './Input'
 // export type { InputProps } from './Input'

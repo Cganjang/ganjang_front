@@ -28,7 +28,9 @@
     "build-storybook": "storybook build",
     "clean": "rm -rf dist storybook-static",
     "build:tokens": "style-dictionary build --config style-dictionary.config.js",
-    "convert:tokens": "node scripts/convert-tokens-to-scss.js"
+    "convert:tokens": "node scripts/convert-tokens-to-scss.js",
+    "build-tokens": "style-dictionary build --config style-dictionary.config.js",
+    "watch-tokens": "style-dictionary build --watch"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.0.1",

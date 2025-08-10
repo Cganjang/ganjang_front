@@ -1,0 +1,306 @@
+// Figma 디자인 기반 Button 컴포넌트 스타일
+// Design System: filled, outline, transparent variants
+// Types: primary, secondary, destructive
+// States: default, hover, press, focus, disabled, loading
+
+@use "../../../styles/index.scss" as *;
+
+// 버튼 베이스 스타일 (Figma 디자인 기반)
+.btn {
+  // 기본 레이아웃
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+
+  // 타이포그래피 (Figma에서 추출)
+  font-family:
+    "Pretendard Variable",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+
+  // 상호작용
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+
+  // 포커스 상태
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px $blue-600;
+  }
+
+  // 비활성화 상태
+  &:disabled,
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  // 로딩 상태
+  &--loading {
+    cursor: not-allowed;
+    position: relative;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--hidden {
+      opacity: 0;
+    }
+  }
+
+  &__spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // ===================
+  // FILLED VARIANTS
+  // ===================
+
+  &--filled {
+    // Primary Filled
+    &.btn--primary {
+      background-color: $blue-600;
+      color: $white;
+      border-color: $blue-600;
+
+      &:hover:not(:disabled):not(.btn--loading):not(.btn--disabled) {
+        background-color: $blue-700;
+        border-color: $blue-700;
+      }
+
+      &:active:not(:disabled):not(.btn--loading):not(.btn--disabled) {
+        background-color: $blue-800;
+        border-color: $blue-800;
+      }
+
+      &:disabled,
+      &.btn--disabled {
+        background-color: $gray-300;
+        border-color: $gray-300;
+        color: $gray-400;
+      }
+    }
+
+    // Secondary Filled
+    &.btn--secondary {
+      background-color: $gray-600;
+      color: $white;
+      border-color: $gray-600;
+
+      &:hover:not(:disabled):not(.btn--loading):not(.btn--disabled) {
+        background-color: $gray-700;
+        border-color: $gray-700;
+      }
+
+      &:active:not(:disabled):not(.btn--loading):not(.btn--disabled) {
+        background-color: $gray-800;
+        border-color: $gray-800;
+      }
+
+      &:disabled,
+      &.btn--disabled {
+        background-color: $gray-300;
+        border-color: $gray-300;
+        color: $gray-400;
+      }
+    }
+
+    // Destructive Filled
+    &.btn--destructive {
+      background-color: $red-600;
+      color: $white;
+      border-color: $red-600;
+
+      &:hover:not(:disabled):not(.btn--loading):not(.btn--disabled) {
+        background-color: $red-700;
+        border-color: $red-700;
+      }
+
+      &:active:not(:disabled):not(.btn--loading):not(.btn--disabled) {
+        background-color: $red-800;
+        border-color: $red-800;
+      }
+
+      &:disabled,
+      &.btn--disabled {
+        background-color: $gray-300;
+        border-color: $gray-300;
+        color: $gray-400;
+      }
+    }
+  }
+
+  // ===================
+  // OUTLINE VARIANTS
+  // ===================
+
+  &--outline {
+    background-color: transparent;
+
+    // Primary Outline
+    &.btn--primary {
+      color: $blue-600;
+      border-color: $blue-600;
+
+      &:hover:not(:disabled):not(.btn--loading):not(.btn--disabled) {
+        background-color: $gray-100;
+        color: $blue-700;
+        border-color: $blue-700;
+      }
+
+      &:active:not(:disabled):not(.btn--loading):not(.btn--disabled) {
+        background-color: $gray-200;
+        color: $blue-800;
+        border-color: $blue-800;
+      }
+
+      &:disabled,
+      &.btn--disabled {
+        color: $gray-400;
+        border-color: $gray-300;
+        background-color: transparent;
+      }
+    }
+
+    // Secondary Outline
+    &.btn--secondary {
+      color: $gray-600;
+      border-color: $gray-600;
+
+      &:hover:not(:disabled):not(.btn--loading):not(.btn--disabled) {
+        background-color: $gray-100;
+        color: $gray-700;
+        border-color: $gray-700;
+      }
+
+      &:active:not(:disabled):not(.btn--loading):not(.btn--disabled) {
+        background-color: $gray-200;
+        color: $gray-800;
+        border-color: $gray-800;
+      }
+
+      &:disabled,
+      &.btn--disabled {
+        color: $gray-400;
+        border-color: $gray-300;
+        background-color: transparent;
+      }
+    }
+
+    // Destructive Outline
+    &.btn--destructive {
+      color: $red-600;
+      border-color: $red-600;
+
+      &:hover:not(:disabled):not(.btn--loading):not(.btn--disabled) {
+        background-color: $gray-100;
+        color: $red-700;
+        border-color: $red-700;
+      }
+
+      &:active:not(:disabled):not(.btn--loading):not(.btn--disabled) {
+        background-color: $gray-200;
+        color: $red-800;
+        border-color: $red-800;
+      }
+
+      &:disabled,
+      &.btn--disabled {
+        color: $gray-400;
+        border-color: $gray-300;
+        background-color: transparent;
+      }
+    }
+  }
+
+  // ===================
+  // TRANSPARENT VARIANTS
+  // ===================
+
+  &--transparent {
+    background-color: transparent;
+    border-color: transparent;
+
+    // Primary Transparent
+    &.btn--primary {
+      color: $blue-600;
+
+      &:hover:not(:disabled):not(.btn--loading):not(.btn--disabled) {
+        background-color: $gray-100;
+        color: $blue-700;
+      }
+
+      &:active:not(:disabled):not(.btn--loading):not(.btn--disabled) {
+        background-color: $gray-200;
+        color: $blue-800;
+      }
+
+      &:disabled,
+      &.btn--disabled {
+        color: $gray-400;
+        background-color: transparent;
+      }
+    }
+
+    // Secondary Transparent
+    &.btn--secondary {
+      color: $gray-600;
+
+      &:hover:not(:disabled):not(.btn--loading):not(.btn--disabled) {
+        background-color: $gray-100;
+        color: $gray-700;
+      }
+
+      &:active:not(:disabled):not(.btn--loading):not(.btn--disabled) {
+        background-color: $gray-200;
+        color: $gray-800;
+      }
+
+      &:disabled,
+      &.btn--disabled {
+        color: $gray-400;
+        background-color: transparent;
+      }
+    }
+
+    // Destructive Transparent
+    &.btn--destructive {
+      color: $red-600;
+
+      &:hover:not(:disabled):not(.btn--loading):not(.btn--disabled) {
+        background-color: $gray-100;
+        color: $red-700;
+      }
+
+      &:active:not(:disabled):not(.btn--loading):not(.btn--disabled) {
+        background-color: $gray-200;
+        color: $red-800;
+      }
+
+      &:disabled,
+      &.btn--disabled {
+        color: $gray-400;
+        background-color: transparent;
+      }
+    }
+  }
+}

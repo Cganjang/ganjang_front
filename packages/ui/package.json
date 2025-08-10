@@ -9,24 +9,24 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "development": "./src/index.ts"
+      "import": "./dist/index.js"
     },
-    "./styles": "./dist/index.css",
-    "./*": "./src/*.tsx"
+    "./styles": "./dist/index.css"
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc && vite build",
-    "dev": "tsc && vite build --watch",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc",
+    "build:vite": "vite build",
+    "build": "pnpm clean && pnpm typecheck && pnpm build:vite",
+    "dev": "pnpm clean && pnpm typecheck && vite build --watch",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "clean": "rm -rf dist storybook-static",
     "build:tokens": "style-dictionary build --config style-dictionary.config.js",
     "convert:tokens": "node scripts/convert-tokens-to-scss.js",
     "build-tokens": "style-dictionary build --config style-dictionary.config.js",

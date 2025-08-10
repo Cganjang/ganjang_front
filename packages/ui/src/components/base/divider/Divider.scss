@@ -1,0 +1,110 @@
+@use "../../../styles/index.scss" as *;
+
+.divider {
+  border: none;
+  background-color: $gray-400; // #9CA3AF - Figma와 일치
+  
+  // 가로 구분선 (기본)
+  &--horizontal {
+    width: 100%;
+    height: 0;
+    
+    // 사이즈별 두께
+    &.divider--sm {
+      border-top: 1px solid $gray-400;
+    }
+    
+    &.divider--md {
+      border-top: 2px solid $gray-400;
+    }
+    
+    &.divider--lg {
+      border-top: 4px solid $gray-400;
+    }
+    
+    &.divider--xl {
+      border-top: 8px solid $gray-400;
+    }
+  }
+  
+  // 세로 구분선
+  &--vertical {
+    height: 100%;
+    width: 0;
+    display: inline-block;
+    
+    // 사이즈별 두께
+    &.divider--sm {
+      border-left: 1px solid $gray-400;
+    }
+    
+    &.divider--md {
+      border-left: 2px solid $gray-400;
+    }
+    
+    &.divider--lg {
+      border-left: 4px solid $gray-400;
+    }
+    
+    &.divider--xl {
+      border-left: 8px solid $gray-400;
+    }
+  }
+  
+  // 마진 설정 (Figma 노트 참고: "margin이라는 베리어블 만들면 좋음")
+  &--margin {
+    &-none {
+      margin: 0;
+    }
+    
+    &-xs {
+      &.divider--horizontal {
+        margin: 0.25rem 0; // 4px
+      }
+      
+      &.divider--vertical {
+        margin: 0 0.25rem; // 4px
+      }
+    }
+    
+    &-sm {
+      &.divider--horizontal {
+        margin: 0.5rem 0; // 8px
+      }
+      
+      &.divider--vertical {
+        margin: 0 0.5rem; // 8px
+      }
+    }
+    
+    &-md {
+      &.divider--horizontal {
+        margin: 1rem 0; // 16px
+      }
+      
+      &.divider--vertical {
+        margin: 0 1rem; // 16px
+      }
+    }
+    
+    &-lg {
+      &.divider--horizontal {
+        margin: 1.5rem 0; // 24px
+      }
+      
+      &.divider--vertical {
+        margin: 0 1.5rem; // 24px
+      }
+    }
+    
+    &-xl {
+      &.divider--horizontal {
+        margin: 2rem 0; // 32px
+      }
+      
+      &.divider--vertical {
+        margin: 0 2rem; // 32px
+      }
+    }
+  }
+}

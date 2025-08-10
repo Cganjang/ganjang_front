@@ -1,0 +1,240 @@
+@use "../../../styles/index.scss" as *;
+
+.chips {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 8px;
+  border-radius: 99999px;
+  font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+  transition: all 0.2s ease;
+  cursor: default;
+  user-select: none;
+  
+  // Default variant
+  &--default {
+    background-color: $gray-100;
+    color: $gray-600;
+    
+    &.chips--selected {
+      background-color: #eff6ff; // blue-50
+      color: $blue-600;
+    }
+    
+    &:hover:not(.chips--disabled) {
+      background-color: $gray-200;
+      color: $gray-700;
+      
+      &.chips--selected {
+        background-color: #dbeafe; // blue-100
+        color: $blue-700;
+      }
+    }
+    
+    &:active:not(.chips--disabled) {
+      background-color: $gray-300;
+      color: $gray-800;
+      
+      &.chips--selected {
+        background-color: #bfdbfe; // blue-200
+        color: $blue-800;
+      }
+    }
+  }
+  
+  // Status variants
+  &--status {
+    &.chips--information {
+      &.chips--transparent {
+        background-color: #eff6ff; // blue-50
+        color: $blue-600;
+      }
+      
+      &.chips--filled {
+        background-color: $blue-600;
+        color: $white;
+      }
+      
+      &.chips--outline {
+        background-color: $white;
+        color: $blue-600;
+        border: 1px solid $blue-600;
+        padding: 3px 7px; // Adjust for border
+      }
+    }
+    
+    &.chips--success {
+      &.chips--transparent {
+        background-color: #f0fdf4; // green-50
+        color: #166534; // green-700
+      }
+      
+      &.chips--filled {
+        background-color: #16a34a; // green-600
+        color: $white;
+      }
+      
+      &.chips--outline {
+        background-color: $white;
+        color: #16a34a; // green-600
+        border: 1px solid #16a34a; // green-600
+        padding: 3px 7px;
+      }
+    }
+    
+    &.chips--error {
+      &.chips--transparent {
+        background-color: #fef2f2; // red-50
+        color: $red-700;
+      }
+      
+      &.chips--filled {
+        background-color: $red-600;
+        color: $white;
+      }
+      
+      &.chips--outline {
+        background-color: $white;
+        color: $red-600;
+        border: 1px solid $red-600;
+        padding: 3px 7px;
+      }
+    }
+    
+    &.chips--warning {
+      &.chips--transparent {
+        background-color: #fefce8; // yellow-50
+        color: #854d0e; // yellow-700
+      }
+      
+      &.chips--filled {
+        background-color: #eab308; // yellow-500
+        color: #111827; // gray-900
+      }
+      
+      &.chips--outline {
+        background-color: $white;
+        color: #eab308; // yellow-500
+        border: 1px solid #eab308; // yellow-500
+        padding: 3px 7px;
+      }
+    }
+    
+    &.chips--neutral {
+      &.chips--transparent {
+        background-color: $gray-200;
+        color: $gray-800;
+      }
+      
+      &.chips--filled {
+        background-color: $gray-700;
+        color: $white;
+      }
+      
+      &.chips--outline {
+        background-color: $white;
+        color: $gray-600;
+        border: 1px solid $gray-600;
+        padding: 3px 7px;
+      }
+    }
+  }
+  
+  // Clickable state
+  &--clickable {
+    cursor: pointer;
+    
+    &:focus-visible {
+      outline: 2px solid $blue-600;
+      outline-offset: 2px;
+    }
+  }
+  
+  // Disabled state
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    
+    * {
+      pointer-events: none;
+    }
+  }
+  
+  // Draggable state
+  &--draggable {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  // Avatar
+  &__avatar {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $gray-300;
+    
+    &-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    &-initial {
+      font-size: 10px;
+      font-weight: 500;
+      color: $white;
+    }
+  }
+  
+  // Icons
+  &__leading-icon,
+  &__status-icon {
+    flex-shrink: 0;
+  }
+  
+  // Label
+  &__label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+  }
+  
+  // Trailing button
+  &__trailing-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+    
+    &:hover:not(:disabled) {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+  
+  &__trailing-icon {
+    flex-shrink: 0;
+  }
+}
+
+// Focus styles
+.chips:focus-visible {
+  outline: 2px solid $blue-600;
+  outline-offset: 2px;
+}

@@ -1,0 +1,123 @@
+@use "../../../styles/index.scss" as *;
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 4px;
+  font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border-radius: 4px;
+
+  // ===================
+  // 타입별 색상
+  // ===================
+
+  // Primary 타입 (파란색)
+  &--primary {
+    color: $blue-600; // #2563EB
+    
+    &:hover:not(.link--disabled) {
+      color: #1d4ed8; // blue-700
+    }
+    
+    &:active:not(.link--disabled) {
+      color: #1e40af; // blue-800
+    }
+    
+    &:visited:not(.link--disabled) {
+      color: #4338ca; // indigo-600
+    }
+    
+    &:focus-visible {
+      outline: 2px solid $blue-600;
+      outline-offset: 2px;
+    }
+  }
+
+  // Secondary 타입 (회색)
+  &--secondary {
+    color: $gray-600; // #4B5563
+    
+    &:hover:not(.link--disabled) {
+      color: $gray-700; // #374151
+    }
+    
+    &:active:not(.link--disabled) {
+      color: $gray-800; // #1F2937
+    }
+    
+    &:visited:not(.link--disabled) {
+      color: #4338ca; // indigo-600 (visited는 동일)
+    }
+    
+    &:focus-visible {
+      outline: 2px solid $blue-600;
+      outline-offset: 2px;
+    }
+  }
+
+  // ===================
+  // 스타일별 장식
+  // ===================
+
+  // Underline 스타일
+  &--underline {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    
+    &:hover:not(.link--disabled) {
+      text-decoration-thickness: 2px;
+    }
+  }
+
+  // Standalone 스타일
+  &--standalone {
+    text-decoration: none;
+  }
+
+  // ===================
+  // 상태별 스타일
+  // ===================
+
+  // Hover 상태
+  &:hover:not(.link--disabled) {
+    background-color: $gray-200; // #E5E7EB
+  }
+
+  // Press 상태
+  &:active:not(.link--disabled) {
+    background-color: $gray-300; // #D1D5DB
+  }
+
+  // Disabled 상태
+  &--disabled {
+    color: $gray-400; // #6B7280
+    cursor: not-allowed;
+    text-decoration: none;
+    
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  // ===================
+  // 아이콘 스타일
+  // ===================
+
+  &__leading-icon,
+  &__trailing-icon {
+    flex-shrink: 0;
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+}

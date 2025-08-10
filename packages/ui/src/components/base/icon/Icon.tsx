@@ -1,12 +1,18 @@
 import React from "react";
 import { IconProps } from "./types";
 import { getIconSize } from "./utils";
-import { InfoIcon, CheckIcon } from "./icons";
+import { InfoIcon, CheckIcon, UserIcon, XCircleIcon, AlertTriangleIcon, XIcon, HeartIcon, ChevronRightIcon } from "./icons";
 
 // 아이콘 맵핑
 const iconMap = {
   info: InfoIcon,
   check: CheckIcon,
+  user: UserIcon,
+  "x-circle": XCircleIcon,
+  "alert-triangle": AlertTriangleIcon,
+  x: XIcon,
+  heart: HeartIcon,
+  "chevron-right": ChevronRightIcon,
 } as const;
 
 export type IconName = keyof typeof iconMap;

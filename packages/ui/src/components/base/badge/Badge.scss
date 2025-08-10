@@ -1,0 +1,139 @@
+@use "../../../styles/index.scss" as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 99999px;
+  font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.2;
+  text-align: center;
+  user-select: none;
+
+  // ===================
+  // 타입별 스타일
+  // ===================
+
+  // Dot 타입: 4x4px 작은 점
+  &--dot {
+    width: 4px;
+    height: 4px;
+    min-width: 4px;
+    min-height: 4px;
+  }
+
+  // Number 타입: 숫자 표시용
+  &--number {
+    padding: 2px 4px;
+    min-width: 16px;
+    min-height: 16px;
+  }
+
+  // Letter 타입: 텍스트 표시용 (투명 배경)
+  &--letter {
+    padding: 2px 4px;
+    min-width: 16px;
+    min-height: 16px;
+  }
+
+  // ===================
+  // 상태별 색상
+  // ===================
+
+  // Default 상태 (회색)
+  &--default {
+    &.badge--dot {
+      background-color: $gray-800; // #1F2937
+    }
+    
+    &.badge--number {
+      background-color: $gray-800; // #1F2937
+      color: $white;
+    }
+    
+    &.badge--letter {
+      background-color: $gray-200; // #E5E7EB (투명 효과)
+      color: $gray-700; // #374151
+    }
+  }
+
+  // Information 상태 (파란색)
+  &--information {
+    &.badge--dot {
+      background-color: $blue-600; // #2563EB
+    }
+    
+    &.badge--number {
+      background-color: $blue-600; // #2563EB
+      color: $white;
+    }
+    
+    &.badge--letter {
+      background-color: #eff6ff; // blue-50
+      color: #1e40af; // blue-800
+    }
+  }
+
+  // Warning 상태 (노란색)
+  &--warning {
+    &.badge--dot {
+      background-color: #eab308; // yellow-500
+    }
+    
+    &.badge--number {
+      background-color: #eab308; // yellow-500
+      color: #111827; // gray-900
+    }
+    
+    &.badge--letter {
+      background-color: #fefce8; // yellow-50
+      color: #1e40af; // blue-800 (피그마에서 확인한 색상)
+    }
+  }
+
+  // Success 상태 (초록색)
+  &--success {
+    &.badge--dot {
+      background-color: #15803d; // green-600
+    }
+    
+    &.badge--number {
+      background-color: #15803d; // green-600
+      color: $white;
+    }
+    
+    &.badge--letter {
+      background-color: #f0fdf4; // green-50
+      color: #166534; // green-700
+    }
+  }
+
+  // Important 상태 (빨간색)
+  &--important {
+    &.badge--dot {
+      background-color: #b91c1c; // red-700
+    }
+    
+    &.badge--number {
+      background-color: #b91c1c; // red-700
+      color: $white;
+    }
+    
+    &.badge--letter {
+      background-color: #fef2f2; // red-50
+      color: #991b1b; // red-800
+    }
+  }
+
+  // ===================
+  // 콘텐츠 스타일
+  // ===================
+
+  &__content {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

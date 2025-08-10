@@ -2,6 +2,10 @@
   "$schema": "https://turborepo.com/schema.json",
   "ui": "tui",
   "tasks": {
+    "build-tokens": {
+      "inputs": ["src/tokens/**"],
+      "outputs": ["styles/build/**"]
+    },
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
@@ -14,6 +18,7 @@
       "dependsOn": ["^check-types"]
     },
     "dev": {
+      "dependsOn": ["build-tokens"],
       "cache": false,
       "persistent": true
     },

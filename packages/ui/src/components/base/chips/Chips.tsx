@@ -92,6 +92,7 @@ const Chips: React.FC<ChipsProps> = ({
     .join(" ");
 
   const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (disabled) return;
     if (onClick) {
       onClick();
@@ -132,11 +133,7 @@ const Chips: React.FC<ChipsProps> = ({
     }
 
     return (
-      <Icon
-        name={leadingIcon}
-        className="chips__leading-icon"
-        size={16}
-      />
+      <Icon name={leadingIcon} className="chips__leading-icon" size={16} />
     );
   };
 
@@ -167,17 +164,13 @@ const Chips: React.FC<ChipsProps> = ({
       aria-pressed={selected}
     >
       {variant === "status" ? (
-        <Icon
-          name={getStatusIcon()}
-          className="chips__status-icon"
-          size={16}
-        />
+        <Icon name={getStatusIcon()} className="chips__status-icon" size={16} />
       ) : (
         renderLeadingIcon()
       )}
-      
+
       <span className="chips__label">{label}</span>
-      
+
       {showTrailingIcon && (
         <button
           className="chips__trailing-button"
@@ -186,11 +179,7 @@ const Chips: React.FC<ChipsProps> = ({
           aria-label="Remove chip"
           tabIndex={-1}
         >
-          <Icon
-            name="x"
-            className="chips__trailing-icon"
-            size={16}
-          />
+          <Icon name="x" className="chips__trailing-icon" size={16} />
         </button>
       )}
     </div>

@@ -1,20 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { resolve } from 'path'
 
 // https://vite.dev/config/
+// @repo/ui는 package.json exports를 통해 dist/index.js, dist/index.css를 참조합니다.
 export default defineConfig({
   plugins: [react()],
-  resolve: {
-    alias: {
-      '@repo/ui/styles': resolve(__dirname, '../../packages/ui/src/styles/index.scss'),
-      '@repo/ui': resolve(__dirname, '../../packages/ui/src/index.ts'),
-    },
-  },
   optimizeDeps: {
     exclude: ['@repo/ui'],
   },
-  server: {
-    force: true,
-  }
 })

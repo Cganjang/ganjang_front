@@ -18,7 +18,7 @@
       "dependsOn": ["^check-types"]
     },
     "dev": {
-      "dependsOn": ["build-tokens"],
+      "dependsOn": ["^build", "build-tokens"],
       "cache": false,
       "persistent": true
     },

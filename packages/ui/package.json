@@ -29,6 +29,8 @@
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build:tokens": "style-dictionary build --config style-dictionary.config.js",

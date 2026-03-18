@@ -1,6 +1,7 @@
 import React from "react";
 // import Spinner from "@repo/ui";
-import Spinner from "../../feedback/spinner/Spinner";
+// import Spinner from "../../feedback/spinner/Spinner";
+import Spinner from "@ui/components/feedback/spinner/Spinner";
 import "./Button.scss";
 
 export interface ButtonProps {

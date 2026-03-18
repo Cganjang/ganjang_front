@@ -17,7 +17,10 @@
     "noFallthroughCasesInSwitch": true,
     "declaration": true,
     "emitDeclarationOnly": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "paths": {
+      "@ui/*": ["./src/*"]
+    }
   },
   "include": ["src", "style-dictionary.config.js"],
   "exclude": ["dist", "storybook-static", "**/*.stories.*"]

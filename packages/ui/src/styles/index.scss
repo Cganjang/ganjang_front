@@ -1,21 +1,17 @@
 // 기본 리셋 및 공용 스타일
 
-// 색상 변수 (디자인 시스템)
-$blue-600: #2563eb;   // Primary
-$blue-700: #1d4ed8;   // Primary hover
-$blue-800: #1e40af;   // Primary press
-$gray-600: #4b5563;   // Secondary
-$gray-700: #374151;   // Secondary hover
-$gray-800: #1f2937;   // Secondary press
-$red-600: #dc2626;    // Destructive
-$red-700: #b91c1c;    // Destructive hover
-$red-800: #991b1b;    // Destructive press
-$gray-100: #f3f4f6;   // Light backgrounds
-$gray-200: #e5e7eb;   // Borders
-$gray-300: #d1d5db;   // Disabled states
-$gray-400: #9ca3af;   // Disabled text
-$white: #ffffff;
-$black: #000000;
+// _tokens.scss의 모든 변수를 외부에 노출
+// (pnpm convert:tokens 실행 시 자동 생성)
+// 컴포넌트에서 @use '../../../styles/index.scss' as * 하면
+// $blue-600, $semantic-light-bg-interactive-primary 등 모두 사용 가능
+@forward './tokens';
+
+// 내부에서 변수를 쓰기 위한 참조
+@use './tokens' as tok;
+
+// 기존 컴포넌트 하위호환 alias ($base-white → $white 등)
+$white: tok.$base-white;
+$black: tok.$base-black;
 
 // 기본 리셋
 * {
@@ -24,8 +20,8 @@ $black: #000000;
 
 // 카드 스타일
 .card {
-  background-color: $white;
-  border: 1px solid $gray-200;
+  background-color: tok.$base-white;
+  border: 1px solid tok.$gray-200;
   border-radius: 0.5rem;
   box-shadow:
     0 1px 3px 0 rgba(0, 0, 0, 0.1),

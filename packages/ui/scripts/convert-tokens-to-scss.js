@@ -129,11 +129,11 @@ function generateScssFile() {
   // Theme 매핑 생성
   const themeMapping = createThemeMapping(tokens);
 
-  // Color tokens
+  // Color tokens (prefix 없음 → $blue-600, $gray-600 등)
   if (tokens.Color) {
     scssContent += `// Color Tokens
 `;
-    scssContent += generateScssVariables(tokens.Color, "color", tokens);
+    scssContent += generateScssVariables(tokens.Color, "", tokens);
     scssContent += `\n`;
   }
 

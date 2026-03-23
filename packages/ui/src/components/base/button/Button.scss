@@ -3,17 +3,15 @@
 // Types: primary, secondary, destructive
 // States: default, hover, press, focus, disabled, loading
 
-@use "../../../styles/index.scss" as *;
-
 // 버튼 베이스 스타일 (Figma 디자인 기반)
 .btn {
   // 기본 레이아웃
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  padding: 8px 12px;
-  border-radius: 4px;
+  gap: var(--spacing-4);
+  padding: var(--spacing-8) var(--spacing-12);
+  border-radius: var(--border-radius-4);
   border: 1px solid transparent;
 
   // 타이포그래피 (Figma에서 추출)
@@ -35,7 +33,7 @@
   // 포커스 상태
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px $blue-600;
+    box-shadow: 0 0 0 2px var(--border-focus-ring);
   }
 
   // 비활성화 상태
@@ -78,73 +76,73 @@
   &--filled {
     // Primary Filled
     &.btn--primary {
-      background-color: $blue-600;
-      color: $white;
-      border-color: $blue-600;
+      background-color: var(--bg-interactive-primary);
+      color: var(--text-interactive-inverse);
+      border-color: var(--bg-interactive-primary);
 
       &:hover:not(:disabled):not(.btn--loading):not(.btn--disabled) {
-        background-color: $blue-700;
-        border-color: $blue-700;
+        background-color: var(--bg-interactive-primary-hovered);
+        border-color: var(--bg-interactive-primary-hovered);
       }
 
       &:active:not(:disabled):not(.btn--loading):not(.btn--disabled) {
-        background-color: $blue-800;
-        border-color: $blue-800;
+        background-color: var(--bg-interactive-primary-pressed);
+        border-color: var(--bg-interactive-primary-pressed);
       }
 
       &:disabled,
       &.btn--disabled {
-        background-color: $gray-300;
-        border-color: $gray-300;
-        color: $gray-400;
+        background-color: var(--bg-disabled);
+        border-color: var(--bg-disabled);
+        color: var(--text-disabled);
       }
     }
 
     // Secondary Filled
     &.btn--secondary {
-      background-color: $gray-600;
-      color: $white;
-      border-color: $gray-600;
+      background-color: var(--text-interactive-secondary);
+      color: var(--text-interactive-inverse);
+      border-color: var(--text-interactive-secondary);
 
       &:hover:not(:disabled):not(.btn--loading):not(.btn--disabled) {
-        background-color: $gray-700;
-        border-color: $gray-700;
+        background-color: var(--text-interactive-secondary-hovered);
+        border-color: var(--text-interactive-secondary-hovered);
       }
 
       &:active:not(:disabled):not(.btn--loading):not(.btn--disabled) {
-        background-color: $gray-800;
-        border-color: $gray-800;
+        background-color: var(--text-interactive-secondary-pressed);
+        border-color: var(--text-interactive-secondary-pressed);
       }
 
       &:disabled,
       &.btn--disabled {
-        background-color: $gray-300;
-        border-color: $gray-300;
-        color: $gray-400;
+        background-color: var(--bg-disabled);
+        border-color: var(--bg-disabled);
+        color: var(--text-disabled);
       }
     }
 
     // Destructive Filled
     &.btn--destructive {
-      background-color: $red-600;
-      color: $white;
-      border-color: $red-600;
+      background-color: var(--bg-interactive-danger);
+      color: var(--text-interactive-inverse);
+      border-color: var(--bg-interactive-danger);
 
       &:hover:not(:disabled):not(.btn--loading):not(.btn--disabled) {
-        background-color: $red-700;
-        border-color: $red-700;
+        background-color: var(--bg-interactive-danger-hovered);
+        border-color: var(--bg-interactive-danger-hovered);
       }
 
       &:active:not(:disabled):not(.btn--loading):not(.btn--disabled) {
-        background-color: $red-800;
-        border-color: $red-800;
+        background-color: var(--bg-interactive-danger-pressed);
+        border-color: var(--bg-interactive-danger-pressed);
       }
 
       &:disabled,
       &.btn--disabled {
-        background-color: $gray-300;
-        border-color: $gray-300;
-        color: $gray-400;
+        background-color: var(--bg-disabled);
+        border-color: var(--bg-disabled);
+        color: var(--text-disabled);
       }
     }
   }
@@ -158,75 +156,75 @@
 
     // Primary Outline
     &.btn--primary {
-      color: $blue-600;
-      border-color: $blue-600;
+      color: var(--text-interactive-primary);
+      border-color: var(--border-interactive-primary);
 
       &:hover:not(:disabled):not(.btn--loading):not(.btn--disabled) {
-        background-color: $gray-100;
-        color: $blue-700;
-        border-color: $blue-700;
+        background-color: var(--bg-interactive-secondary);
+        color: var(--text-interactive-primary-hovered);
+        border-color: var(--border-interactive-primary-hovered);
       }
 
       &:active:not(:disabled):not(.btn--loading):not(.btn--disabled) {
-        background-color: $gray-200;
-        color: $blue-800;
-        border-color: $blue-800;
+        background-color: var(--bg-interactive-secondary-hovered);
+        color: var(--text-interactive-primary-pressed);
+        border-color: var(--border-interactive-primary-pressed);
       }
 
       &:disabled,
       &.btn--disabled {
-        color: $gray-400;
-        border-color: $gray-300;
+        color: var(--text-disabled);
+        border-color: var(--bg-disabled);
         background-color: transparent;
       }
     }
 
     // Secondary Outline
     &.btn--secondary {
-      color: $gray-600;
-      border-color: $gray-600;
+      color: var(--text-interactive-secondary);
+      border-color: var(--border-interactive-secondary);
 
       &:hover:not(:disabled):not(.btn--loading):not(.btn--disabled) {
-        background-color: $gray-100;
-        color: $gray-700;
-        border-color: $gray-700;
+        background-color: var(--bg-interactive-secondary);
+        color: var(--text-interactive-secondary-hovered);
+        border-color: var(--border-interactive-secondary-hovered);
       }
 
       &:active:not(:disabled):not(.btn--loading):not(.btn--disabled) {
-        background-color: $gray-200;
-        color: $gray-800;
-        border-color: $gray-800;
+        background-color: var(--bg-interactive-secondary-hovered);
+        color: var(--text-interactive-secondary-pressed);
+        border-color: var(--border-interactive-secondary-pressed);
       }
 
       &:disabled,
       &.btn--disabled {
-        color: $gray-400;
-        border-color: $gray-300;
+        color: var(--text-disabled);
+        border-color: var(--bg-disabled);
         background-color: transparent;
       }
     }
 
     // Destructive Outline
     &.btn--destructive {
-      color: $red-600;
-      border-color: $red-600;
+      color: var(--text-danger);
+      border-color: var(--border-danger);
 
       &:hover:not(:disabled):not(.btn--loading):not(.btn--disabled) {
-        background-color: $gray-100;
-        color: $red-700;
-        border-color: $red-700;
+        background-color: var(--bg-interactive-secondary);
+        color: var(--bg-interactive-danger-hovered);
+        border-color: var(--bg-interactive-danger-hovered);
       }
 
       &:active:not(:disabled):not(.btn--loading):not(.btn--disabled) {
-        background-color: $gray-200;
-        color: $red-800;
-        border-color: $red-800;
+        background-color: var(--bg-interactive-secondary-hovered);
+        color: var(--bg-interactive-danger-pressed);
+        border-color: var(--bg-interactive-danger-pressed);
       }
 
       &:disabled,
       &.btn--disabled {
-        color: $gray-400;
-        border-color: $gray-300;
+        color: var(--text-disabled);
+        border-color: var(--bg-disabled);
         background-color: transparent;
       }
     }
@@ -242,63 +240,63 @@
 
     // Primary Transparent
     &.btn--primary {
-      color: $blue-600;
+      color: var(--text-interactive-primary);
 
       &:hover:not(:disabled):not(.btn--loading):not(.btn--disabled) {
-        background-color: $gray-100;
-        color: $blue-700;
+        background-color: var(--bg-interactive-secondary);
+        color: var(--text-interactive-primary-hovered);
       }
 
       &:active:not(:disabled):not(.btn--loading):not(.btn--disabled) {
-        background-color: $gray-200;
-        color: $blue-800;
+        background-color: var(--bg-interactive-secondary-hovered);
+        color: var(--text-interactive-primary-pressed);
       }
 
       &:disabled,
       &.btn--disabled {
-        color: $gray-400;
+        color: var(--text-disabled);
         background-color: transparent;
       }
     }
 
     // Secondary Transparent
     &.btn--secondary {
-      color: $gray-600;
+      color: var(--text-interactive-secondary);
 
       &:hover:not(:disabled):not(.btn--loading):not(.btn--disabled) {
-        background-color: $gray-100;
-        color: $gray-700;
+        background-color: var(--bg-interactive-secondary);
+        color: var(--text-interactive-secondary-hovered);
       }
 
       &:active:not(:disabled):not(.btn--loading):not(.btn--disabled) {
-        background-color: $gray-200;
-        color: $gray-800;
+        background-color: var(--bg-interactive-secondary-hovered);
+        color: var(--text-interactive-secondary-pressed);
       }
 
       &:disabled,
       &.btn--disabled {
-        color: $gray-400;
+        color: var(--text-disabled);
         background-color: transparent;
       }
     }
 
     // Destructive Transparent
     &.btn--destructive {
-      color: $red-600;
+      color: var(--text-danger);
 
       &:hover:not(:disabled):not(.btn--loading):not(.btn--disabled) {
-        background-color: $gray-100;
-        color: $red-700;
+        background-color: var(--bg-interactive-secondary);
+        color: var(--bg-interactive-danger-hovered);
       }
 
       &:active:not(:disabled):not(.btn--loading):not(.btn--disabled) {
-        background-color: $gray-200;
-        color: $red-800;
+        background-color: var(--bg-interactive-secondary-hovered);
+        color: var(--bg-interactive-danger-pressed);
       }
 
       &:disabled,
       &.btn--disabled {
-        color: $gray-400;
+        color: var(--text-disabled);
         background-color: transparent;
       }
     }

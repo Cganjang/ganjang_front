@@ -1,17 +1,8 @@
 // 기본 리셋 및 공용 스타일
 
-// _tokens.scss의 모든 변수를 외부에 노출
-// (pnpm convert:tokens 실행 시 자동 생성)
-// 컴포넌트에서 @use '../../../styles/index.scss' as * 하면
-// $blue-600, $semantic-light-bg-interactive-primary 등 모두 사용 가능
-@forward './tokens';
-
-// 내부에서 변수를 쓰기 위한 참조
-@use './tokens' as tok;
-
-// 기존 컴포넌트 하위호환 alias ($base-white → $white 등)
-$white: tok.$base-white;
-$black: tok.$base-black;
+// CSS Custom Properties (var(--text-primary) 등)
+// pnpm generate:css-vars 실행 시 자동 생성
+@use './css-variables';
 
 // 기본 리셋
 * {
@@ -20,10 +11,10 @@ $black: tok.$base-black;
 
 // 카드 스타일
 .card {
-  background-color: tok.$base-white;
-  border: 1px solid tok.$gray-200;
-  border-radius: 0.5rem;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--border-radius-8);
   box-shadow:
-    0 1px 3px 0 rgba(0, 0, 0, 0.1),
-    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    0 1px 3px 0 var(--shadow-subtle),
+    0 1px 2px 0 var(--shadow-subtle);
 }

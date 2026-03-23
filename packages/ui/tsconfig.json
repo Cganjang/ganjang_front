@@ -22,6 +22,6 @@
       "@ui/*": ["./src/*"]
     }
   },
-  "include": ["src", "style-dictionary.config.js"],
+  "include": ["src"],
   "exclude": ["dist", "storybook-static", "**/*.stories.*"]
 }

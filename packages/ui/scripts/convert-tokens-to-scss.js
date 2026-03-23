@@ -5,9 +5,19 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// tokens.json 파일 읽기
+// tokens.json 파일 읽기 (배열 또는 객체 형식 모두 지원)
 const tokensPath = path.join(__dirname, "../src/tokens/tokens.json");
-const tokens = JSON.parse(fs.readFileSync(tokensPath, "utf8"));
+const raw = JSON.parse(fs.readFileSync(tokensPath, "utf8"));
+const tokens = Array.isArray(raw)
+  ? raw.reduce((acc, item) => Object.assign(acc, item), {})
+  : raw;
+
+// Primitive 데이터를 최상위 참조 경로로 노출
+const primitiveMode = tokens[".Primitive"]?.modes?.["Mode 1"];
+if (primitiveMode) {
+  if (primitiveMode.Color && !tokens.Color) tokens.Color = primitiveMode.Color;
+  if (primitiveMode.Unit && !tokens.Unit) tokens.Unit = primitiveMode.Unit;
+}
 
 // Theme 토큰을 미리 해석하여 매핑 테이블 생성
 function createThemeMapping(tokens) {
@@ -130,18 +140,23 @@ function generateScssFile() {
   const themeMapping = createThemeMapping(tokens);
 
   // Color tokens (prefix 없음 → $blue-600, $gray-600 등)
-  if (tokens.Color) {
-    scssContent += `// Color Tokens
-`;
-    scssContent += generateScssVariables(tokens.Color, "", tokens);
+  // 최상위 Color 또는 .Primitive 안의 Color 모두 지원
+  const primitiveColors =
+    tokens.Color ||
+    tokens[".Primitive"]?.modes?.["Mode 1"]?.Color;
+  if (primitiveColors) {
+    scssContent += `// Color Tokens\n`;
+    scssContent += generateScssVariables(primitiveColors, "", tokens);
     scssContent += `\n`;
   }
 
-  // Unit tokens
-  if (tokens.Unit) {
-    scssContent += `// Unit Tokens
-`;
-    scssContent += generateScssVariables(tokens.Unit, "unit", tokens);
+  // Unit tokens (최상위 Unit 또는 .Primitive 안의 Unit)
+  const primitiveUnits =
+    tokens.Unit ||
+    tokens[".Primitive"]?.modes?.["Mode 1"]?.Unit;
+  if (primitiveUnits) {
+    scssContent += `// Unit Tokens\n`;
+    scssContent += generateScssVariables(primitiveUnits, "unit", tokens);
     scssContent += `\n`;
   }
 

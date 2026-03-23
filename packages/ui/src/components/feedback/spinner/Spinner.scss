@@ -1,8 +1,4 @@
 // Figma 디자인 기반 Spinner 스타일
-// Primary: #2563EB, Secondary: #4B5563
-// Sizes: sm(16px), md(24px), lg(32px), xl(48px)
-
-@use '../../../styles/index.scss' as *;
 
 .spinner {
   display: inline-flex;
@@ -16,60 +12,39 @@
     animation: spin 1s linear infinite;
   }
 
-  // 크기 variants
   &--sm {
     width: 16px;
     height: 16px;
-
-    .spinner__circle {
-      width: 16px;
-      height: 16px;
-    }
+    .spinner__circle { width: 16px; height: 16px; }
   }
 
   &--md {
     width: 24px;
     height: 24px;
-
-    .spinner__circle {
-      width: 24px;
-      height: 24px;
-    }
+    .spinner__circle { width: 24px; height: 24px; }
   }
 
   &--lg {
     width: 32px;
     height: 32px;
-
-    .spinner__circle {
-      width: 32px;
-      height: 32px;
-      border-width: 3px;
-    }
+    .spinner__circle { width: 32px; height: 32px; border-width: 3px; }
   }
 
   &--xl {
     width: 48px;
     height: 48px;
-
-    .spinner__circle {
-      width: 48px;
-      height: 48px;
-      border-width: 4px;
-    }
+    .spinner__circle { width: 48px; height: 48px; border-width: 4px; }
   }
 
-  // 타입 variants
   &--primary {
-    color: $blue-600; // Figma Primary 색상
+    color: var(--icon-brand);
   }
 
   &--secondary {
-    color: $gray-600; // Figma Secondary 색상
+    color: var(--text-interactive-secondary);
   }
 }
 
-// 스크린 리더용 숨김 텍스트
 .sr-only {
   position: absolute;
   width: 1px;
@@ -82,12 +57,7 @@
   border: 0;
 }
 
-// 회전 애니메이션
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }

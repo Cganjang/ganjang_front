@@ -1,16 +1,27 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import Spinner from "./Spinner";
 
-const meta: Meta<typeof Spinner> = {
+const meta = {
   title: "Feedback/Spinner",
   component: Spinner,
   parameters: {
+    layout: "centered",
     docs: {
       description: {
-        component: "Figma 디자인 기반 로딩 스피너 컴포넌트입니다. 4가지 크기와 2가지 타입을 제공합니다.",
+        component: `
+로딩 상태를 나타내는 Spinner 컴포넌트입니다.
+
+**특징:**
+- 4가지 크기: \`sm\` (16px), \`md\` (24px), \`lg\` (32px), \`xl\` (48px)
+- 2가지 타입: \`primary\` (파란색), \`secondary\` (회색)
+
+Figma 디자인 시스템을 기반으로 제작되었습니다.
+        `,
       },
     },
   },
+  tags: ["autodocs"],
   argTypes: {
     size: {
       control: { type: "select" },
@@ -24,128 +35,94 @@ const meta: Meta<typeof Spinner> = {
     },
     "aria-label": {
       control: { type: "text" },
-      description: "접근성을 위한 라벨",
+      description: "접근성 라벨",
     },
   },
-};
+} satisfies Meta<typeof Spinner>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// 기본 스피너
+// 1. 기본 상태
 export const Default: Story = {
-  args: {},
-};
-
-// Primary 타입
-export const Primary: Story = {
   args: {
+    size: "md",
     type: "primary",
   },
 };
 
-// Secondary 타입
-export const Secondary: Story = {
-  args: {
-    type: "secondary",
-  },
-};
-
-// 크기별 스피너들
-export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
-      <div style={{ textAlign: "center" }}>
-        <Spinner size="sm" />
-        <div style={{ marginTop: "0.5rem", fontSize: "12px" }}>Small (16px)</div>
-      </div>
-      <div style={{ textAlign: "center" }}>
-        <Spinner size="md" />
-        <div style={{ marginTop: "0.5rem", fontSize: "12px" }}>Medium (24px)</div>
-      </div>
-      <div style={{ textAlign: "center" }}>
-        <Spinner size="lg" />
-        <div style={{ marginTop: "0.5rem", fontSize: "12px" }}>Large (32px)</div>
-      </div>
-      <div style={{ textAlign: "center" }}>
-        <Spinner size="xl" />
-        <div style={{ marginTop: "0.5rem", fontSize: "12px" }}>Extra Large (48px)</div>
-      </div>
-    </div>
-  ),
-};
-
-// 모든 조합 (Figma 디자인과 동일)
+// 2. 모든 조합 — Figma 레이아웃 기준 (size × type)
 export const AllVariants: Story = {
+  args: {
+    size: "md",
+    type: "primary",
+  },
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-      <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
-          Primary Type
-        </h3>
-        <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
-          <div style={{ textAlign: "center" }}>
-            <Spinner type="primary" size="sm" />
-            <div style={{ marginTop: "0.5rem", fontSize: "12px" }}>sm-16px</div>
-          </div>
-          <div style={{ textAlign: "center" }}>
-            <Spinner type="primary" size="md" />
-            <div style={{ marginTop: "0.5rem", fontSize: "12px" }}>md-24px</div>
-          </div>
-          <div style={{ textAlign: "center" }}>
-            <Spinner type="primary" size="lg" />
-            <div style={{ marginTop: "0.5rem", fontSize: "12px" }}>lg-32px</div>
-          </div>
-          <div style={{ textAlign: "center" }}>
-            <Spinner type="primary" size="xl" />
-            <div style={{ marginTop: "0.5rem", fontSize: "12px" }}>xl-48px</div>
+      {(["primary", "secondary"] as const).map((type) => (
+        <div key={type}>
+          <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600", textTransform: "capitalize" }}>
+            {type}
+          </h3>
+          <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
+            {(["sm", "md", "lg", "xl"] as const).map((size) => (
+              <div key={size} style={{ textAlign: "center" }}>
+                <Spinner type={type} size={size} />
+                <div style={{ marginTop: "8px", fontSize: "12px", color: "#6b7280" }}>
+                  {size}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-      
-      <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
-          Secondary Type
-        </h3>
-        <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
-          <div style={{ textAlign: "center" }}>
-            <Spinner type="secondary" size="sm" />
-            <div style={{ marginTop: "0.5rem", fontSize: "12px" }}>sm-16px</div>
-          </div>
-          <div style={{ textAlign: "center" }}>
-            <Spinner type="secondary" size="md" />
-            <div style={{ marginTop: "0.5rem", fontSize: "12px" }}>md-24px</div>
-          </div>
-          <div style={{ textAlign: "center" }}>
-            <Spinner type="secondary" size="lg" />
-            <div style={{ marginTop: "0.5rem", fontSize: "12px" }}>lg-32px</div>
-          </div>
-          <div style={{ textAlign: "center" }}>
-            <Spinner type="secondary" size="xl" />
-            <div style={{ marginTop: "0.5rem", fontSize: "12px" }}>xl-48px</div>
-          </div>
-        </div>
-      </div>
+      ))}
     </div>
   ),
 };
 
-// 실제 사용 예시
+// 3. 실제 사용 예시
 export const UsageExample: Story = {
+  args: {
+    size: "sm",
+    type: "primary",
+  },
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", minWidth: "280px" }}>
+      {/* 버튼 내 로딩 */}
       <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-        <Spinner size="sm" />
-        <span>로딩 중...</span>
+        <Spinner size="sm" type="primary" />
+        <span style={{ fontSize: "14px" }}>저장 중...</span>
       </div>
-      <div style={{ 
-        padding: "1rem", 
-        border: "1px solid #e5e7eb", 
-        borderRadius: "8px",
-        textAlign: "center"
-      }}>
-        <Spinner size="lg" />
-        <div style={{ marginTop: "1rem" }}>데이터를 불러오는 중입니다</div>
+
+      {/* 카드 로딩 */}
+      <div
+        style={{
+          padding: "1.5rem",
+          border: "1px solid #e5e7eb",
+          borderRadius: "8px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "1rem",
+        }}
+      >
+        <Spinner size="lg" type="primary" />
+        <span style={{ fontSize: "14px", color: "#6b7280" }}>데이터를 불러오는 중입니다</span>
+      </div>
+
+      {/* Secondary — 어두운 배경 시나리오 */}
+      <div
+        style={{
+          padding: "1rem",
+          borderRadius: "8px",
+          background: "#1f2937",
+          display: "flex",
+          alignItems: "center",
+          gap: "0.75rem",
+        }}
+      >
+        <Spinner size="md" type="secondary" />
+        <span style={{ fontSize: "14px", color: "#f3f4f6" }}>처리 중...</span>
       </div>
     </div>
   ),

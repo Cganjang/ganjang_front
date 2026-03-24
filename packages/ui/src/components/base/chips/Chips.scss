@@ -1,181 +1,193 @@
+// Figma 디자인 기반 Chips 컴포넌트 스타일
+// Variant: default(선택형), status(상태 표시)
+// Status: information, success, error, warning, neutral
+// StyleVariant: filled, transparent, outline
+// States: default, hover, press, focus, disabled, draggable, selected
+
 .chips {
   display: inline-flex;
   align-items: center;
-  gap: 2px;
-  padding: 4px 8px;
-  border-radius: 99999px;
+  gap: var(--spacing-4, 4px);
+  padding: var(--spacing-2, 2px) var(--spacing-8, 8px);
+  border-radius: var(--border-radius-circle, 99999px);
+  border: 1px solid transparent;
+
   font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 12px;
   font-weight: 500;
   line-height: 1.2;
-  transition: all 0.2s ease;
+
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   cursor: default;
   user-select: none;
 
-  // Default variant
+  // ===================
+  // DEFAULT VARIANT
+  // 선택형 칩: leadingIcon + label + trailing X
+  // ===================
   &--default {
-    background-color: var(--bg-interactive-secondary);
-    color: var(--text-interactive-secondary);
-
-    &.chips--selected {
-      background-color: #eff6ff;
-      color: var(--text-interactive-primary);
-    }
+    // Default (unselected)
+    background-color: var(--bg-interactive-secondary);       // #f3f4f6
+    color: var(--text-interactive-secondary);                // #4b5563
 
     &:hover:not(.chips--disabled) {
-      background-color: var(--bg-interactive-secondary-hovered);
-      color: var(--text-interactive-secondary-hovered);
-
-      &.chips--selected {
-        background-color: #dbeafe;
-        color: var(--text-interactive-primary-hovered);
-      }
+      background-color: var(--bg-interactive-secondary-hovered); // #e5e7eb
+      color: var(--text-interactive-secondary-hovered);          // #374151
     }
 
     &:active:not(.chips--disabled) {
-      background-color: var(--bg-interactive-secondary-pressed);
-      color: var(--text-interactive-secondary-pressed);
+      background-color: var(--bg-interactive-secondary-pressed); // #d1d5db
+      color: var(--text-interactive-secondary-pressed);          // #1f2937
+    }
 
-      &.chips--selected {
-        background-color: #bfdbfe;
-        color: var(--text-interactive-primary-pressed);
+    // Selected
+    &.chips--selected {
+      background-color: var(--bg-interactive-selected);          // #eff6ff
+      color: var(--text-interactive-primary);                    // #2563eb
+
+      &:hover:not(.chips--disabled) {
+        background-color: var(--bg-interactive-selected-hovered); // #dbeafe
+        color: var(--text-interactive-primary-hovered);           // #1d4ed8
+      }
+
+      &:active:not(.chips--disabled) {
+        background-color: var(--bg-interactive-selected-pressed); // #bfdbfe
+        color: var(--text-interactive-primary-pressed);           // #1e40af
       }
     }
   }
 
-  // Status variants
+  // ===================
+  // STATUS VARIANT
+  // 상태 표시 칩: status icon + label (trailing X 없음)
+  // ===================
   &--status {
+
+    // --- Information ---
     &.chips--information {
-      &.chips--transparent {
-        background-color: #eff6ff;
-        color: var(--text-interactive-primary);
-      }
-
       &.chips--filled {
-        background-color: var(--bg-interactive-primary);
-        color: var(--text-interactive-inverse);
+        background-color: var(--bg-info);                     // #2563eb
+        color: var(--text-interactive-inverse);               // #ffffff
       }
-
+      &.chips--transparent {
+        background-color: var(--bg-info-subtle);              // #eff6ff
+        color: var(--text-info-bold);                         // #1e40af
+      }
       &.chips--outline {
-        background-color: var(--bg-primary);
-        color: var(--text-interactive-primary);
-        border: 1px solid var(--border-interactive-primary);
-        padding: 3px 7px;
+        background-color: transparent;
+        color: var(--text-info-bold);                         // #1e40af
+        border-color: var(--border-info);                     // #2563eb
       }
     }
 
+    // --- Success ---
     &.chips--success {
-      &.chips--transparent {
-        background-color: #f0fdf4;
-        color: #166534;
-      }
-
       &.chips--filled {
-        background-color: #16a34a;
-        color: var(--text-interactive-inverse);
+        background-color: var(--bg-success-bold);             // #15803d
+        color: var(--text-interactive-inverse);               // #ffffff
       }
-
+      &.chips--transparent {
+        background-color: var(--bg-success-subtile);          // #f0fdf4
+        color: var(--text-success-bold);                      // #166534
+      }
       &.chips--outline {
-        background-color: var(--bg-primary);
-        color: #16a34a;
-        border: 1px solid #16a34a;
-        padding: 3px 7px;
+        background-color: transparent;
+        color: var(--text-success-bold);                      // #166634
+        border-color: var(--border-success);                  // #16a34a
       }
     }
 
+    // --- Error ---
     &.chips--error {
-      &.chips--transparent {
-        background-color: #fef2f2;
-        color: var(--bg-interactive-danger-hovered);
-      }
-
       &.chips--filled {
-        background-color: var(--bg-interactive-danger);
-        color: var(--text-interactive-inverse);
+        background-color: var(--bg-interactive-danger);       // #dc2626
+        color: var(--text-interactive-inverse);               // #ffffff
       }
-
+      &.chips--transparent {
+        background-color: var(--bg-danger-subtile);           // #fef2f2
+        color: var(--text-danger-bold);                       // #991b1b
+      }
       &.chips--outline {
-        background-color: var(--bg-primary);
-        color: var(--text-danger);
-        border: 1px solid var(--border-danger);
-        padding: 3px 7px;
+        background-color: transparent;
+        color: var(--text-danger-bold);                       // #991b1b
+        border-color: var(--border-danger);                   // #dc2626
       }
     }
 
+    // --- Warning ---
     &.chips--warning {
-      &.chips--transparent {
-        background-color: #fefce8;
-        color: #854d0e;
-      }
-
       &.chips--filled {
-        background-color: #eab308;
-        color: #111827;
+        background-color: var(--bg-warning-bold);             // #eab308
+        color: var(--text-primary);                           // #111827
       }
-
+      &.chips--transparent {
+        background-color: var(--bg-warning-subtile);          // #fefce8
+        color: var(--text-warning-bold);                      // #854d0e
+      }
       &.chips--outline {
-        background-color: var(--bg-primary);
-        color: #eab308;
-        border: 1px solid #eab308;
-        padding: 3px 7px;
+        background-color: transparent;
+        color: var(--text-warning-bold);                      // #854d0e
+        border-color: var(--border-warning);                  // #eab308
       }
     }
 
+    // --- Neutral ---
     &.chips--neutral {
-      &.chips--transparent {
-        background-color: var(--bg-interactive-secondary-hovered);
-        color: var(--text-interactive-secondary-pressed);
-      }
-
       &.chips--filled {
-        background-color: var(--text-interactive-secondary-hovered);
-        color: var(--text-interactive-inverse);
+        background-color: var(--bg-inverse-bold);             // #374151
+        color: var(--text-interactive-inverse);               // #ffffff
       }
-
+      &.chips--transparent {
+        background-color: var(--bg-tertiary);                 // #e5e7eb
+        color: var(--text-secondary);                         // #1f2937
+      }
       &.chips--outline {
-        background-color: var(--bg-primary);
-        color: var(--text-interactive-secondary);
-        border: 1px solid var(--border-interactive-secondary);
-        padding: 3px 7px;
+        background-color: transparent;
+        color: var(--text-interactive-secondary);             // #4b5563
+        border-color: var(--border-primary);                  // #9ca3af
       }
     }
   }
 
-  // Clickable state
+  // ===================
+  // STATES
+  // ===================
+
   &--clickable {
     cursor: pointer;
 
     &:focus-visible {
-      outline: 2px solid var(--border-focus-ring);
-      outline-offset: 2px;
+      outline: none;
+      box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--border-focus-ring);
     }
   }
 
-  // Disabled state
   &--disabled {
     opacity: 0.5;
     cursor: not-allowed;
-
-    * {
-      pointer-events: none;
-    }
+    pointer-events: none;
   }
 
-  // Draggable state
   &--draggable {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow:
+      0 0 0 var(--shadow-subtle),
+      0 2px 4px var(--shadow-default);
   }
 
-  // Avatar
+  // ===================
+  // ELEMENTS
+  // ===================
+
   &__avatar {
     width: 16px;
     height: 16px;
-    border-radius: 50%;
+    border-radius: 99999px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--bg-disabled);
+    background-color: var(--bg-interactive-secondary-hovered);
+    flex-shrink: 0;
 
     &-image {
       width: 100%;
@@ -190,13 +202,11 @@
     }
   }
 
-  // Icons
   &__leading-icon,
   &__status-icon {
     flex-shrink: 0;
   }
 
-  // Label
   &__label {
     white-space: nowrap;
     overflow: hidden;
@@ -204,7 +214,6 @@
     min-width: 0;
   }
 
-  // Trailing button
   &__trailing-button {
     display: flex;
     align-items: center;
@@ -214,8 +223,10 @@
     background: none;
     border: none;
     cursor: pointer;
-    border-radius: 50%;
-    transition: background-color 0.2s ease;
+    border-radius: 99999px;
+    color: inherit;
+    transition: background-color 0.15s ease;
+    flex-shrink: 0;
 
     &:hover:not(:disabled) {
       background-color: rgba(0, 0, 0, 0.1);
@@ -229,9 +240,4 @@
   &__trailing-icon {
     flex-shrink: 0;
   }
-}
-
-.chips:focus-visible {
-  outline: 2px solid var(--border-focus-ring);
-  outline-offset: 2px;
 }

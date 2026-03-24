@@ -1,212 +1,233 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import Chips from './Chips';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import Chips from "./Chips";
 
-const meta: Meta<typeof Chips> = {
-  title: 'Base/Chips',
+const meta = {
+  title: "Base/Chips",
   component: Chips,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     docs: {
       description: {
-        component: 'Chips 컴포넌트는 선택 가능한 필터, 태그, 또는 작은 정보 조각을 표시하는 데 사용됩니다.',
+        component: `
+선택 가능한 필터, 태그, 상태 표시에 사용하는 Chips 컴포넌트입니다.
+
+**특징:**
+- 2가지 variant: \`default\` (선택형, leadingIcon + trailing X), \`status\` (상태 표시, 아이콘 고정)
+- status variant 3가지 스타일: \`filled\`, \`transparent\`, \`outline\`
+- 5가지 status: \`information\`, \`success\`, \`error\`, \`warning\`, \`neutral\`
+- default variant 상태: Default, Hover, Press, Focus, Selected, Disabled, Draggable
+
+Figma 디자인 시스템을 기반으로 제작되었습니다.
+      `,
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     label: {
-      control: 'text',
-      description: '칩에 표시될 텍스트',
+      control: { type: "text" },
+      description: "칩에 표시될 텍스트",
     },
     variant: {
-      control: 'select',
-      options: ['default', 'status'],
-      description: '칩의 타입',
+      control: { type: "select" },
+      options: ["default", "status"],
+      description: "칩 종류 (default: 선택형, status: 상태 표시)",
     },
     status: {
-      control: 'select',
-      options: ['information', 'success', 'error', 'warning', 'neutral'],
-      description: '상태 (status variant일 때만 사용)',
+      control: { type: "select" },
+      options: ["information", "success", "error", "warning", "neutral"],
+      description: "상태 (variant='status'일 때 사용)",
     },
-    style: {
-      control: 'select',
-      options: ['transparent', 'filled', 'outline'],
-      description: '스타일 타입',
+    styleVariant: {
+      control: { type: "select" },
+      options: ["filled", "transparent", "outline"],
+      description: "스타일 변형 (variant='status'일 때 사용, Figma 기준)",
     },
     selected: {
-      control: 'boolean',
-      description: '선택 상태',
+      control: { type: "boolean" },
+      description: "선택 상태 (variant='default'일 때)",
     },
     disabled: {
-      control: 'boolean',
-      description: '비활성 상태',
+      control: { type: "boolean" },
+      description: "비활성 상태",
     },
     draggable: {
-      control: 'boolean',
-      description: '드래그 가능 여부',
+      control: { type: "boolean" },
+      description: "드래그 가능 여부",
     },
     leadingIcon: {
-      control: 'select',
-      options: [undefined, 'info', 'check', 'user', 'avatar'],
-      description: '리딩 아이콘',
+      control: { type: "select" },
+      options: [undefined, "map-pin", "user", "info", "check", "avatar"],
+      description: "리딩 아이콘 이름 (Lucide Icons 기준) 또는 'avatar'",
     },
     showTrailingIcon: {
-      control: 'boolean',
-      description: '삭제 버튼 표시 여부',
+      control: { type: "boolean" },
+      description: "trailing X 버튼 표시 여부 (variant='default'일 때)",
     },
-    onClick: { action: 'clicked' },
-    onDelete: { action: 'deleted' },
+    onClick: {
+      action: "clicked",
+      description: "클릭 이벤트 핸들러",
+    },
+    onDelete: {
+      action: "deleted",
+      description: "삭제(X) 버튼 클릭 핸들러",
+    },
   },
 } satisfies Meta<typeof Chips>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// 1. 기본 상태
 export const Default: Story = {
   args: {
-    label: 'Label',
-    variant: 'default',
-    leadingIcon: 'user',
+    label: "Label",
+    variant: "default",
+    leadingIcon: "map-pin",
     showTrailingIcon: true,
   },
 };
 
-export const Selected: Story = {
+// 2. 모든 조합 — Figma 레이아웃 기준
+export const AllVariants: Story = {
   args: {
-    label: 'Selected',
-    variant: 'default',
-    selected: true,
-    leadingIcon: 'user',
+    label: "Label",
+    variant: "default",
+    leadingIcon: "map-pin",
     showTrailingIcon: true,
   },
-};
-
-export const WithAvatar: Story = {
-  args: {
-    label: 'With Avatar',
-    variant: 'default',
-    leadingIcon: 'avatar',
-    avatarInitial: 'A',
-    showTrailingIcon: true,
-  },
-};
-
-export const StatusInformation: Story = {
-  args: {
-    label: 'Information',
-    variant: 'status',
-    status: 'information',
-    style: 'filled',
-  },
-};
-
-export const StatusSuccess: Story = {
-  args: {
-    label: 'Success',
-    variant: 'status',
-    status: 'success',
-    style: 'filled',
-  },
-};
-
-export const StatusError: Story = {
-  args: {
-    label: 'Error',
-    variant: 'status',
-    status: 'error',
-    style: 'filled',
-  },
-};
-
-export const StatusWarning: Story = {
-  args: {
-    label: 'Warning',
-    variant: 'status',
-    status: 'warning',
-    style: 'filled',
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    label: 'Disabled',
-    variant: 'default',
-    disabled: true,
-    leadingIcon: 'user',
-    showTrailingIcon: true,
-  },
-};
-
-export const Draggable: Story = {
-  args: {
-    label: 'Draggable',
-    variant: 'default',
-    draggable: true,
-    leadingIcon: 'user',
-    showTrailingIcon: true,
-  },
-};
-
-export const StyleVariations: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-        <span style={{ minWidth: '80px', fontSize: '14px' }}>Transparent:</span>
-        <Chips label="Information" variant="status" status="information" style="transparent" />
-        <Chips label="Success" variant="status" status="success" style="transparent" />
-        <Chips label="Error" variant="status" status="error" style="transparent" />
-        <Chips label="Warning" variant="status" status="warning" style="transparent" />
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      {/* Default Chip — Selected=False / Selected=True */}
+      <div>
+        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+          Chip (Default)
+        </h3>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+          <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
+            <span style={{ fontSize: "12px", color: "#6b7280", width: "80px" }}>Unselected</span>
+            <Chips label="Label" leadingIcon="map-pin" />
+            <Chips label="Label" leadingIcon="map-pin" disabled />
+          </div>
+          <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
+            <span style={{ fontSize: "12px", color: "#6b7280", width: "80px" }}>Selected</span>
+            <Chips label="Label" leadingIcon="map-pin" selected />
+            <Chips label="Label" leadingIcon="map-pin" selected disabled />
+          </div>
+        </div>
       </div>
-      <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-        <span style={{ minWidth: '80px', fontSize: '14px' }}>Filled:</span>
-        <Chips label="Information" variant="status" status="information" style="filled" />
-        <Chips label="Success" variant="status" status="success" style="filled" />
-        <Chips label="Error" variant="status" status="error" style="filled" />
-        <Chips label="Warning" variant="status" status="warning" style="filled" />
-      </div>
-      <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-        <span style={{ minWidth: '80px', fontSize: '14px' }}>Outline:</span>
-        <Chips label="Information" variant="status" status="information" style="outline" />
-        <Chips label="Success" variant="status" status="success" style="outline" />
-        <Chips label="Error" variant="status" status="error" style="outline" />
-        <Chips label="Warning" variant="status" status="warning" style="outline" />
+
+      {/* Status Chip — filled × transparent × outline */}
+      <div>
+        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+          Status Chip
+        </h3>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+          {(["filled", "transparent", "outline"] as const).map((sv) => (
+            <div key={sv} style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
+              <span style={{ fontSize: "12px", color: "#6b7280", width: "80px" }}>{sv}</span>
+              {(["information", "success", "error", "warning", "neutral"] as const).map((s) => (
+                <Chips key={s} variant="status" status={s} styleVariant={sv} label="status chip" />
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   ),
 };
 
-export const InteractiveExample: Story = {
+// 3. 비활성화
+export const Disabled: Story = {
+  args: {
+    label: "Disabled",
+    variant: "default",
+    leadingIcon: "map-pin",
+    showTrailingIcon: true,
+    disabled: true,
+  },
+};
+
+// 4. 아바타 리딩 아이콘
+export const WithAvatar: Story = {
+  args: {
+    label: "Label",
+    variant: "default",
+    leadingIcon: "avatar",
+    avatarInitial: "W",
+    showTrailingIcon: true,
+  },
+};
+
+// 5. 실제 사용 예시
+export const UsageExample: Story = {
+  args: {
+    label: "React",
+    variant: "default",
+    leadingIcon: "map-pin",
+  },
   render: () => {
     const [chips, setChips] = React.useState([
-      { id: 1, label: 'React', selected: false },
-      { id: 2, label: 'TypeScript', selected: true },
-      { id: 3, label: 'JavaScript', selected: false },
-      { id: 4, label: 'CSS', selected: false },
+      { id: 1, label: "서울", selected: true },
+      { id: 2, label: "부산", selected: false },
+      { id: 3, label: "제주", selected: false },
+      { id: 4, label: "대구", selected: false },
     ]);
 
-    const handleChipClick = (id: number) => {
-      setChips(prev => prev.map(chip => 
-        chip.id === id ? { ...chip, selected: !chip.selected } : chip
-      ));
-    };
+    const toggle = (id: number) =>
+      setChips((prev) =>
+        prev.map((c) => (c.id === id ? { ...c, selected: !c.selected } : c))
+      );
 
-    const handleChipDelete = (id: number) => {
-      setChips(prev => prev.filter(chip => chip.id !== id));
-    };
+    const remove = (id: number) =>
+      setChips((prev) => prev.filter((c) => c.id !== id));
 
     return (
-      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-        {chips.map(chip => (
-          <Chips
-            key={chip.id}
-            label={chip.label}
-            selected={chip.selected}
-            onClick={() => handleChipClick(chip.id)}
-            onDelete={() => handleChipDelete(chip.id)}
-            leadingIcon="user"
-          />
-        ))}
+      <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", minWidth: "320px" }}>
+        {/* 필터 칩 */}
+        <div
+          style={{
+            padding: "1rem",
+            border: "1px solid #e5e7eb",
+            borderRadius: "8px",
+          }}
+        >
+          <div style={{ fontSize: "13px", color: "#6b7280", marginBottom: "0.75rem" }}>
+            지역 필터
+          </div>
+          <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+            {chips.map((chip) => (
+              <Chips
+                key={chip.id}
+                label={chip.label}
+                leadingIcon="map-pin"
+                selected={chip.selected}
+                onClick={() => toggle(chip.id)}
+                onDelete={() => remove(chip.id)}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* 상태 칩 */}
+        <div
+          style={{
+            padding: "1rem",
+            border: "1px solid #e5e7eb",
+            borderRadius: "8px",
+          }}
+        >
+          <div style={{ fontSize: "13px", color: "#6b7280", marginBottom: "0.75rem" }}>
+            배포 상태
+          </div>
+          <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+            <Chips variant="status" status="success" styleVariant="filled" label="배포 완료" />
+            <Chips variant="status" status="warning" styleVariant="filled" label="검토 중" />
+            <Chips variant="status" status="error" styleVariant="outline" label="배포 실패" />
+            <Chips variant="status" status="information" styleVariant="transparent" label="대기 중" />
+          </div>
+        </div>
       </div>
     );
   },

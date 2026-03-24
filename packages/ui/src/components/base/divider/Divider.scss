@@ -1,78 +1,61 @@
+// Figma 디자인 기반 Divider 컴포넌트 스타일
+// Size: sm(1px), md(2px), lg(4px), xl(8px)
+// Color: Color/border/Primary (#9ca3af)
+// Orientation: horizontal, vertical
+
 .divider {
   border: none;
-  background-color: var(--border-primary);
+  margin: 0;
+  flex-shrink: 0;
 
+  // ===================
+  // HORIZONTAL
+  // ===================
   &--horizontal {
+    display: block;
     width: 100%;
-    height: 0;
 
-    &.divider--sm {
-      border-top: 1px solid var(--border-primary);
-    }
+    &.divider--sm  { border-top: 1px solid var(--border-primary); }
+    &.divider--md  { border-top: 2px solid var(--border-primary); }
+    &.divider--lg  { border-top: 4px solid var(--border-primary); }
+    &.divider--xl  { border-top: 8px solid var(--border-primary); }
+  }
 
-    &.divider--md {
-      border-top: 2px solid var(--border-primary);
-    }
+  // ===================
+  // VERTICAL
+  // div로 렌더링 — width + background-color 방식
+  // 부모에 display:flex + align-items:stretch 필요
+  // ===================
+  &--vertical {
+    display: inline-block;
+    align-self: stretch;
+    background-color: var(--border-primary);
+    flex-shrink: 0;
 
-    &.divider--lg {
-      border-top: 4px solid var(--border-primary);
-    }
+    &.divider--sm  { width: 1px; }
+    &.divider--md  { width: 2px; }
+    &.divider--lg  { width: 4px; }
+    &.divider--xl  { width: 8px; }
+  }
 
-    &.divider--xl {
-      border-top: 8px solid var(--border-primary);
-    }
+  // ===================
+  // MARGIN
+  // Figma 노트: "margin이라는 베리어블 만들면 좋음"
+  // Spacing 토큰 기준: xs=2px, sm=4px, md=8px, lg=16px, xl=24px
+  // ===================
+  &--horizontal {
+    &.divider--margin-xs  { margin: var(--spacing-2, 2px)  0; }
+    &.divider--margin-sm  { margin: var(--spacing-4, 4px)  0; }
+    &.divider--margin-md  { margin: var(--spacing-8, 8px)  0; }
+    &.divider--margin-lg  { margin: var(--spacing-16, 16px) 0; }
+    &.divider--margin-xl  { margin: var(--spacing-24, 24px) 0; }
   }
 
   &--vertical {
-    height: 100%;
-    width: 0;
-    display: inline-block;
-
-    &.divider--sm {
-      border-left: 1px solid var(--border-primary);
-    }
-
-    &.divider--md {
-      border-left: 2px solid var(--border-primary);
-    }
-
-    &.divider--lg {
-      border-left: 4px solid var(--border-primary);
-    }
-
-    &.divider--xl {
-      border-left: 8px solid var(--border-primary);
-    }
-  }
-
-  &--margin {
-    &-none {
-      margin: 0;
-    }
-
-    &-xs {
-      &.divider--horizontal { margin: 0.25rem 0; }
-      &.divider--vertical { margin: 0 0.25rem; }
-    }
-
-    &-sm {
-      &.divider--horizontal { margin: 0.5rem 0; }
-      &.divider--vertical { margin: 0 0.5rem; }
-    }
-
-    &-md {
-      &.divider--horizontal { margin: 1rem 0; }
-      &.divider--vertical { margin: 0 1rem; }
-    }
-
-    &-lg {
-      &.divider--horizontal { margin: 1.5rem 0; }
-      &.divider--vertical { margin: 0 1.5rem; }
-    }
-
-    &-xl {
-      &.divider--horizontal { margin: 2rem 0; }
-      &.divider--vertical { margin: 0 2rem; }
-    }
+    &.divider--margin-xs  { margin: 0 var(--spacing-2, 2px); }
+    &.divider--margin-sm  { margin: 0 var(--spacing-4, 4px); }
+    &.divider--margin-md  { margin: 0 var(--spacing-8, 8px); }
+    &.divider--margin-lg  { margin: 0 var(--spacing-16, 16px); }
+    &.divider--margin-xl  { margin: 0 var(--spacing-24, 24px); }
   }
 }

@@ -12,19 +12,23 @@ export interface LinkProps {
    */
   href?: string;
   /**
-   * 링크 타입
+   * 링크 타입 (Figma 기준)
+   * primary: 파란색 계열
+   * secondary: 회색 계열
    */
   variant?: "primary" | "secondary";
   /**
-   * 링크 스타일
+   * 링크 스타일 (Figma 기준)
+   * underline: 밑줄 표시
+   * standalone: 밑줄 없음, 배경 hover 효과
    */
   linkStyle?: "underline" | "standalone";
   /**
-   * 리딩 아이콘
+   * 리딩 아이콘 이름 (Lucide Icons 기준)
    */
   leadingIcon?: IconName;
   /**
-   * 트레일링 아이콘
+   * 트레일링 아이콘 이름 (Lucide Icons 기준)
    */
   trailingIcon?: IconName;
   /**
@@ -36,7 +40,7 @@ export interface LinkProps {
    */
   target?: "_blank" | "_self" | "_parent" | "_top";
   /**
-   * rel 속성
+   * rel 속성 (_blank일 때 자동으로 noopener noreferrer 적용)
    */
   rel?: string;
   /**
@@ -48,9 +52,9 @@ export interface LinkProps {
    */
   className?: string;
   /**
-   * 인라인 스타일
+   * 인라인 스타일 (style prop 충돌 방지)
    */
-  style?: React.CSSProperties;
+  styleOverride?: React.CSSProperties;
 }
 
 const Link: React.FC<LinkProps> = ({
@@ -65,7 +69,7 @@ const Link: React.FC<LinkProps> = ({
   rel,
   onClick,
   className = "",
-  ...props
+  styleOverride,
 }) => {
   const classNames = [
     "link",
@@ -77,46 +81,30 @@ const Link: React.FC<LinkProps> = ({
     .filter(Boolean)
     .join(" ");
 
-  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (disabled) {
-      event.preventDefault();
+      e.preventDefault();
       return;
     }
-    if (onClick) {
-      onClick(event);
-    }
-  };
-
-  const linkProps = {
-    className: classNames,
-    onClick: handleClick,
-    href: disabled ? undefined : href,
-    target,
-    rel: target === "_blank" ? "noopener noreferrer" : rel,
-    "aria-disabled": disabled,
-    ...props,
+    onClick?.(e);
   };
 
   return (
-    <a {...linkProps}>
+    <a
+      className={classNames}
+      style={styleOverride}
+      href={disabled ? undefined : href}
+      target={target}
+      rel={target === "_blank" ? "noopener noreferrer" : rel}
+      onClick={handleClick}
+      aria-disabled={disabled}
+    >
       {leadingIcon && (
-        <Icon
-          name={leadingIcon}
-          className="link__leading-icon"
-          size={24}
-        />
+        <Icon name={leadingIcon} className="link__leading-icon" size={16} />
       )}
-      
-      <span className="link__content">
-        {children}
-      </span>
-      
+      <span className="link__content">{children}</span>
       {trailingIcon && (
-        <Icon
-          name={trailingIcon}
-          className="link__trailing-icon"
-          size={24}
-        />
+        <Icon name={trailingIcon} className="link__trailing-icon" size={16} />
       )}
     </a>
   );

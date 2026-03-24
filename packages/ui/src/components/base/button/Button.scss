@@ -5,16 +5,18 @@
 
 // 버튼 베이스 스타일 (Figma 디자인 기반)
 .btn {
-  // 기본 레이아웃
+  // 기본 레이아웃 (Figma: w-130px, h-40px, px-12, py-8, gap-4)
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--spacing-4);
   padding: var(--spacing-8) var(--spacing-12);
+  min-width: 130px;
+  height: 40px;
   border-radius: var(--border-radius-4);
   border: 1px solid transparent;
 
-  // 타이포그래피 (Figma에서 추출)
+  // 타이포그래피 (Figma: body/md/medium)
   font-family:
     "Pretendard Variable",
     -apple-system,
@@ -30,8 +32,8 @@
   transition: all 0.2s ease-in-out;
   position: relative;
 
-  // 포커스 상태
-  &:focus {
+  // 포커스 상태 (focus-visible: 키보드 탐색 시에만 표시)
+  &:focus-visible {
     outline: none;
     box-shadow: 0 0 0 2px var(--border-focus-ring);
   }
@@ -99,10 +101,11 @@
     }
 
     // Secondary Filled
+    // Figma: Color/icon/Interactive/Secondary (#4b5563) — bg 전용 토큰 없음, icon 토큰 사용
     &.btn--secondary {
-      background-color: var(--text-interactive-secondary);
+      background-color: var(--icon-interactive-secondary);
       color: var(--text-interactive-inverse);
-      border-color: var(--text-interactive-secondary);
+      border-color: var(--icon-interactive-secondary);
 
       &:hover:not(:disabled):not(.btn--loading):not(.btn--disabled) {
         background-color: var(--text-interactive-secondary-hovered);

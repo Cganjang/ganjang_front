@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Icon, { IconName } from "../icon/Icon";
 import "./Avatar.scss";
 
@@ -12,14 +12,11 @@ export interface AvatarProps {
   type?: "initial" | "profile" | "icon";
   /**
    * 아바타 크기
-   * sm: 16px
-   * md: 24px
-   * lg: 32px
-   * xl: 48px
+   * sm: 16px, md: 24px, lg: 32px, xl: 48px
    */
   size?: "sm" | "md" | "lg" | "xl";
   /**
-   * 이니셜 텍스트 (type이 'initial'일 때 사용)
+   * 이니셜 텍스트 (type이 'initial'일 때 사용, 또는 이미지 로드 실패 시 폴백)
    */
   initial?: string;
   /**
@@ -31,7 +28,7 @@ export interface AvatarProps {
    */
   alt?: string;
   /**
-   * 아이콘 이름 (type이 'icon'일 때 사용)
+   * 아이콘 이름 (type이 'icon'일 때 사용, Lucide Icons 기준)
    */
   iconName?: IconName;
   /**
@@ -43,9 +40,9 @@ export interface AvatarProps {
    */
   className?: string;
   /**
-   * 인라인 스타일
+   * 인라인 스타일 (style prop 충돌 방지)
    */
-  style?: React.CSSProperties;
+  styleOverride?: React.CSSProperties;
 }
 
 const Avatar: React.FC<AvatarProps> = ({
@@ -57,11 +54,13 @@ const Avatar: React.FC<AvatarProps> = ({
   iconName = "user",
   onClick,
   className = "",
-  style,
+  styleOverride,
 }) => {
+  const [imgError, setImgError] = useState(false);
+
   const classNames = [
     "avatar",
-    `avatar--${type}`,
+    `avatar--${type === "profile" && imgError ? "initial" : type}`,
     `avatar--${size}`,
     onClick && "avatar--clickable",
     className,
@@ -70,9 +69,7 @@ const Avatar: React.FC<AvatarProps> = ({
     .join(" ");
 
   const handleClick = () => {
-    if (onClick) {
-      onClick();
-    }
+    onClick?.();
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -82,24 +79,22 @@ const Avatar: React.FC<AvatarProps> = ({
     }
   };
 
+  const iconSize =
+    size === "sm" ? 10 : size === "md" ? 12 : size === "lg" ? 16 : 20;
+
   const renderContent = () => {
     switch (type) {
       case "profile":
-        return (
+        return imgError ? (
+          <span className="avatar__initial">
+            {initial.charAt(0).toUpperCase()}
+          </span>
+        ) : (
           <img
             src={src}
             alt={alt || "Profile"}
             className="avatar__image"
-            onError={(e) => {
-              // 이미지 로드 실패 시 이니셜로 폴백
-              const target = e.target as HTMLImageElement;
-              target.style.display = "none";
-              const parent = target.parentElement;
-              if (parent) {
-                parent.classList.add("avatar--initial");
-                parent.innerHTML = `<span class="avatar__initial">${initial}</span>`;
-              }
-            }}
+            onError={() => setImgError(true)}
           />
         );
       case "icon":
@@ -107,19 +102,23 @@ const Avatar: React.FC<AvatarProps> = ({
           <Icon
             name={iconName}
             className="avatar__icon"
-            size={size === "sm" ? 10 : size === "md" ? 12 : size === "lg" ? 16 : 20}
+            size={iconSize}
           />
         );
       case "initial":
       default:
-        return <span className="avatar__initial">{initial.charAt(0).toUpperCase()}</span>;
+        return (
+          <span className="avatar__initial">
+            {initial.charAt(0).toUpperCase()}
+          </span>
+        );
     }
   };
 
   return (
     <div
       className={classNames}
-      style={style}
+      style={styleOverride}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role={onClick ? "button" : undefined}

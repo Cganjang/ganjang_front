@@ -3,21 +3,26 @@ import "./Spinner.scss";
 
 export interface SpinnerProps {
   /**
-   * 스피너 크기
+   * 스피너 크기 (Figma 기준)
    * sm: 16px, md: 24px, lg: 32px, xl: 48px
    */
   size?: "sm" | "md" | "lg" | "xl";
   /**
-   * 스피너 스타일 타입
-   * primary: 파란색 (#2563EB), secondary: 회색 (#4B5563)
+   * 스피너 색상 타입 (Figma 기준)
+   * primary: 파란색 (#2563eb)
+   * secondary: 회색 (#4b5563)
    */
   type?: "primary" | "secondary";
   /**
-   * 추가 클래스명
+   * 추가 CSS 클래스
    */
   className?: string;
   /**
-   * 접근성을 위한 라벨
+   * 인라인 스타일 (style prop 충돌 방지)
+   */
+  styleOverride?: React.CSSProperties;
+  /**
+   * 접근성 라벨
    */
   "aria-label"?: string;
 }
@@ -26,6 +31,7 @@ const Spinner: React.FC<SpinnerProps> = ({
   size = "md",
   type = "primary",
   className = "",
+  styleOverride,
   "aria-label": ariaLabel = "로딩 중",
 }) => {
   const classNames = [
@@ -40,6 +46,7 @@ const Spinner: React.FC<SpinnerProps> = ({
   return (
     <div
       className={classNames}
+      style={styleOverride}
       role="status"
       aria-label={ariaLabel}
     >

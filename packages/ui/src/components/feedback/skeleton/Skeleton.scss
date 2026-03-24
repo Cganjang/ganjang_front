@@ -1,0 +1,49 @@
+// Figma 디자인 기반 Skeleton 컴포넌트 스타일
+// Type: circle, text, rectangle
+// shimmer 애니메이션으로 로딩 상태 표현
+
+.skeleton {
+  display: block;
+  background-color: var(--bg-tertiary);           // #e5e7eb
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+
+  // ===================
+  // TYPE
+  // ===================
+  &--circle {
+    border-radius: var(--border-radius-circle, 99999px);
+  }
+
+  &--text {
+    border-radius: var(--border-radius-2, 2px);
+  }
+
+  &--rectangle {
+    border-radius: var(--border-radius-4, 4px);
+  }
+
+  // ===================
+  // SHIMMER 애니메이션
+  // Figma Progress(%) 0→33→66→100 → CSS shimmer로 구현
+  // ===================
+  &--animate::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.5) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes skeleton-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}

@@ -8,19 +8,24 @@ export interface ChipsProps {
    */
   label: string;
   /**
-   * 칩 타입
+   * 칩 종류
+   * default: 선택형 칩 (leadingIcon + trailing X)
+   * status: 상태 표시 칩 (아이콘 고정, trailing X 없음)
    */
   variant?: "default" | "status";
   /**
-   * 상태 (status variant일 때만 사용)
+   * 상태 (variant="status"일 때 사용)
    */
   status?: "information" | "success" | "error" | "warning" | "neutral";
   /**
-   * 스타일 타입
+   * 스타일 변형 (variant="status"일 때 사용, Figma 기준)
+   * filled: 배경색 채움
+   * transparent: 연한 배경
+   * outline: 테두리만
    */
-  style?: "transparent" | "filled" | "outline";
+  styleVariant?: "filled" | "transparent" | "outline";
   /**
-   * 선택 상태
+   * 선택 상태 (variant="default"일 때)
    */
   selected?: boolean;
   /**
@@ -32,19 +37,19 @@ export interface ChipsProps {
    */
   draggable?: boolean;
   /**
-   * 리딩 아이콘
+   * 리딩 아이콘 이름 (Lucide Icons 기준) 또는 "avatar"
    */
   leadingIcon?: IconName | "avatar";
   /**
-   * 아바타 이미지 URL (leadingIcon이 "avatar"일 때)
+   * 아바타 이미지 URL (leadingIcon="avatar"일 때)
    */
   avatarSrc?: string;
   /**
-   * 아바타 이니셜 (leadingIcon이 "avatar"일 때)
+   * 아바타 이니셜 (leadingIcon="avatar"일 때)
    */
   avatarInitial?: string;
   /**
-   * 트레일링 아이콘 표시 여부
+   * trailing X 버튼 표시 여부 (variant="default"일 때)
    */
   showTrailingIcon?: boolean;
   /**
@@ -52,20 +57,24 @@ export interface ChipsProps {
    */
   onClick?: () => void;
   /**
-   * 삭제 이벤트 핸들러
+   * 삭제 이벤트 핸들러 (trailing X 클릭)
    */
   onDelete?: () => void;
   /**
    * 추가 CSS 클래스
    */
   className?: string;
+  /**
+   * 인라인 스타일 (style prop 충돌 방지)
+   */
+  styleOverride?: React.CSSProperties;
 }
 
 const Chips: React.FC<ChipsProps> = ({
   label,
   variant = "default",
   status = "neutral",
-  style = "filled",
+  styleVariant = "filled",
   selected = false,
   disabled = false,
   draggable = false,
@@ -76,41 +85,37 @@ const Chips: React.FC<ChipsProps> = ({
   onClick,
   onDelete,
   className = "",
+  styleOverride,
 }) => {
   const classNames = [
     "chips",
     `chips--${variant}`,
     variant === "status" && `chips--${status}`,
-    `chips--${style}`,
+    variant === "status" && `chips--${styleVariant}`,
     selected && "chips--selected",
     disabled && "chips--disabled",
     draggable && "chips--draggable",
-    onClick && "chips--clickable",
+    onClick && !disabled && "chips--clickable",
     className,
   ]
     .filter(Boolean)
     .join(" ");
 
-  const handleClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handleClick = () => {
     if (disabled) return;
-    if (onClick) {
-      onClick();
-    }
+    onClick?.();
   };
 
   const handleDelete = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (disabled) return;
-    if (onDelete) {
-      onDelete();
-    }
+    onDelete?.();
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (disabled) return;
-    if (onClick && (event.key === "Enter" || event.key === " ")) {
-      event.preventDefault();
+    if (onClick && (e.key === "Enter" || e.key === " ")) {
+      e.preventDefault();
       onClick();
     }
   };
@@ -132,36 +137,30 @@ const Chips: React.FC<ChipsProps> = ({
       );
     }
 
-    return (
-      <Icon name={leadingIcon} className="chips__leading-icon" size={16} />
-    );
+    return <Icon name={leadingIcon} className="chips__leading-icon" size={16} />;
   };
 
   const getStatusIcon = (): IconName => {
     switch (status) {
-      case "information":
-        return "info";
-      case "success":
-        return "check";
-      case "error":
-        return "x-circle";
-      case "warning":
-        return "alert-triangle";
-      default:
-        return "check";
+      case "information": return "info";
+      case "success":     return "check";
+      case "error":       return "x-circle";
+      case "warning":     return "alert-triangle";
+      default:            return "check";
     }
   };
 
   return (
     <div
       className={classNames}
+      style={styleOverride}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role={onClick ? "button" : undefined}
       tabIndex={onClick && !disabled ? 0 : undefined}
       aria-label={`${label} chip`}
       aria-disabled={disabled}
-      aria-pressed={selected}
+      aria-pressed={variant === "default" ? selected : undefined}
     >
       {variant === "status" ? (
         <Icon name={getStatusIcon()} className="chips__status-icon" size={16} />
@@ -171,7 +170,7 @@ const Chips: React.FC<ChipsProps> = ({
 
       <span className="chips__label">{label}</span>
 
-      {showTrailingIcon && (
+      {variant === "default" && showTrailingIcon && (
         <button
           className="chips__trailing-button"
           onClick={handleDelete}

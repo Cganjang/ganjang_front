@@ -1,201 +1,206 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import Link from './Link';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import Link from "./Link";
 
-const meta: Meta<typeof Link> = {
-  title: 'Base/Link',
+const meta = {
+  title: "Base/Link",
   component: Link,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     docs: {
       description: {
-        component: 'Link 컴포넌트는 사용자가 다른 페이지나 섹션으로 이동할 수 있도록 하는 네비게이션 요소입니다.',
+        component: `
+다른 페이지나 섹션으로 이동하는 Link 컴포넌트입니다.
+
+**특징:**
+- 2가지 타입: \`primary\` (파란색), \`secondary\` (회색)
+- 2가지 스타일: \`underline\` (밑줄), \`standalone\` (배경 hover)
+- 6가지 상태: Default, Hover, Press, Focus, Visited, Disabled
+- leading/trailing 아이콘 지원
+
+Figma 디자인 시스템을 기반으로 제작되었습니다.
+        `,
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     children: {
-      control: 'text',
-      description: '링크에 표시될 텍스트',
+      control: { type: "text" },
+      description: "링크 텍스트",
     },
     variant: {
-      control: 'select',
-      options: ['primary', 'secondary'],
-      description: '링크의 타입',
+      control: { type: "select" },
+      options: ["primary", "secondary"],
+      description: "링크 타입 (primary: 파랑, secondary: 회색)",
     },
     linkStyle: {
-      control: 'select',
-      options: ['underline', 'standalone'],
-      description: '링크의 스타일',
+      control: { type: "select" },
+      options: ["underline", "standalone"],
+      description: "링크 스타일 (Figma 기준)",
     },
     leadingIcon: {
-      control: 'select',
-      options: [undefined, 'heart', 'user', 'info'],
-      description: '앞쪽에 표시될 아이콘',
+      control: { type: "select" },
+      options: [undefined, "heart", "user", "info", "star"],
+      description: "리딩 아이콘 이름 (Lucide Icons 기준)",
     },
     trailingIcon: {
-      control: 'select',
-      options: [undefined, 'chevron-right', 'x', 'check'],
-      description: '뒤쪽에 표시될 아이콘',
+      control: { type: "select" },
+      options: [undefined, "chevron-right", "external-link", "arrow-right"],
+      description: "트레일링 아이콘 이름 (Lucide Icons 기준)",
     },
     disabled: {
-      control: 'boolean',
-      description: '비활성 상태',
+      control: { type: "boolean" },
+      description: "비활성 상태",
     },
     href: {
-      control: 'text',
-      description: '링크 URL',
+      control: { type: "text" },
+      description: "링크 URL",
     },
     target: {
-      control: 'select',
-      options: [undefined, '_blank', '_self', '_parent', '_top'],
-      description: '링크 타겟',
+      control: { type: "select" },
+      options: [undefined, "_blank", "_self"],
+      description: "링크 타겟",
     },
-    onClick: { action: 'clicked' },
+    onClick: {
+      action: "clicked",
+      description: "클릭 이벤트 핸들러",
+    },
   },
 } satisfies Meta<typeof Link>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// 기본 스토리들
-export const PrimaryUnderline: Story = {
+// 1. 기본 상태
+export const Default: Story = {
   args: {
-    children: 'Primary Link',
-    variant: 'primary',
-    linkStyle: 'underline',
-    href: '#',
+    children: "Label",
+    variant: "primary",
+    linkStyle: "underline",
+    leadingIcon: "heart",
+    trailingIcon: "chevron-right",
+    href: "#",
   },
 };
 
-export const PrimaryStandalone: Story = {
+// 2. 모든 조합 — Figma 레이아웃 기준 (type × style × state)
+export const AllVariants: Story = {
   args: {
-    children: 'Primary Link',
-    variant: 'primary',
-    linkStyle: 'standalone',
-    href: '#',
+    children: "Label",
+    variant: "primary",
+    linkStyle: "underline",
+    leadingIcon: "heart",
+    trailingIcon: "chevron-right",
+    href: "#",
   },
-};
-
-export const SecondaryUnderline: Story = {
-  args: {
-    children: 'Secondary Link',
-    variant: 'secondary',
-    linkStyle: 'underline',
-    href: '#',
-  },
-};
-
-export const SecondaryStandalone: Story = {
-  args: {
-    children: 'Secondary Link',
-    variant: 'secondary',
-    linkStyle: 'standalone',
-    href: '#',
-  },
-};
-
-// 아이콘이 있는 링크들
-export const WithLeadingIcon: Story = {
-  args: {
-    children: 'Link with Icon',
-    variant: 'primary',
-    linkStyle: 'underline',
-    leadingIcon: 'heart',
-    href: '#',
-  },
-};
-
-export const WithTrailingIcon: Story = {
-  args: {
-    children: 'Link with Icon',
-    variant: 'primary',
-    linkStyle: 'underline',
-    trailingIcon: 'chevron-right',
-    href: '#',
-  },
-};
-
-export const WithBothIcons: Story = {
-  args: {
-    children: 'Link with Both Icons',
-    variant: 'primary',
-    linkStyle: 'standalone',
-    leadingIcon: 'heart',
-    trailingIcon: 'chevron-right',
-    href: '#',
-  },
-};
-
-// 상태별 스토리들
-export const Disabled: Story = {
-  args: {
-    children: 'Disabled Link',
-    variant: 'primary',
-    linkStyle: 'underline',
-    disabled: true,
-    href: '#',
-  },
-};
-
-export const ExternalLink: Story = {
-  args: {
-    children: 'External Link',
-    variant: 'primary',
-    linkStyle: 'underline',
-    href: 'https://example.com',
-    target: '_blank',
-  },
-};
-
-// 모든 조합 보기
-export const AllVariations: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '20px' }}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-        <h3 style={{ margin: 0, fontSize: '16px', fontWeight: 'bold' }}>Primary Links</h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <Link variant="primary" linkStyle="underline" href="#">Primary Underline</Link>
-          <Link variant="primary" linkStyle="standalone" href="#">Primary Standalone</Link>
-          <Link variant="primary" linkStyle="underline" leadingIcon="heart" href="#">With Leading Icon</Link>
-          <Link variant="primary" linkStyle="underline" trailingIcon="chevron-right" href="#">With Trailing Icon</Link>
-          <Link variant="primary" linkStyle="underline" disabled href="#">Disabled Primary</Link>
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      {(["primary", "secondary"] as const).map((variant) => (
+        <div key={variant}>
+          <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600", textTransform: "capitalize" }}>
+            {variant}
+          </h3>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+            {(["underline", "standalone"] as const).map((linkStyle) => (
+              <div key={linkStyle} style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
+                <span style={{ fontSize: "12px", color: "#6b7280", width: "80px" }}>{linkStyle}</span>
+                <Link variant={variant} linkStyle={linkStyle} leadingIcon="heart" trailingIcon="chevron-right" href="#">
+                  Label
+                </Link>
+                <Link variant={variant} linkStyle={linkStyle} leadingIcon="heart" trailingIcon="chevron-right" disabled href="#">
+                  Label
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-      
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-        <h3 style={{ margin: 0, fontSize: '16px', fontWeight: 'bold' }}>Secondary Links</h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <Link variant="secondary" linkStyle="underline" href="#">Secondary Underline</Link>
-          <Link variant="secondary" linkStyle="standalone" href="#">Secondary Standalone</Link>
-          <Link variant="secondary" linkStyle="underline" leadingIcon="heart" href="#">With Leading Icon</Link>
-          <Link variant="secondary" linkStyle="underline" trailingIcon="chevron-right" href="#">With Trailing Icon</Link>
-          <Link variant="secondary" linkStyle="underline" disabled href="#">Disabled Secondary</Link>
-        </div>
-      </div>
+      ))}
     </div>
   ),
 };
 
-// 실제 사용 예시
+// 3. 비활성화
+export const Disabled: Story = {
+  args: {
+    children: "Label",
+    variant: "primary",
+    linkStyle: "underline",
+    leadingIcon: "heart",
+    trailingIcon: "chevron-right",
+    disabled: true,
+    href: "#",
+  },
+};
+
+// 4. 실제 사용 예시
 export const UsageExample: Story = {
+  args: {
+    children: "더 보기",
+    variant: "primary",
+    linkStyle: "standalone",
+    trailingIcon: "chevron-right",
+    href: "#",
+  },
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '20px', maxWidth: '400px' }}>
-      <p style={{ margin: 0, lineHeight: 1.6 }}>
-        이것은 일반적인 문단입니다. 여기에 {' '}
-        <Link variant="primary" linkStyle="underline" href="#">인라인 링크</Link>
-        {' '}가 포함되어 있습니다. 또한 {' '}
-        <Link variant="secondary" linkStyle="underline" href="#">보조 링크</Link>
-        {' '}도 있습니다.
-      </p>
-      
-      <div style={{ display: 'flex', gap: '16px', marginTop: '16px' }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", maxWidth: "360px" }}>
+      {/* 인라인 링크 */}
+      <div
+        style={{
+          padding: "1rem",
+          border: "1px solid #e5e7eb",
+          borderRadius: "8px",
+          lineHeight: 1.8,
+          fontSize: "14px",
+        }}
+      >
+        Ceph 스토리지는{" "}
+        <Link variant="primary" linkStyle="underline" href="#">
+          분산 스토리지 시스템
+        </Link>
+        으로, 높은 가용성을 제공합니다.{" "}
+        <Link variant="secondary" linkStyle="underline" href="#">
+          자세히 보기
+        </Link>
+      </div>
+
+      {/* 네비게이션 링크 */}
+      <div
+        style={{
+          padding: "1rem",
+          border: "1px solid #e5e7eb",
+          borderRadius: "8px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "0.25rem",
+        }}
+      >
+        {["대시보드", "스토리지 풀", "파일 시스템", "설정"].map((label) => (
+          <Link
+            key={label}
+            variant="secondary"
+            linkStyle="standalone"
+            trailingIcon="chevron-right"
+            href="#"
+          >
+            {label}
+          </Link>
+        ))}
+      </div>
+
+      {/* 외부 링크 */}
+      <div style={{ display: "flex", gap: "1rem" }}>
         <Link variant="primary" linkStyle="standalone" trailingIcon="chevron-right" href="#">
           더 보기
         </Link>
-        <Link variant="secondary" linkStyle="standalone" href="#">
-          취소
+        <Link
+          variant="primary"
+          linkStyle="standalone"
+          trailingIcon="external-link"
+          href="https://docs.ceph.com"
+          target="_blank"
+        >
+          공식 문서
         </Link>
       </div>
     </div>

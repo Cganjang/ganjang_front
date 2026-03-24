@@ -3,11 +3,19 @@ import "./Badge.scss";
 
 export interface BadgeProps {
   /**
-   * 뱃지 타입
+   * 뱃지 타입 (Figma 기준)
+   * dot: 점 인디케이터
+   * number: 숫자 뱃지
+   * letter: 텍스트 뱃지
    */
   type?: "dot" | "number" | "letter";
   /**
-   * 뱃지 상태/색상
+   * 뱃지 상태/색상 (Figma 기준)
+   * default: 기본 (다크)
+   * information: 정보 (파랑)
+   * warning: 경고 (노랑)
+   * success: 성공 (초록)
+   * important: 중요 (빨강)
    */
   status?: "default" | "information" | "warning" | "success" | "important";
   /**
@@ -15,7 +23,8 @@ export interface BadgeProps {
    */
   content?: string | number;
   /**
-   * 최대 숫자 (number 타입일 때 이 값을 초과하면 "99+" 형태로 표시)
+   * 최대 숫자 (number 타입일 때 초과 시 "N+" 형태로 표시)
+   * @default 999
    */
   max?: number;
   /**
@@ -23,18 +32,18 @@ export interface BadgeProps {
    */
   className?: string;
   /**
-   * 인라인 스타일
+   * 인라인 스타일 (style prop 충돌 방지)
    */
-  style?: React.CSSProperties;
+  styleOverride?: React.CSSProperties;
 }
 
 const Badge: React.FC<BadgeProps> = ({
   type = "dot",
   status = "default",
   content,
-  max = 99,
+  max = 999,
   className = "",
-  style,
+  styleOverride,
 }) => {
   const classNames = [
     "badge",
@@ -47,15 +56,15 @@ const Badge: React.FC<BadgeProps> = ({
 
   const getDisplayContent = (): string => {
     if (type === "dot") return "";
-    
     if (content === undefined || content === null) {
       return type === "number" ? "0" : "";
     }
-
-    if (type === "number" && typeof content === "number") {
-      return content > max ? `${max}+` : content.toString();
+    if (type === "number") {
+      const num = Number(content);
+      if (!isNaN(num)) {
+        return num > max ? `${max}+` : num.toString();
+      }
     }
-
     return content.toString();
   };
 
@@ -65,18 +74,16 @@ const Badge: React.FC<BadgeProps> = ({
   return (
     <div
       className={classNames}
-      style={style}
+      style={styleOverride}
       role="status"
       aria-label={
-        type === "dot" 
+        type === "dot"
           ? `${status} status indicator`
           : `Badge: ${displayContent}`
       }
     >
       {hasContent && (
-        <span className="badge__content">
-          {displayContent}
-        </span>
+        <span className="badge__content">{displayContent}</span>
       )}
     </div>
   );

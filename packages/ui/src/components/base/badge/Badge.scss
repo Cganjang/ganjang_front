@@ -1,15 +1,28 @@
+// Figma 디자인 기반 Badge 컴포넌트 스타일
+// Type: dot, number, letter
+// Status: default, information, warning, success, important
+
 .badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 99999px;
-  font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 500;
+  border-radius: var(--border-radius-circle, 99999px);
+  font-family:
+    "Pretendard Variable",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   font-size: 12px;
+  font-weight: 500;
   line-height: 1.2;
   text-align: center;
   user-select: none;
 
+  // ===================
+  // TYPE
+  // ===================
+
+  // Dot: 4×4px 점
   &--dot {
     width: 4px;
     height: 4px;
@@ -17,100 +30,96 @@
     min-height: 4px;
   }
 
+  // Number: 숫자 (Figma: px-4, py-2, h-18)
   &--number {
-    padding: 2px 4px;
-    min-width: 16px;
-    min-height: 16px;
+    padding: var(--spacing-2, 2px) var(--spacing-4, 4px);
+    min-width: 18px;
+    height: 18px;
   }
 
+  // Letter: 텍스트 (Figma: px-4, py-2, h-18)
   &--letter {
-    padding: 2px 4px;
-    min-width: 16px;
-    min-height: 16px;
+    padding: var(--spacing-2, 2px) var(--spacing-4, 4px);
+    min-width: 18px;
+    height: 18px;
   }
 
-  // Default 상태
+  // ===================
+  // STATUS
+  // ===================
+
+  // Default: 다크 계열
   &--default {
     &.badge--dot {
-      background-color: var(--text-secondary);
+      background-color: var(--bg-inverse-bolder);   // #1f2937
     }
-
     &.badge--number {
-      background-color: var(--text-secondary);
-      color: var(--text-interactive-inverse);
+      background-color: var(--bg-inverse-bolder);   // #1f2937
+      color: var(--text-interactive-inverse);        // #ffffff
     }
-
     &.badge--letter {
-      background-color: var(--bg-interactive-secondary-hovered);
-      color: var(--text-tertiary);
+      background-color: var(--bg-tertiary);          // #e5e7eb
+      color: var(--text-tertiary);                   // #374151
     }
   }
 
-  // Information 상태
+  // Information: 파랑 계열
   &--information {
     &.badge--dot {
-      background-color: var(--bg-interactive-primary);
+      background-color: var(--bg-info);              // #2563eb
     }
-
     &.badge--number {
-      background-color: var(--bg-interactive-primary);
-      color: var(--text-interactive-inverse);
+      background-color: var(--bg-info);              // #2563eb
+      color: var(--text-interactive-inverse);        // #ffffff
     }
-
     &.badge--letter {
-      background-color: #eff6ff;
-      color: #1e40af;
+      background-color: var(--bg-info-subtle);       // #eff6ff
+      color: var(--text-info-bold);                  // #1e40af
     }
   }
 
-  // Warning 상태
+  // Warning: 노랑 계열
   &--warning {
     &.badge--dot {
-      background-color: #eab308;
+      background-color: var(--bg-warning-bold);      // #eab308
     }
-
     &.badge--number {
-      background-color: #eab308;
-      color: #111827;
+      background-color: var(--bg-warning-bold);      // #eab308
+      color: var(--text-primary);                    // #111827 (Figma: Color/text/primary)
     }
-
     &.badge--letter {
-      background-color: #fefce8;
-      color: #1e40af;
+      background-color: var(--bg-warning-subtile);   // #fefce8
+      color: var(--text-warning-bold);               // #854d0e
     }
   }
 
-  // Success 상태
+  // Success: 초록 계열
   &--success {
     &.badge--dot {
-      background-color: #15803d;
+      background-color: var(--bg-success-bold);      // #15803d
     }
-
     &.badge--number {
-      background-color: #15803d;
-      color: var(--text-interactive-inverse);
+      background-color: var(--bg-success-bold);      // #15803d
+      color: var(--text-interactive-inverse);        // #ffffff
     }
-
     &.badge--letter {
-      background-color: #f0fdf4;
-      color: #166534;
+      background-color: var(--bg-success-subtile);   // #f0fdf4
+      color: var(--text-success-bold);               // #166534
     }
   }
 
-  // Important 상태
+  // Important: 빨강 계열
   &--important {
     &.badge--dot {
-      background-color: #b91c1c;
+      background-color: var(--bg-danger-bold);       // #b91c1c
     }
-
     &.badge--number {
-      background-color: #b91c1c;
-      color: var(--text-interactive-inverse);
+      background-color: var(--bg-danger-bold);       // #b91c1c
+      color: var(--text-interactive-inverse);        // #ffffff
     }
-
     &.badge--letter {
-      background-color: #fef2f2;
-      color: #991b1b;
+      background-color: var(--bg-danger-subtile);    // #fef2f2
+      color: var(--text-danger-bold);                // #991b1b
     }
   }
 

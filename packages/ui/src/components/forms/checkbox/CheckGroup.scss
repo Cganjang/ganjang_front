@@ -1,0 +1,14 @@
+.check-group {
+  display: inline-flex;
+
+  &--vertical {
+    flex-direction: column;
+    gap: var(--spacing-4, 4px);
+  }
+
+  &--horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-16, 16px);
+  }
+}

@@ -1,3 +1,4 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import Avatar from "./Avatar";
 
@@ -27,7 +28,7 @@ Figma 디자인 시스템을 기반으로 제작되었습니다.
     type: {
       control: { type: "select" },
       options: ["initial", "profile", "icon"],
-      description: "아바타 타입",
+      description: "아바타 타입 (Figma 기준)",
     },
     size: {
       control: { type: "select" },
@@ -36,11 +37,11 @@ Figma 디자인 시스템을 기반으로 제작되었습니다.
     },
     initial: {
       control: { type: "text" },
-      description: "이니셜 텍스트 (type이 'initial'일 때, 또는 이미지 로드 실패 시 폴백)",
+      description: "이니셜 텍스트 (type='initial'일 때, 또는 이미지 로드 실패 시 폴백)",
     },
     src: {
       control: { type: "text" },
-      description: "프로필 이미지 URL (type이 'profile'일 때 사용)",
+      description: "프로필 이미지 URL (type='profile'일 때 사용)",
     },
     alt: {
       control: { type: "text" },
@@ -49,7 +50,7 @@ Figma 디자인 시스템을 기반으로 제작되었습니다.
     iconName: {
       control: { type: "select" },
       options: ["user", "user-circle", "user-check", "settings", "heart", "star"],
-      description: "아이콘 이름 (type이 'icon'일 때 사용, Lucide Icons 기준)",
+      description: "아이콘 이름 (type='icon'일 때 사용, Lucide Icons 기준)",
     },
     onClick: {
       action: "clicked",
@@ -65,62 +66,44 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     type: "initial",
-    size: "md",
-    initial: "U",
+    size: "xl",
+    initial: "B",
   },
 };
 
-// 2. 모든 조합 — type × size
+// 2. 모든 조합 — type × size (Figma 레이아웃 기준)
 export const AllVariants: Story = {
+  args: {
+    type: "initial",
+    size: "md",
+    initial: "B",
+  },
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-      <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
-          Initial
-        </h3>
-        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-          {(["sm", "md", "lg", "xl"] as const).map((size) => (
-            <div key={size} style={{ textAlign: "center" }}>
-              <Avatar type="initial" size={size} initial="W" />
-              <div style={{ fontSize: "12px", marginTop: "6px", color: "#6b7280" }}>{size}</div>
-            </div>
-          ))}
+      {(["initial", "profile", "icon"] as const).map((type) => (
+        <div key={type}>
+          <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600", textTransform: "capitalize" }}>
+            {type}
+          </h3>
+          <div style={{ display: "flex", alignItems: "flex-end", gap: "1.5rem" }}>
+            {(["sm", "md", "lg", "xl"] as const).map((size) => (
+              <div key={size} style={{ textAlign: "center" }}>
+                <Avatar
+                  type={type}
+                  size={size}
+                  initial="B"
+                  src="https://images.unsplash.com/photo-1494790108755-2616b612b5c8?w=150"
+                  alt="Profile"
+                  iconName="user"
+                />
+                <div style={{ fontSize: "11px", marginTop: "6px", color: "#6b7280" }}>
+                  {size}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-
-      <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
-          Profile
-        </h3>
-        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-          {(["sm", "md", "lg", "xl"] as const).map((size) => (
-            <div key={size} style={{ textAlign: "center" }}>
-              <Avatar
-                type="profile"
-                size={size}
-                src="https://images.unsplash.com/photo-1494790108755-2616b612b5c8?w=150"
-                alt="Profile"
-                initial="W"
-              />
-              <div style={{ fontSize: "12px", marginTop: "6px", color: "#6b7280" }}>{size}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
-          Icon
-        </h3>
-        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-          {(["sm", "md", "lg", "xl"] as const).map((size) => (
-            <div key={size} style={{ textAlign: "center" }}>
-              <Avatar type="icon" size={size} iconName="user" />
-              <div style={{ fontSize: "12px", marginTop: "6px", color: "#6b7280" }}>{size}</div>
-            </div>
-          ))}
-        </div>
-      </div>
+      ))}
     </div>
   ),
 };
@@ -129,7 +112,7 @@ export const AllVariants: Story = {
 export const ImageFallback: Story = {
   args: {
     type: "profile",
-    size: "lg",
+    size: "xl",
     src: "https://invalid-url.jpg",
     initial: "FB",
     alt: "Fallback example",
@@ -140,7 +123,7 @@ export const ImageFallback: Story = {
 export const Clickable: Story = {
   args: {
     type: "initial",
-    size: "lg",
+    size: "xl",
     initial: "CL",
     onClick: () => {},
   },
@@ -148,6 +131,11 @@ export const Clickable: Story = {
 
 // 5. 실제 사용 예시
 export const UsageExample: Story = {
+  args: {
+    type: "initial",
+    size: "lg",
+    initial: "W",
+  },
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", minWidth: "280px" }}>
       {/* 유저 프로필 행 */}
@@ -168,7 +156,7 @@ export const UsageExample: Story = {
         </div>
       </div>
 
-      {/* 아바타 그룹 */}
+      {/* 프로필 이미지 예시 */}
       <div
         style={{
           display: "flex",
@@ -179,24 +167,17 @@ export const UsageExample: Story = {
           borderRadius: "8px",
         }}
       >
-        <div style={{ display: "flex" }}>
-          {["A", "B", "C", "D"].map((initial, i) => (
-            <Avatar
-              key={initial}
-              type="initial"
-              size="md"
-              initial={initial}
-              styleOverride={{ marginLeft: i === 0 ? 0 : -6, zIndex: 4 - i }}
-            />
-          ))}
-          <Avatar
-            type="initial"
-            size="md"
-            initial="+3"
-            styleOverride={{ marginLeft: -6 }}
-          />
+        <Avatar
+          type="profile"
+          size="lg"
+          src="https://images.unsplash.com/photo-1494790108755-2616b612b5c8?w=150"
+          alt="Wonji Park"
+          initial="W"
+        />
+        <div>
+          <div style={{ fontSize: "14px", fontWeight: "600" }}>Wonji Park</div>
+          <div style={{ fontSize: "12px", color: "#6b7280" }}>피쳐리서 · 한국</div>
         </div>
-        <div style={{ fontSize: "14px", color: "#6b7280" }}>7명이 참여 중</div>
       </div>
     </div>
   ),

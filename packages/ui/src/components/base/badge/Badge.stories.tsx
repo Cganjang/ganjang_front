@@ -1,3 +1,4 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import Badge from "./Badge";
 
@@ -60,6 +61,11 @@ export const Default: Story = {
 
 // 2. 모든 조합 — Figma 디자인과 동일
 export const AllVariants: Story = {
+  args: {
+    type: "number",
+    status: "information",
+    content: 999,
+  },
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       {/* Dot */}
@@ -106,6 +112,12 @@ export const AllVariants: Story = {
 
 // 3. 숫자 오버플로우
 export const NumberOverflow: Story = {
+  args: {
+    type: "number",
+    status: "important",
+    content: 100,
+    max: 99,
+  },
   render: () => (
     <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
       <Badge type="number" status="important" content={50} max={99} />
@@ -118,6 +130,11 @@ export const NumberOverflow: Story = {
 
 // 4. 실제 사용 예시
 export const UsageExample: Story = {
+  args: {
+    type: "number",
+    status: "important",
+    content: 3,
+  },
   render: () => (
     <div
       style={{

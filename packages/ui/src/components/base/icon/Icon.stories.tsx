@@ -1,3 +1,4 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import Icon from "./Icon";
 
@@ -58,6 +59,10 @@ export const Default: Story = {
 
 // 2. 크기
 export const Sizes: Story = {
+  args: {
+    name: "star",
+    size: "md",
+  },
   render: () => (
     <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
       {(["sm", "md", "lg", "xl"] as const).map((size) => (
@@ -74,6 +79,11 @@ export const Sizes: Story = {
 
 // 3. StrokeWidth
 export const StrokeWidths: Story = {
+  args: {
+    name: "circle",
+    size: "lg",
+    strokeWidth: 2,
+  },
   render: () => (
     <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
       {[1, 1.5, 2, 2.5, 3].map((sw) => (
@@ -90,6 +100,10 @@ export const StrokeWidths: Story = {
 
 // 4. 자주 쓰는 아이콘 모음 (Figma 디자인 시스템 기준)
 export const CommonIcons: Story = {
+  args: {
+    name: "plus",
+    size: "md",
+  },
   render: () => {
     const icons = [
       "plus", "minus", "x", "check", "search", "settings",
@@ -118,6 +132,10 @@ export const CommonIcons: Story = {
 
 // 5. 색상
 export const Colors: Story = {
+  args: {
+    name: "heart",
+    size: "md",
+  },
   render: () => (
     <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
       <Icon name="heart" size="md" color="var(--bg-interactive-primary)" />
@@ -130,6 +148,10 @@ export const Colors: Story = {
 
 // 6. 실제 사용 예시
 export const UsageExample: Story = {
+  args: {
+    name: "search",
+    size: "sm",
+  },
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem", minWidth: "280px" }}>
       <div

@@ -1,22 +1,30 @@
 // Figma 디자인 기반 Avatar 컴포넌트 스타일
+// Type: initial, profile, icon
+// Size: sm(16px), md(24px), lg(32px), xl(48px)
 
 .avatar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 99999px;
+  border-radius: var(--border-radius-circle, 99999px);
   overflow: hidden;
   position: relative;
-
-  background-color: var(--bg-interactive-primary);
-  border: 1px solid transparent;
+  flex-shrink: 0;
   transition: all 0.2s ease-in-out;
 
-  &--sm { width: 16px; height: 16px; }
-  &--md { width: 24px; height: 24px; }
-  &--lg { width: 32px; height: 32px; }
-  &--xl { width: 48px; height: 48px; }
+  // ===================
+  // SIZE
+  // ===================
+  &--sm { width: 16px;  height: 16px; }
+  &--md { width: 24px;  height: 24px; }
+  &--lg { width: 32px;  height: 32px; }
+  &--xl { width: 48px;  height: 48px; }
 
+  // ===================
+  // TYPE
+  // ===================
+
+  // Initial: 파란 배경 + 흰 이니셜
   &--initial {
     background-color: var(--bg-interactive-primary);
     color: var(--text-interactive-inverse);
@@ -26,16 +34,18 @@
       font-weight: 500;
       line-height: 1;
       user-select: none;
-
-      .avatar--sm & { font-size: 8px; }
-      .avatar--md & { font-size: 10px; }
-      .avatar--lg & { font-size: 12px; }
-      .avatar--xl & { font-size: 16px; }
     }
   }
 
+  // 이니셜 폰트 크기 (사이즈별)
+  &--sm .avatar__initial  { font-size: 8px; }
+  &--md .avatar__initial  { font-size: 10px; }
+  &--lg .avatar__initial  { font-size: 12px; }
+  &--xl .avatar__initial  { font-size: 16px; }
+
+  // Profile: 이미지
   &--profile {
-    background-color: var(--bg-disabled);
+    background-color: var(--bg-tertiary);
 
     .avatar__image {
       width: 100%;
@@ -45,15 +55,19 @@
     }
   }
 
+  // Icon: 회색 배경 + 아이콘 (Figma: bg=bg-interactive-secondary, icon=icon-interactive-secondary)
   &--icon {
-    background-color: var(--text-interactive-secondary);
-    color: var(--text-interactive-inverse);
+    background-color: var(--bg-interactive-secondary);
+    color: var(--icon-interactive-secondary);
 
     .avatar__icon {
       color: inherit;
     }
   }
 
+  // ===================
+  // CLICKABLE
+  // ===================
   &--clickable {
     cursor: pointer;
 
@@ -66,9 +80,11 @@
       transform: scale(0.95);
     }
 
-    &:focus {
+    &:focus-visible {
       outline: none;
-      box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--border-focus-ring);
+      box-shadow:
+        0 0 0 2px var(--bg-primary),
+        0 0 0 4px var(--border-focus-ring);
     }
   }
 }

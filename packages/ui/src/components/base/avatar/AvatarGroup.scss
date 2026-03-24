@@ -1,55 +1,90 @@
 // Figma 디자인 기반 AvatarGroup 컴포넌트 스타일
+// More Indicator State: Default, Hover, Press, Disabled
 
 .avatar-group {
-  display: flex;
+  display: inline-flex;
   align-items: center;
 
+  // ===================
+  // AVATAR ITEM
+  // ===================
   &__item {
     position: relative;
     display: inline-flex;
-
-    .avatar-group__avatar {
-      border: 2px solid var(--bg-primary);
-      box-shadow: 0 1px 3px var(--shadow-subtle);
-    }
+    flex-shrink: 0;
   }
 
+  &__avatar {
+    // 겹침 효과를 위한 흰 테두리
+    box-shadow: 0 0 0 2px var(--bg-primary);
+  }
+
+  // 사이즈별 테두리 두께
+  &--sm  .avatar-group__avatar { box-shadow: 0 0 0 1px var(--bg-primary); }
+  &--md  .avatar-group__avatar { box-shadow: 0 0 0 2px var(--bg-primary); }
+  &--lg  .avatar-group__avatar { box-shadow: 0 0 0 2px var(--bg-primary); }
+  &--xl  .avatar-group__avatar { box-shadow: 0 0 0 3px var(--bg-primary); }
+
+  // ===================
+  // MORE INDICATOR
+  // Figma: State=Default/Hover/Press/Disabled
+  // ===================
   &__more {
-    .avatar-group__more-indicator {
-      background-color: var(--text-interactive-secondary);
-      color: var(--text-interactive-inverse);
-      border: 2px solid var(--bg-primary);
-      box-shadow: 0 1px 3px var(--shadow-subtle);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-circle, 99999px);
+    flex-shrink: 0;
+
+    // Default: bg=bg-interactive-secondary(#f3f4f6), text=text-interactive-secondary(#4b5563)
+    background-color: var(--bg-interactive-secondary);
+    color: var(--text-interactive-secondary);
+
+    // 사이즈 (Avatar 사이즈와 동일)
+    .avatar-group--sm & { width: 16px; height: 16px; box-shadow: 0 0 0 1px var(--bg-primary); }
+    .avatar-group--md & { width: 24px; height: 24px; box-shadow: 0 0 0 2px var(--bg-primary); }
+    .avatar-group--lg & { width: 32px; height: 32px; box-shadow: 0 0 0 2px var(--bg-primary); }
+    .avatar-group--xl & { width: 48px; height: 48px; box-shadow: 0 0 0 3px var(--bg-primary); }
+
+    // Clickable states
+    &--clickable {
       cursor: pointer;
+      transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
 
+      // Hover
       &:hover {
-        background-color: var(--text-interactive-secondary-hovered);
-        transform: scale(1.05);
+        background-color: var(--bg-interactive-secondary-hovered);
+        color: var(--text-interactive-secondary-hovered);
       }
 
+      // Press
       &:active {
-        transform: scale(0.95);
+        background-color: var(--bg-interactive-secondary-pressed);
+        color: var(--text-interactive-secondary-pressed);
       }
+
+      // Focus
+      &:focus-visible {
+        outline: none;
+        box-shadow:
+          0 0 0 2px var(--bg-primary),
+          0 0 0 4px var(--border-focus-ring);
+      }
+    }
+
+    // Disabled
+    &--disabled {
+      cursor: not-allowed;
+      background-color: var(--bg-disabled);
+      color: var(--text-disabled);
     }
   }
 
-  &--sm {
-    .avatar-group__avatar,
-    .avatar-group__more-indicator { border-width: 1px; }
-  }
-
-  &--md {
-    .avatar-group__avatar,
-    .avatar-group__more-indicator { border-width: 2px; }
-  }
-
-  &--lg {
-    .avatar-group__avatar,
-    .avatar-group__more-indicator { border-width: 2px; }
-  }
-
-  &--xl {
-    .avatar-group__avatar,
-    .avatar-group__more-indicator { border-width: 3px; }
+  &__more-label {
+    font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 500;
+    line-height: 1;
+    user-select: none;
+    white-space: nowrap;
   }
 }

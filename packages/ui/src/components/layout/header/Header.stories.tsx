@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Header from "./Header";
+import Header from "@ui/components/layout/header/Header";
 
 const NAV_ITEMS = [
   { value: "label1", label: "Label" },

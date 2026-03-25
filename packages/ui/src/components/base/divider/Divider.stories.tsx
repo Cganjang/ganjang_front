@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Divider from "./Divider";
+import Divider from "@ui/components/base/divider/Divider";
 
 const meta = {
   title: "Base/Divider",

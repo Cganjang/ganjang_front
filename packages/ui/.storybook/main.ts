@@ -24,6 +24,13 @@ const config: StorybookConfig = {
   "framework": {
     "name": getAbsolutePath('@storybook/react-vite'),
     "options": {}
+  },
+  "typescript": {
+    "check": false,
+    "reactDocgen": "react-docgen-typescript",
+    "reactDocgenTypescriptOptions": {
+      "tsConfigPath": "../tsconfig.storybook.json"
+    }
   }
 };
 export default config;

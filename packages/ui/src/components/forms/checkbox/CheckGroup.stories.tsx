@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import CheckGroup from "./CheckGroup";
+import CheckGroup from "@ui/components/forms/checkbox/CheckGroup";
 
 const SAMPLE_ITEMS = [
   { label: "네이버", value: "naver" },

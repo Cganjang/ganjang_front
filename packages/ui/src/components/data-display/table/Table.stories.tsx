@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { type ColumnDef } from "@tanstack/react-table";
-import Table from "./Table";
-import Avatar from "../../base/avatar/Avatar";
-import Chips from "../../base/chips/Chips";
-import Icon from "../../base/icon/Icon";
+import Avatar from "@ui/components/data-display/avatar/Avatar";
+import Chips from "@ui/components/data-display/chips/Chips";
+import Table from "@ui/components/data-display/table/Table";
+import Icon from "@ui/components/base/icon/Icon";
 
 // ===================
 // 샘플 데이터 타입

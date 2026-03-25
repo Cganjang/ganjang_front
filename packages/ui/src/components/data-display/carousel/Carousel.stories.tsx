@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Carousel from "./Carousel";
+import Carousel from "@ui/components/data-display/carousel/Carousel";
 
 // 슬라이드 1 — 히어로 배너 (텍스트 + 파랑 배경)
 const heroBannerSlide = (key: string, bg: string, color: string, title: string, sub: string) => ({

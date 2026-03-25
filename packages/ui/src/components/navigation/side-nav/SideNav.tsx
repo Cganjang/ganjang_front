@@ -1,7 +1,7 @@
 import React from "react";
-import Icon, { IconName } from "../../base/icon/Icon";
-import Badge from "../../base/badge/Badge";
-import Divider from "../../base/divider/Divider";
+import Badge from "@ui/components/data-display/badge/Badge";
+import Divider from "@ui/components/base/divider/Divider";
+import Icon, { IconName } from "@ui/components/base/icon/Icon";
 import "./SideNav.scss";
 
 // ===================

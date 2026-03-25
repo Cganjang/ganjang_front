@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Switch from "./Switch";
+import Switch from "@ui/components/forms/switch/Switch";
 
 const meta = {
   title: "Forms/Switch",

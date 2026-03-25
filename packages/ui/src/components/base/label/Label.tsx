@@ -1,6 +1,6 @@
 import React from "react";
 import "./Label.scss";
-import Icon from "../icon/Icon";
+import Icon from "@ui/components/base/icon/Icon";
 
 export interface LabelProps {
   /**

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Textarea from "@ui/components/forms/textarea/Textarea";
+import Textarea from "./Textarea";
 
 const meta = {
   title: "Forms/Textarea",
@@ -190,11 +190,7 @@ export const WithoutCounter: Story = {
         helpMessage="글자 수 제한 없음"
         showCount={false}
       />
-      <Textarea
-        label="라벨만"
-        isInfoIcon
-        placeholder="placeholder"
-      />
+      <Textarea label="라벨만" isInfoIcon placeholder="placeholder" />
     </div>
   ),
 };
@@ -285,7 +281,11 @@ export const UsageExample: Story = {
             피드백
           </h3>
           <p
-            style={{ margin: "0 0 1.25rem 0", fontSize: "13px", color: "#6b7280" }}
+            style={{
+              margin: "0 0 1.25rem 0",
+              fontSize: "13px",
+              color: "#6b7280",
+            }}
           >
             서비스 개선을 위해 의견을 남겨주세요.
           </p>

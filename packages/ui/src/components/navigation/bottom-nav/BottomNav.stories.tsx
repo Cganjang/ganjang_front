@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import BottomNav from "@ui/components/navigation/bottom-nav/BottomNav";
+import BottomNav from "./BottomNav";
 
 const SAMPLE_ITEMS_5 = [
   { value: "home", icon: "home" as const, label: "홈" },
@@ -54,6 +54,9 @@ Figma 디자인 시스템을 기반으로 제작되었습니다.
       description: "탭 변경 핸들러",
     },
   },
+  args: {
+    onChange: () => {},
+  },
 } satisfies Meta<typeof BottomNav>;
 
 export default meta;
@@ -79,49 +82,122 @@ export const AllVariants: Story = {
     const [value, setValue] = useState("home");
 
     return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "2rem", maxWidth: "480px" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "2rem",
+          maxWidth: "480px",
+        }}
+      >
         {/* Icon & Label */}
         <div>
-          <h3 style={{ margin: "0 0 0.75rem 0", fontSize: "16px", fontWeight: "600" }}>
+          <h3
+            style={{
+              margin: "0 0 0.75rem 0",
+              fontSize: "16px",
+              fontWeight: "600",
+            }}
+          >
             Icon & Label — 5items
           </h3>
-          <BottomNav items={SAMPLE_ITEMS_5} value={value} type="icon-label" onChange={setValue} />
+          <BottomNav
+            items={SAMPLE_ITEMS_5}
+            value={value}
+            type="icon-label"
+            onChange={setValue}
+          />
         </div>
 
         <div>
-          <h3 style={{ margin: "0 0 0.75rem 0", fontSize: "16px", fontWeight: "600" }}>
+          <h3
+            style={{
+              margin: "0 0 0.75rem 0",
+              fontSize: "16px",
+              fontWeight: "600",
+            }}
+          >
             Icon & Label — 4items
           </h3>
-          <BottomNav items={SAMPLE_ITEMS_4} value={value} type="icon-label" onChange={setValue} />
+          <BottomNav
+            items={SAMPLE_ITEMS_4}
+            value={value}
+            type="icon-label"
+            onChange={setValue}
+          />
         </div>
 
         <div>
-          <h3 style={{ margin: "0 0 0.75rem 0", fontSize: "16px", fontWeight: "600" }}>
+          <h3
+            style={{
+              margin: "0 0 0.75rem 0",
+              fontSize: "16px",
+              fontWeight: "600",
+            }}
+          >
             Icon & Label — 3items
           </h3>
-          <BottomNav items={SAMPLE_ITEMS_3} value={value} type="icon-label" onChange={setValue} />
+          <BottomNav
+            items={SAMPLE_ITEMS_3}
+            value={value}
+            type="icon-label"
+            onChange={setValue}
+          />
         </div>
 
         {/* Icon Only */}
         <div>
-          <h3 style={{ margin: "0 0 0.75rem 0", fontSize: "16px", fontWeight: "600" }}>
+          <h3
+            style={{
+              margin: "0 0 0.75rem 0",
+              fontSize: "16px",
+              fontWeight: "600",
+            }}
+          >
             Icon Only — 5items
           </h3>
-          <BottomNav items={SAMPLE_ITEMS_5} value={value} type="icon-only" onChange={setValue} />
+          <BottomNav
+            items={SAMPLE_ITEMS_5}
+            value={value}
+            type="icon-only"
+            onChange={setValue}
+          />
         </div>
 
         <div>
-          <h3 style={{ margin: "0 0 0.75rem 0", fontSize: "16px", fontWeight: "600" }}>
+          <h3
+            style={{
+              margin: "0 0 0.75rem 0",
+              fontSize: "16px",
+              fontWeight: "600",
+            }}
+          >
             Icon Only — 4items
           </h3>
-          <BottomNav items={SAMPLE_ITEMS_4} value={value} type="icon-only" onChange={setValue} />
+          <BottomNav
+            items={SAMPLE_ITEMS_4}
+            value={value}
+            type="icon-only"
+            onChange={setValue}
+          />
         </div>
 
         <div>
-          <h3 style={{ margin: "0 0 0.75rem 0", fontSize: "16px", fontWeight: "600" }}>
+          <h3
+            style={{
+              margin: "0 0 0.75rem 0",
+              fontSize: "16px",
+              fontWeight: "600",
+            }}
+          >
             Icon Only — 3items
           </h3>
-          <BottomNav items={SAMPLE_ITEMS_3} value={value} type="icon-only" onChange={setValue} />
+          <BottomNav
+            items={SAMPLE_ITEMS_3}
+            value={value}
+            type="icon-only"
+            onChange={setValue}
+          />
         </div>
       </div>
     );

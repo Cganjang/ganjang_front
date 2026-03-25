@@ -1,5 +1,5 @@
 import React from "react";
-import Checkbox from "@ui/components/forms/checkbox/Checkbox";
+import Checkbox from "./Checkbox";
 import "./CheckGroup.scss";
 
 export interface CheckGroupItem {

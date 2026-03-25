@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Avatar from "@ui/components/data-display/avatar/Avatar";
+import Avatar from "./Avatar";
 
 const meta = {
   title: "Data Display/Avatar",
@@ -37,7 +37,8 @@ Figma 디자인 시스템을 기반으로 제작되었습니다.
     },
     initial: {
       control: { type: "text" },
-      description: "이니셜 텍스트 (type='initial'일 때, 또는 이미지 로드 실패 시 폴백)",
+      description:
+        "이니셜 텍스트 (type='initial'일 때, 또는 이미지 로드 실패 시 폴백)",
     },
     src: {
       control: { type: "text" },
@@ -49,7 +50,14 @@ Figma 디자인 시스템을 기반으로 제작되었습니다.
     },
     iconName: {
       control: { type: "select" },
-      options: ["user", "user-circle", "user-check", "settings", "heart", "star"],
+      options: [
+        "user",
+        "user-circle",
+        "user-check",
+        "settings",
+        "heart",
+        "star",
+      ],
       description: "아이콘 이름 (type='icon'일 때 사용, Lucide Icons 기준)",
     },
     onClick: {
@@ -82,10 +90,19 @@ export const AllVariants: Story = {
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       {(["initial", "profile", "icon"] as const).map((type) => (
         <div key={type}>
-          <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600", textTransform: "capitalize" }}>
+          <h3
+            style={{
+              margin: "0 0 1rem 0",
+              fontSize: "16px",
+              fontWeight: "600",
+              textTransform: "capitalize",
+            }}
+          >
             {type}
           </h3>
-          <div style={{ display: "flex", alignItems: "flex-end", gap: "1.5rem" }}>
+          <div
+            style={{ display: "flex", alignItems: "flex-end", gap: "1.5rem" }}
+          >
             {(["sm", "md", "lg", "xl"] as const).map((size) => (
               <div key={size} style={{ textAlign: "center" }}>
                 <Avatar
@@ -96,7 +113,13 @@ export const AllVariants: Story = {
                   alt="Profile"
                   iconName="user"
                 />
-                <div style={{ fontSize: "11px", marginTop: "6px", color: "#6b7280" }}>
+                <div
+                  style={{
+                    fontSize: "11px",
+                    marginTop: "6px",
+                    color: "#6b7280",
+                  }}
+                >
                   {size}
                 </div>
               </div>
@@ -137,7 +160,14 @@ export const UsageExample: Story = {
     initial: "W",
   },
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", minWidth: "280px" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "1.5rem",
+        minWidth: "280px",
+      }}
+    >
       {/* 유저 프로필 행 */}
       <div
         style={{
@@ -152,7 +182,9 @@ export const UsageExample: Story = {
         <Avatar type="initial" size="lg" initial="W" />
         <div>
           <div style={{ fontSize: "14px", fontWeight: "600" }}>Woong</div>
-          <div style={{ fontSize: "12px", color: "#6b7280" }}>Frontend Developer</div>
+          <div style={{ fontSize: "12px", color: "#6b7280" }}>
+            Frontend Developer
+          </div>
         </div>
       </div>
 
@@ -176,7 +208,9 @@ export const UsageExample: Story = {
         />
         <div>
           <div style={{ fontSize: "14px", fontWeight: "600" }}>Wonji Park</div>
-          <div style={{ fontSize: "12px", color: "#6b7280" }}>피쳐리서 · 한국</div>
+          <div style={{ fontSize: "12px", color: "#6b7280" }}>
+            피쳐리서 · 한국
+          </div>
         </div>
       </div>
     </div>

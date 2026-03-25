@@ -1,7 +1,7 @@
 import React from "react";
 import * as LucideIcons from "lucide-react";
-import { IconProps } from "@ui/components/base/icon/types";
-import { getIconSize } from "@ui/components/base/icon/utils";
+import { IconProps } from "./types";
+import { getIconSize } from "./utils";
 
 // kebab-case → PascalCase 변환 (예: "arrow-left" → "ArrowLeft")
 const toPascalCase = (name: string): string =>
@@ -45,7 +45,9 @@ const Icon: React.FC<IconComponentProps> = ({
 }) => {
   const pascalName = toPascalCase(name);
   // lucide-react 모듈에 FC<LucideProps>와 호환되지 않는 Icon export가 포함되어 있어 unknown을 거쳐 캐스팅
-  const LucideIcon = (LucideIcons as unknown as Record<string, React.FC<LucideIcons.LucideProps>>)[pascalName];
+  const LucideIcon = (
+    LucideIcons as unknown as Record<string, React.FC<LucideIcons.LucideProps>>
+  )[pascalName];
   const iconSize = getIconSize(size);
 
   if (!LucideIcon) {

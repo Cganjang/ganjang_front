@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Skeleton from "@ui/components/feedback/skeleton/Skeleton";
+import Skeleton from "./Skeleton";
 
 const meta = {
   title: "Feedback/Skeleton",
@@ -31,7 +31,8 @@ Figma 디자인 시스템을 기반으로 제작되었습니다.
     },
     width: {
       control: { type: "text" },
-      description: "너비 — 숫자(px) 또는 '50%', '100%' 등 CSS 값. 미입력 시 type별 기본값 사용",
+      description:
+        "너비 — 숫자(px) 또는 '50%', '100%' 등 CSS 값. 미입력 시 type별 기본값 사용",
     },
     height: {
       control: { type: "text" },
@@ -52,8 +53,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     type: "rectangle",
-    width: undefined,   // 미입력 시 type별 기본값: rectangle=100%, text=100%, circle=40px
-    height: undefined,  // 미입력 시 type별 기본값: rectangle=80px, text=10px, circle=40px
+    width: undefined, // 미입력 시 type별 기본값: rectangle=100%, text=100%, circle=40px
+    height: undefined, // 미입력 시 type별 기본값: rectangle=80px, text=10px, circle=40px
     animate: true,
   },
   decorators: [
@@ -72,10 +73,21 @@ export const AllVariants: Story = {
     animate: true,
   },
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2rem", width: "300px" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "2rem",
+        width: "300px",
+      }}
+    >
       {/* Circle */}
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>Circle</h3>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
+          Circle
+        </h3>
         <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
           <Skeleton type="circle" height={24} />
           <Skeleton type="circle" height={32} />
@@ -86,8 +98,14 @@ export const AllVariants: Story = {
 
       {/* Text */}
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>Text</h3>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
+          Text
+        </h3>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
+        >
           <Skeleton type="text" width="80%" />
           <Skeleton type="text" width="60%" />
           <Skeleton type="text" width="90%" />
@@ -96,8 +114,14 @@ export const AllVariants: Story = {
 
       {/* Rectangle */}
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>Rectangle</h3>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
+          Rectangle
+        </h3>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
+        >
           <Skeleton type="rectangle" height={40} />
           <Skeleton type="rectangle" height={80} />
           <Skeleton type="rectangle" height={120} />
@@ -106,7 +130,11 @@ export const AllVariants: Story = {
 
       {/* Animate 비교 */}
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>animate off</h3>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
+          animate off
+        </h3>
         <Skeleton type="rectangle" height={40} animate={false} />
       </div>
     </div>
@@ -120,7 +148,14 @@ export const UsageExample: Story = {
     animate: true,
   },
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2rem", minWidth: "320px" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "2rem",
+        minWidth: "320px",
+      }}
+    >
       {/* 단일 카드 스켈레톤 */}
       <div
         style={{
@@ -135,7 +170,14 @@ export const UsageExample: Story = {
         <Skeleton type="rectangle" height={140} />
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
           <Skeleton type="circle" height={24} />
-          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "0.4rem" }}>
+          <div
+            style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.4rem",
+            }}
+          >
             <Skeleton type="text" width="70%" />
             <Skeleton type="text" width="50%" />
           </div>

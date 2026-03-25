@@ -1,5 +1,5 @@
 import React from "react";
-import Icon, { IconName } from "@ui/components/base/icon/Icon";
+import Icon, { IconName } from "../../base/icon/Icon";
 import "./Chips.scss";
 
 export interface ChipsProps {

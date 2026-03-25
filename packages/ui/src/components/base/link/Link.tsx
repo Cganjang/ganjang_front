@@ -1,5 +1,5 @@
 import React from "react";
-import Icon, { IconName } from "@ui/components/base/icon/Icon";
+import Icon, { IconName } from "../icon/Icon";
 import "./Link.scss";
 
 export interface LinkProps {

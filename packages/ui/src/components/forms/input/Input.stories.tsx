@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Input from "@ui/components/forms/input/Input";
+import Input from "./Input";
 
 const meta = {
   title: "Forms/Input",
@@ -177,11 +177,7 @@ export const WithIcons: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
       <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
-        <Input
-          label="검색"
-          placeholder="검색어 입력"
-          leadingIcon="search"
-        />
+        <Input label="검색" placeholder="검색어 입력" leadingIcon="search" />
         <Input
           label="이메일"
           placeholder="email@example.com"
@@ -237,10 +233,7 @@ export const LabelTypes: Story = {
         placeholder="placeholder"
         isInfoIcon
       />
-      <Input
-        placeholder="라벨 없음"
-        helpMessage="라벨 없이도 사용 가능"
-      />
+      <Input placeholder="라벨 없음" helpMessage="라벨 없이도 사용 가능" />
     </div>
   ),
 };
@@ -304,7 +297,9 @@ export const UsageExample: Story = {
           >
             로그인
           </h3>
-          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+          >
             <Input
               label="이메일"
               labelType="required"

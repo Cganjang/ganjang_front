@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Divider from "@ui/components/base/divider/Divider";
+import Divider from "./Divider";
 
 const meta = {
   title: "Base/Divider",
@@ -38,7 +38,8 @@ Figma 디자인 시스템을 기반으로 제작되었습니다.
     margin: {
       control: { type: "select" },
       options: ["none", "xs", "sm", "md", "lg", "xl"],
-      description: "구분선 주변 여백 (none: 0, xs: 2px, sm: 4px, md: 8px, lg: 16px, xl: 24px)",
+      description:
+        "구분선 주변 여백 (none: 0, xs: 2px, sm: 4px, md: 8px, lg: 16px, xl: 24px)",
     },
   },
 } satisfies Meta<typeof Divider>;
@@ -63,15 +64,34 @@ export const AllVariants: Story = {
     margin: "none",
   },
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2rem", width: "300px" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "2rem",
+        width: "300px",
+      }}
+    >
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
           Horizontal
         </h3>
         <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
           {(["sm", "md", "lg", "xl"] as const).map((size) => (
-            <div key={size} style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-              <span style={{ fontSize: "12px", color: "#6b7280", width: "40px", flexShrink: 0 }}>
+            <div
+              key={size}
+              style={{ display: "flex", alignItems: "center", gap: "1rem" }}
+            >
+              <span
+                style={{
+                  fontSize: "12px",
+                  color: "#6b7280",
+                  width: "40px",
+                  flexShrink: 0,
+                }}
+              >
                 {size}
               </span>
               <Divider size={size} orientation="horizontal" />
@@ -81,16 +101,37 @@ export const AllVariants: Story = {
       </div>
 
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
           Vertical
         </h3>
-        <div style={{ display: "flex", alignItems: "stretch", height: "48px", gap: "1.5rem" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "stretch",
+            height: "48px",
+            gap: "1.5rem",
+          }}
+        >
           {(["sm", "md", "lg", "xl"] as const).map((size) => (
-            <div key={size} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "6px" }}>
+            <div
+              key={size}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "6px",
+              }}
+            >
               <div style={{ flex: 1, display: "flex", alignItems: "stretch" }}>
                 <Divider size={size} orientation="vertical" />
               </div>
-              <span style={{ fontSize: "12px", color: "#6b7280", flexShrink: 0 }}>{size}</span>
+              <span
+                style={{ fontSize: "12px", color: "#6b7280", flexShrink: 0 }}
+              >
+                {size}
+              </span>
             </div>
           ))}
         </div>
@@ -107,7 +148,14 @@ export const UsageExample: Story = {
     margin: "md",
   },
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2rem", maxWidth: "400px" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "2rem",
+        maxWidth: "400px",
+      }}
+    >
       {/* 수평 - 카드 섹션 구분 */}
       <div
         style={{
@@ -117,15 +165,29 @@ export const UsageExample: Story = {
         }}
       >
         <div>
-          <div style={{ fontSize: "14px", fontWeight: "600", marginBottom: "4px" }}>사용자 정보</div>
+          <div
+            style={{ fontSize: "14px", fontWeight: "600", marginBottom: "4px" }}
+          >
+            사용자 정보
+          </div>
           <div style={{ fontSize: "13px", color: "#6b7280" }}>이름: 홍길동</div>
-          <div style={{ fontSize: "13px", color: "#6b7280" }}>이메일: hong@example.com</div>
+          <div style={{ fontSize: "13px", color: "#6b7280" }}>
+            이메일: hong@example.com
+          </div>
         </div>
         <Divider size="sm" margin="md" />
         <div>
-          <div style={{ fontSize: "14px", fontWeight: "600", marginBottom: "4px" }}>연락처</div>
-          <div style={{ fontSize: "13px", color: "#6b7280" }}>전화: 010-1234-5678</div>
-          <div style={{ fontSize: "13px", color: "#6b7280" }}>주소: 서울시 강남구</div>
+          <div
+            style={{ fontSize: "14px", fontWeight: "600", marginBottom: "4px" }}
+          >
+            연락처
+          </div>
+          <div style={{ fontSize: "13px", color: "#6b7280" }}>
+            전화: 010-1234-5678
+          </div>
+          <div style={{ fontSize: "13px", color: "#6b7280" }}>
+            주소: 서울시 강남구
+          </div>
         </div>
       </div>
 
@@ -143,7 +205,11 @@ export const UsageExample: Story = {
         {["홈", "프로젝트", "팀", "설정"].map((item, i) => (
           <React.Fragment key={item}>
             {i > 0 && <Divider orientation="vertical" size="sm" margin="sm" />}
-            <span style={{ fontSize: "14px", color: "#374151", padding: "0 4px" }}>{item}</span>
+            <span
+              style={{ fontSize: "14px", color: "#374151", padding: "0 4px" }}
+            >
+              {item}
+            </span>
           </React.Fragment>
         ))}
       </div>

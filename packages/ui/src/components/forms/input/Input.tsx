@@ -1,6 +1,6 @@
 import React, { useState, useId, forwardRef } from "react";
-import Label from "@ui/components/base/label/Label";
-import Icon from "@ui/components/base/icon/Icon";
+import Label from "../../base/label/Label";
+import Icon from "../../base/icon/Icon";
 import "./Input.scss";
 
 export interface InputProps {

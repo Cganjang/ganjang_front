@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Checkbox from "@ui/components/forms/checkbox/Checkbox";
+import Checkbox from "./Checkbox";
 
 const meta = {
   title: "Forms/Checkbox",
@@ -73,28 +73,44 @@ export const AllVariants: Story = {
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       {/* Status 행 */}
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
           Status
         </h3>
         <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
           <div style={{ textAlign: "center" }}>
             <Checkbox checked={false} />
-            <div style={{ fontSize: "11px", marginTop: "6px", color: "#6b7280" }}>Unselected</div>
+            <div
+              style={{ fontSize: "11px", marginTop: "6px", color: "#6b7280" }}
+            >
+              Unselected
+            </div>
           </div>
           <div style={{ textAlign: "center" }}>
             <Checkbox checked={true} />
-            <div style={{ fontSize: "11px", marginTop: "6px", color: "#6b7280" }}>Selected</div>
+            <div
+              style={{ fontSize: "11px", marginTop: "6px", color: "#6b7280" }}
+            >
+              Selected
+            </div>
           </div>
           <div style={{ textAlign: "center" }}>
             <Checkbox indeterminate={true} />
-            <div style={{ fontSize: "11px", marginTop: "6px", color: "#6b7280" }}>Partial</div>
+            <div
+              style={{ fontSize: "11px", marginTop: "6px", color: "#6b7280" }}
+            >
+              Partial
+            </div>
           </div>
         </div>
       </div>
 
       {/* States 행 */}
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
           States
         </h3>
         <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
@@ -103,8 +119,17 @@ export const AllVariants: Story = {
             { label: "Disabled", props: { disabled: true } },
             { label: "Error", props: { error: true } },
           ].map(({ label, props }) => (
-            <div key={label} style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-              <span style={{ fontSize: "12px", color: "#6b7280" }}>{label}</span>
+            <div
+              key={label}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.5rem",
+              }}
+            >
+              <span style={{ fontSize: "12px", color: "#6b7280" }}>
+                {label}
+              </span>
               <Checkbox checked={false} {...props} />
               <Checkbox checked={true} {...props} />
               <Checkbox indeterminate={true} {...props} />
@@ -115,10 +140,14 @@ export const AllVariants: Story = {
 
       {/* Label 포함 */}
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
           With Label
         </h3>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
+        >
           <Checkbox label="Label" checked={false} />
           <Checkbox label="Label" checked={true} />
           <Checkbox label="Label" indeterminate={true} />
@@ -164,11 +193,14 @@ export const UsageExample: Story = {
 
     const [selected, setSelected] = useState<string[]>(["naver"]);
 
-    const allChecked = selected.length === items.filter(i => !i.disabled).length;
+    const allChecked =
+      selected.length === items.filter((i) => !i.disabled).length;
     const someChecked = selected.length > 0 && !allChecked;
 
     const handleAll = (checked: boolean) => {
-      setSelected(checked ? items.filter(i => !i.disabled).map(i => i.value) : []);
+      setSelected(
+        checked ? items.filter((i) => !i.disabled).map((i) => i.value) : []
+      );
     };
 
     const handleItem = (value: string, checked: boolean) => {
@@ -195,10 +227,14 @@ export const UsageExample: Story = {
           onChange={handleAll}
         />
 
-        <div style={{ height: "1px", background: "#e5e7eb", margin: "0.75rem 0" }} />
+        <div
+          style={{ height: "1px", background: "#e5e7eb", margin: "0.75rem 0" }}
+        />
 
         {/* 개별 항목 */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
+        >
           {items.map((item) => (
             <Checkbox
               key={item.value}

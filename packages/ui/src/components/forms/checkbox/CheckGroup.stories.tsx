@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import CheckGroup from "@ui/components/forms/checkbox/CheckGroup";
+import CheckGroup from "./CheckGroup";
 
 const SAMPLE_ITEMS = [
   { label: "네이버", value: "naver" },
@@ -78,7 +78,11 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "3rem", alignItems: "flex-start" }}>
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>Vertical</h3>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
+          Vertical
+        </h3>
         <CheckGroup
           items={SAMPLE_ITEMS.slice(0, 6)}
           value={["naver", "kakao"]}
@@ -86,7 +90,11 @@ export const AllVariants: Story = {
         />
       </div>
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>Horizontal</h3>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
+          Horizontal
+        </h3>
         <CheckGroup
           items={SAMPLE_ITEMS.slice(0, 4)}
           value={["naver"]}
@@ -94,7 +102,11 @@ export const AllVariants: Story = {
         />
       </div>
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>Disabled</h3>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
+          Disabled
+        </h3>
         <CheckGroup
           items={SAMPLE_ITEMS.slice(0, 4)}
           value={["naver"]}
@@ -133,7 +145,13 @@ export const UsageExample: Story = {
           minWidth: "200px",
         }}
       >
-        <div style={{ fontSize: "14px", fontWeight: "600", marginBottom: "0.75rem" }}>
+        <div
+          style={{
+            fontSize: "14px",
+            fontWeight: "600",
+            marginBottom: "0.75rem",
+          }}
+        >
           플랫폼 선택
         </div>
         <CheckGroup

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Radio from "@ui/components/forms/radio/Radio";
-import RadioGroup from "@ui/components/forms/radio/RadioGroup";
+import Radio from "./Radio";
+import RadioGroup from "./RadioGroup";
 
 const meta = {
   title: "Forms/Radio",
@@ -72,41 +72,113 @@ export const AllSizes: Story = {
     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
       <div>
         <h3
-          style={{ margin: "0 0 0.75rem 0", fontSize: "14px", fontWeight: "600", color: "#6b7280" }}
+          style={{
+            margin: "0 0 0.75rem 0",
+            fontSize: "14px",
+            fontWeight: "600",
+            color: "#6b7280",
+          }}
         >
           Small (16px)
         </h3>
         <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
           <Radio label="Default" value="a" name="size-sm" size="sm" />
-          <Radio label="Checked" value="b" name="size-sm-checked" size="sm" defaultChecked />
-          <Radio label="Disabled" value="c" name="size-sm-disabled" size="sm" disabled />
-          <Radio label="Checked Disabled" value="d" name="size-sm-cd" size="sm" disabled checked />
+          <Radio
+            label="Checked"
+            value="b"
+            name="size-sm-checked"
+            size="sm"
+            defaultChecked
+          />
+          <Radio
+            label="Disabled"
+            value="c"
+            name="size-sm-disabled"
+            size="sm"
+            disabled
+          />
+          <Radio
+            label="Checked Disabled"
+            value="d"
+            name="size-sm-cd"
+            size="sm"
+            disabled
+            checked
+          />
         </div>
       </div>
       <div>
         <h3
-          style={{ margin: "0 0 0.75rem 0", fontSize: "14px", fontWeight: "600", color: "#6b7280" }}
+          style={{
+            margin: "0 0 0.75rem 0",
+            fontSize: "14px",
+            fontWeight: "600",
+            color: "#6b7280",
+          }}
         >
           Medium (20px) — Default
         </h3>
         <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
           <Radio label="Default" value="a" name="size-md" size="md" />
-          <Radio label="Checked" value="b" name="size-md-checked" size="md" defaultChecked />
-          <Radio label="Disabled" value="c" name="size-md-disabled" size="md" disabled />
-          <Radio label="Checked Disabled" value="d" name="size-md-cd" size="md" disabled checked />
+          <Radio
+            label="Checked"
+            value="b"
+            name="size-md-checked"
+            size="md"
+            defaultChecked
+          />
+          <Radio
+            label="Disabled"
+            value="c"
+            name="size-md-disabled"
+            size="md"
+            disabled
+          />
+          <Radio
+            label="Checked Disabled"
+            value="d"
+            name="size-md-cd"
+            size="md"
+            disabled
+            checked
+          />
         </div>
       </div>
       <div>
         <h3
-          style={{ margin: "0 0 0.75rem 0", fontSize: "14px", fontWeight: "600", color: "#6b7280" }}
+          style={{
+            margin: "0 0 0.75rem 0",
+            fontSize: "14px",
+            fontWeight: "600",
+            color: "#6b7280",
+          }}
         >
           Large (24px)
         </h3>
         <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
           <Radio label="Default" value="a" name="size-lg" size="lg" />
-          <Radio label="Checked" value="b" name="size-lg-checked" size="lg" defaultChecked />
-          <Radio label="Disabled" value="c" name="size-lg-disabled" size="lg" disabled />
-          <Radio label="Checked Disabled" value="d" name="size-lg-cd" size="lg" disabled checked />
+          <Radio
+            label="Checked"
+            value="b"
+            name="size-lg-checked"
+            size="lg"
+            defaultChecked
+          />
+          <Radio
+            label="Disabled"
+            value="c"
+            name="size-lg-disabled"
+            size="lg"
+            disabled
+          />
+          <Radio
+            label="Checked Disabled"
+            value="d"
+            name="size-lg-cd"
+            size="lg"
+            disabled
+            checked
+          />
         </div>
       </div>
     </div>
@@ -125,7 +197,12 @@ export const GroupVertical: Story = {
       return (
         <div>
           <h3
-            style={{ margin: "0 0 0.75rem 0", fontSize: "14px", fontWeight: "600", color: "#6b7280" }}
+            style={{
+              margin: "0 0 0.75rem 0",
+              fontSize: "14px",
+              fontWeight: "600",
+              color: "#6b7280",
+            }}
           >
             Vertical (기본)
           </h3>
@@ -140,7 +217,9 @@ export const GroupVertical: Story = {
             <Radio label="옵션 3" value="option3" />
             <Radio label="옵션 4 (비활성)" value="option4" disabled />
           </RadioGroup>
-          <p style={{ marginTop: "0.75rem", fontSize: "13px", color: "#6b7280" }}>
+          <p
+            style={{ marginTop: "0.75rem", fontSize: "13px", color: "#6b7280" }}
+          >
             선택된 값: <strong>{value}</strong>
           </p>
         </div>
@@ -162,7 +241,12 @@ export const GroupHorizontal: Story = {
       return (
         <div>
           <h3
-            style={{ margin: "0 0 0.75rem 0", fontSize: "14px", fontWeight: "600", color: "#6b7280" }}
+            style={{
+              margin: "0 0 0.75rem 0",
+              fontSize: "14px",
+              fontWeight: "600",
+              color: "#6b7280",
+            }}
           >
             Horizontal
           </h3>
@@ -176,7 +260,9 @@ export const GroupHorizontal: Story = {
             <Radio label="옵션 B" value="opt-b" />
             <Radio label="옵션 C" value="opt-c" />
           </RadioGroup>
-          <p style={{ marginTop: "0.75rem", fontSize: "13px", color: "#6b7280" }}>
+          <p
+            style={{ marginTop: "0.75rem", fontSize: "13px", color: "#6b7280" }}
+          >
             선택된 값: <strong>{value}</strong>
           </p>
         </div>
@@ -196,7 +282,12 @@ export const GroupSizes: Story = {
     <div style={{ display: "flex", gap: "3rem" }}>
       <div>
         <h3
-          style={{ margin: "0 0 0.75rem 0", fontSize: "14px", fontWeight: "600", color: "#6b7280" }}
+          style={{
+            margin: "0 0 0.75rem 0",
+            fontSize: "14px",
+            fontWeight: "600",
+            color: "#6b7280",
+          }}
         >
           Small
         </h3>
@@ -208,7 +299,12 @@ export const GroupSizes: Story = {
       </div>
       <div>
         <h3
-          style={{ margin: "0 0 0.75rem 0", fontSize: "14px", fontWeight: "600", color: "#6b7280" }}
+          style={{
+            margin: "0 0 0.75rem 0",
+            fontSize: "14px",
+            fontWeight: "600",
+            color: "#6b7280",
+          }}
         >
           Medium
         </h3>
@@ -220,7 +316,12 @@ export const GroupSizes: Story = {
       </div>
       <div>
         <h3
-          style={{ margin: "0 0 0.75rem 0", fontSize: "14px", fontWeight: "600", color: "#6b7280" }}
+          style={{
+            margin: "0 0 0.75rem 0",
+            fontSize: "14px",
+            fontWeight: "600",
+            color: "#6b7280",
+          }}
         >
           Large
         </h3>
@@ -243,7 +344,12 @@ export const DisabledGroup: Story = {
   render: () => (
     <div>
       <h3
-        style={{ margin: "0 0 0.75rem 0", fontSize: "14px", fontWeight: "600", color: "#6b7280" }}
+        style={{
+          margin: "0 0 0.75rem 0",
+          fontSize: "14px",
+          fontWeight: "600",
+          color: "#6b7280",
+        }}
       >
         전체 비활성화
       </h3>
@@ -307,7 +413,11 @@ export const UsageExample: Story = {
               요금제 선택
             </h3>
             <p
-              style={{ margin: "0 0 1rem 0", fontSize: "13px", color: "#6b7280" }}
+              style={{
+                margin: "0 0 1rem 0",
+                fontSize: "13px",
+                color: "#6b7280",
+              }}
             >
               사용 목적에 맞는 요금제를 선택하세요.
             </p>
@@ -335,7 +445,11 @@ export const UsageExample: Story = {
               결제 주기
             </h3>
             <p
-              style={{ margin: "0 0 1rem 0", fontSize: "13px", color: "#6b7280" }}
+              style={{
+                margin: "0 0 1rem 0",
+                fontSize: "13px",
+                color: "#6b7280",
+              }}
             >
               결제 주기를 선택하세요.
             </p>

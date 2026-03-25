@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Label from "@ui/components/base/label/Label";
+import Label from "./Label";
 
 const meta = {
   title: "Base/Label",
@@ -82,26 +82,49 @@ export const AllVariants: Story = {
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       {/* Type 비교 — Figma 기준 */}
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
           Type
         </h3>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-          <Label type="none" isInfoIcon>Label</Label>
-          <Label type="optional" isInfoIcon>Label</Label>
-          <Label type="required" isInfoIcon>Label</Label>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
+        >
+          <Label type="none" isInfoIcon>
+            Label
+          </Label>
+          <Label type="optional" isInfoIcon>
+            Label
+          </Label>
+          <Label type="required" isInfoIcon>
+            Label
+          </Label>
         </div>
       </div>
 
       {/* Size 비교 */}
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
           Size
         </h3>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
+        >
           {(["xs", "sm", "md", "lg"] as const).map((size) => (
-            <div key={size} style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-              <span style={{ fontSize: "12px", color: "#6b7280", width: "24px" }}>{size}</span>
-              <Label size={size} type="required" isInfoIcon>Label</Label>
+            <div
+              key={size}
+              style={{ display: "flex", alignItems: "center", gap: "1rem" }}
+            >
+              <span
+                style={{ fontSize: "12px", color: "#6b7280", width: "24px" }}
+              >
+                {size}
+              </span>
+              <Label size={size} type="required" isInfoIcon>
+                Label
+              </Label>
             </div>
           ))}
         </div>
@@ -109,13 +132,23 @@ export const AllVariants: Story = {
 
       {/* Disabled */}
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
           Disabled
         </h3>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-          <Label type="none" disabled isInfoIcon>Label</Label>
-          <Label type="optional" disabled isInfoIcon>Label</Label>
-          <Label type="required" disabled isInfoIcon>Label</Label>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
+        >
+          <Label type="none" disabled isInfoIcon>
+            Label
+          </Label>
+          <Label type="optional" disabled isInfoIcon>
+            Label
+          </Label>
+          <Label type="required" disabled isInfoIcon>
+            Label
+          </Label>
         </div>
       </div>
     </div>
@@ -141,7 +174,14 @@ export const UsageExample: Story = {
     size: "md",
   },
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", minWidth: "320px" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "1.5rem",
+        minWidth: "320px",
+      }}
+    >
       <div
         style={{
           padding: "1.5rem",
@@ -154,7 +194,9 @@ export const UsageExample: Story = {
       >
         {/* Required 필드 */}
         <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-          <Label htmlFor="email" type="required" isInfoIcon>이메일</Label>
+          <Label htmlFor="email" type="required" isInfoIcon>
+            이메일
+          </Label>
           <input
             id="email"
             type="email"
@@ -171,7 +213,9 @@ export const UsageExample: Story = {
 
         {/* Optional 필드 */}
         <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-          <Label htmlFor="bio" type="optional">자기소개</Label>
+          <Label htmlFor="bio" type="optional">
+            자기소개
+          </Label>
           <input
             id="bio"
             type="text"
@@ -188,7 +232,9 @@ export const UsageExample: Story = {
 
         {/* None 필드 */}
         <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-          <Label htmlFor="location" type="none" isInfoIcon>위치</Label>
+          <Label htmlFor="location" type="none" isInfoIcon>
+            위치
+          </Label>
           <input
             id="location"
             type="text"

@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import Icon from "@ui/components/base/icon/Icon";
+import Icon from "../../base/icon/Icon";
 import "./Pagination.scss";
 
 export interface PaginationProps {

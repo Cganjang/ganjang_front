@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useId, useCallback } from "react";
-import Label from "@ui/components/base/label/Label";
-import Icon from "@ui/components/base/icon/Icon";
+import Label from "../../base/label/Label";
+import Icon from "../../base/icon/Icon";
 import "./Select.scss";
 
 export interface SelectOptionItem {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Tabs from "@ui/components/navigation/tabs/Tabs";
+import Tabs from "./Tabs";
 
 const SAMPLE_ITEMS = [
   { value: "overview", label: "Overview", icon: "heart" as const },
@@ -15,7 +15,12 @@ const SAMPLE_ITEMS_DISABLED = [
   { value: "names", label: "Possible Names", icon: "heart" as const },
   { value: "grouping", label: "Grouping", icon: "heart" as const },
   { value: "anatomy", label: "Anatomy", icon: "heart" as const },
-  { value: "properties", label: "Properties", icon: "heart" as const, disabled: true },
+  {
+    value: "properties",
+    label: "Properties",
+    icon: "heart" as const,
+    disabled: true,
+  },
 ];
 
 const meta = {
@@ -52,6 +57,9 @@ Figma 디자인 시스템을 기반으로 제작되었습니다.
       description: "탭 변경 핸들러",
     },
   },
+  args: {
+    onChange: () => {},
+  },
 } satisfies Meta<typeof Tabs>;
 
 export default meta;
@@ -81,7 +89,13 @@ export const AllVariants: Story = {
       <div style={{ display: "flex", flexDirection: "column", gap: "3rem" }}>
         {/* Underline */}
         <div>
-          <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+          <h3
+            style={{
+              margin: "0 0 1rem 0",
+              fontSize: "16px",
+              fontWeight: "600",
+            }}
+          >
             Underline
           </h3>
           <Tabs
@@ -94,7 +108,13 @@ export const AllVariants: Story = {
 
         {/* Box */}
         <div>
-          <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+          <h3
+            style={{
+              margin: "0 0 1rem 0",
+              fontSize: "16px",
+              fontWeight: "600",
+            }}
+          >
             Box
           </h3>
           <Tabs
@@ -107,7 +127,13 @@ export const AllVariants: Story = {
 
         {/* 아이콘 없는 버전 */}
         <div>
-          <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+          <h3
+            style={{
+              margin: "0 0 1rem 0",
+              fontSize: "16px",
+              fontWeight: "600",
+            }}
+          >
             Icon 없음
           </h3>
           <Tabs
@@ -142,39 +168,73 @@ export const UsageExample: Story = {
     const [activeTab, setActiveTab] = useState("overview");
 
     const TAB_ITEMS = [
-      { value: "overview", label: "Overview", icon: "layout-dashboard" as const },
+      {
+        value: "overview",
+        label: "Overview",
+        icon: "layout-dashboard" as const,
+      },
       { value: "settings", label: "Settings", icon: "settings" as const },
       { value: "members", label: "Members", icon: "users" as const },
-      { value: "logs", label: "Logs", icon: "file-text" as const, disabled: true },
+      {
+        value: "logs",
+        label: "Logs",
+        icon: "file-text" as const,
+        disabled: true,
+      },
     ];
 
     const CONTENT: Record<string, React.ReactNode> = {
       overview: (
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-          <div style={{ fontSize: "14px", fontWeight: "600" }}>프로젝트 개요</div>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
+        >
+          <div style={{ fontSize: "14px", fontWeight: "600" }}>
+            프로젝트 개요
+          </div>
           <div style={{ fontSize: "13px", color: "#6b7280" }}>
             ganjang_front 디자인 시스템 컴포넌트 라이브러리입니다.
           </div>
         </div>
       ),
       settings: (
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
+        >
           <div style={{ fontSize: "14px", fontWeight: "600" }}>설정</div>
-          <div style={{ fontSize: "13px", color: "#6b7280" }}>프로젝트 설정을 관리합니다.</div>
+          <div style={{ fontSize: "13px", color: "#6b7280" }}>
+            프로젝트 설정을 관리합니다.
+          </div>
         </div>
       ),
       members: (
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
+        >
           <div style={{ fontSize: "14px", fontWeight: "600" }}>팀원</div>
-          <div style={{ fontSize: "13px", color: "#6b7280" }}>팀원을 관리합니다.</div>
+          <div style={{ fontSize: "13px", color: "#6b7280" }}>
+            팀원을 관리합니다.
+          </div>
         </div>
       ),
     };
 
     return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "3rem", minWidth: "480px" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "3rem",
+          minWidth: "480px",
+        }}
+      >
         {/* Underline + 콘텐츠 */}
-        <div style={{ border: "1px solid #e5e7eb", borderRadius: "8px", overflow: "hidden" }}>
+        <div
+          style={{
+            border: "1px solid #e5e7eb",
+            borderRadius: "8px",
+            overflow: "hidden",
+          }}
+        >
           <Tabs
             items={TAB_ITEMS}
             value={activeTab}
@@ -182,22 +242,27 @@ export const UsageExample: Story = {
             onChange={setActiveTab}
             styleOverride={{ width: "100%" }}
           />
-          <div style={{ padding: "1.5rem" }}>
-            {CONTENT[activeTab] ?? null}
-          </div>
+          <div style={{ padding: "1.5rem" }}>{CONTENT[activeTab] ?? null}</div>
         </div>
 
         {/* Box */}
-        <div style={{ border: "1px solid #e5e7eb", borderRadius: "8px", padding: "1rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <div
+          style={{
+            border: "1px solid #e5e7eb",
+            borderRadius: "8px",
+            padding: "1rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+          }}
+        >
           <Tabs
             items={TAB_ITEMS.slice(0, 3)}
             value={activeTab}
             variant="box"
             onChange={setActiveTab}
           />
-          <div style={{ padding: "0.5rem" }}>
-            {CONTENT[activeTab] ?? null}
-          </div>
+          <div style={{ padding: "0.5rem" }}>{CONTENT[activeTab] ?? null}</div>
         </div>
       </div>
     );

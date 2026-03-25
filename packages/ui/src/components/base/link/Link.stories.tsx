@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Link from "@ui/components/base/link/Link";
+import Link from "./Link";
 
 const meta = {
   title: "Base/Link",
@@ -98,17 +98,46 @@ export const AllVariants: Story = {
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       {(["primary", "secondary"] as const).map((variant) => (
         <div key={variant}>
-          <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600", textTransform: "capitalize" }}>
+          <h3
+            style={{
+              margin: "0 0 1rem 0",
+              fontSize: "16px",
+              fontWeight: "600",
+              textTransform: "capitalize",
+            }}
+          >
             {variant}
           </h3>
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
+          >
             {(["underline", "standalone"] as const).map((linkStyle) => (
-              <div key={linkStyle} style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
-                <span style={{ fontSize: "12px", color: "#6b7280", width: "80px" }}>{linkStyle}</span>
-                <Link variant={variant} linkStyle={linkStyle} leadingIcon="heart" trailingIcon="chevron-right" href="#">
+              <div
+                key={linkStyle}
+                style={{ display: "flex", gap: "2rem", alignItems: "center" }}
+              >
+                <span
+                  style={{ fontSize: "12px", color: "#6b7280", width: "80px" }}
+                >
+                  {linkStyle}
+                </span>
+                <Link
+                  variant={variant}
+                  linkStyle={linkStyle}
+                  leadingIcon="heart"
+                  trailingIcon="chevron-right"
+                  href="#"
+                >
                   Label
                 </Link>
-                <Link variant={variant} linkStyle={linkStyle} leadingIcon="heart" trailingIcon="chevron-right" disabled href="#">
+                <Link
+                  variant={variant}
+                  linkStyle={linkStyle}
+                  leadingIcon="heart"
+                  trailingIcon="chevron-right"
+                  disabled
+                  href="#"
+                >
                   Label
                 </Link>
               </div>
@@ -143,7 +172,14 @@ export const UsageExample: Story = {
     href: "#",
   },
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", maxWidth: "360px" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "1.5rem",
+        maxWidth: "360px",
+      }}
+    >
       {/* 인라인 링크 */}
       <div
         style={{
@@ -190,7 +226,12 @@ export const UsageExample: Story = {
 
       {/* 외부 링크 */}
       <div style={{ display: "flex", gap: "1rem" }}>
-        <Link variant="primary" linkStyle="standalone" trailingIcon="chevron-right" href="#">
+        <Link
+          variant="primary"
+          linkStyle="standalone"
+          trailingIcon="chevron-right"
+          href="#"
+        >
           더 보기
         </Link>
         <Link

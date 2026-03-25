@@ -1,0 +1,178 @@
+// Figma 디자인 기반 Tabs 컴포넌트 스타일
+// Variant: box (border 박스), underline (하단 라인)
+// States: Default, Hover, Press, Focus, Disabled
+// Selected: ON / OFF
+// Height: 40px, padding: 8px 20px, font: 14px regular
+
+.tabs {
+  display: inline-flex;
+  align-items: stretch;
+  position: relative;
+
+  // ===================
+  // TAB ITEM 공통
+  // ===================
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-4, 4px);
+    padding: var(--spacing-8, 8px) var(--spacing-20, 20px);
+    height: 40px;
+
+    font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.2;
+    white-space: nowrap;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.15s ease, background-color 0.15s ease;
+
+    color: var(--text-secondary);                        // #1f2937
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--border-focus-ring);
+      border-radius: var(--border-radius-4);
+      z-index: 1;
+    }
+
+    &--disabled {
+      color: var(--text-disabled);                       // #6b7280
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    color: inherit;
+  }
+
+  &__label {
+    color: inherit;
+  }
+
+  // ===================
+  // BOX VARIANT
+  // 선택: border 박스, 파란 텍스트/아이콘
+  // ===================
+  &--box {
+    gap: var(--spacing-4, 4px);
+    padding: var(--spacing-4, 4px);
+    background-color: var(--bg-interactive-secondary-hovered); // #e5e7eb
+    border-radius: var(--border-radius-4);
+
+    .tabs__item {
+      border-radius: var(--border-radius-4);
+
+      // Hover (unselected)
+      &:hover:not(.tabs__item--selected):not(.tabs__item--disabled) {
+        background-color: var(--bg-interactive-secondary-pressed); // #d1d5db
+        color: var(--text-interactive-secondary-pressed);          // #1f2937
+      }
+
+      // Press
+      &:active:not(.tabs__item--selected):not(.tabs__item--disabled) {
+        background-color: var(--bg-interactive-secondary-pressed);
+        color: var(--text-interactive-secondary-pressed);
+      }
+
+      // Disabled
+      &--disabled {
+        background-color: var(--bg-disabled);                      // #d1d5db
+        color: var(--text-disabled);
+      }
+
+      // Selected
+      &--selected {
+        background-color: var(--bg-primary);                       // #ffffff
+        color: var(--text-interactive-primary);                    // #2563eb
+        border: 1.5px solid var(--border-interactive-primary);    // #2563eb
+        border-radius: var(--border-radius-4);
+
+        &:hover:not(.tabs__item--disabled) {
+          color: var(--text-interactive-primary-hovered);          // #1d4ed8
+          border-color: var(--border-interactive-primary-hovered); // #1d4ed8
+        }
+
+        &:active:not(.tabs__item--disabled) {
+          border-color: var(--border-interactive-primary-pressed); // #1e40af
+        }
+      }
+    }
+  }
+
+  // ===================
+  // UNDERLINE VARIANT
+  // 하단 border로 탭바 구분선, 선택: 파란 하단 라인 + 연파랑 bg
+  // ===================
+  &--underline {
+    border-bottom: 1.5px solid var(--border-secondary);           // #e5e7eb
+
+    .tabs__item {
+      position: relative;
+      margin-bottom: -1.5px; // border-bottom과 겹치게
+
+      // Hover (unselected)
+      &:hover:not(.tabs__item--selected):not(.tabs__item--disabled) {
+        background-color: var(--bg-interactive-secondary-hovered); // #e5e7eb
+        color: var(--text-interactive-primary-hovered);            // #1d4ed8
+      }
+
+      // Press
+      &:active:not(.tabs__item--selected):not(.tabs__item--disabled) {
+        background-color: var(--bg-interactive-selected-pressed);  // #bfdbfe
+        color: var(--text-interactive-secondary-pressed);          // #1f2937
+      }
+
+      // Selected
+      &--selected {
+        color: var(--text-interactive-primary);                    // #2563eb
+        background-color: var(--bg-interactive-selected-hovered);  // #dbeafe
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -1.5px;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background-color: var(--border-interactive-primary);     // #2563eb
+          border-radius: 1px 1px 0 0;
+        }
+
+        &:hover:not(.tabs__item--disabled) {
+          color: var(--text-interactive-primary-hovered);          // #1d4ed8
+          background-color: var(--bg-interactive-selected-hovered);
+
+          &::after {
+            background-color: var(--border-interactive-primary-hovered);
+          }
+        }
+
+        &:active:not(.tabs__item--disabled) {
+          background-color: var(--bg-interactive-selected-pressed); // #bfdbfe
+
+          &::after {
+            background-color: var(--border-interactive-primary-pressed);
+          }
+        }
+      }
+
+      // Disabled (selected)
+      &--disabled {
+        &.tabs__item--selected {
+          background-color: transparent;
+
+          &::after {
+            background-color: var(--border-disabled);
+          }
+        }
+      }
+    }
+  }
+}

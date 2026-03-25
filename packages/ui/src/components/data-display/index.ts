@@ -7,3 +7,6 @@ export type { BadgeProps } from "./badge";
 
 export { default as Chips } from "./chips";
 export type { ChipsProps } from "./chips";
+
+export { default as Carousel } from "./carousel";
+export type { CarouselProps, CarouselSlide } from "./carousel";

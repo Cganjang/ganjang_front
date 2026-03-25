@@ -1,0 +1,124 @@
+// Figma 디자인 기반 Carousel 컴포넌트 스타일
+// Arrow: sm(32px) / lg(40px), Default / Hover / Selected(파랑) / Disabled
+// Dot: Default(회색) / Hover / Selected(파랑)
+
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  // ===================
+  // TRACK & SLIDES
+  // ===================
+  &__track {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  &__slide {
+    display: none;
+    width: 100%;
+
+    &--active {
+      display: block;
+    }
+  }
+
+  // ===================
+  // ARROW
+  // Figma: sm=32px, lg=40px
+  // Default: bg=bg-interactive-secondary(#f3f4f6), icon=secondary
+  // Hover: bg=bg-interactive-secondary-hovered(#e5e7eb)
+  // Selected: bg=bg-interactive-primary(#2563eb), icon=white
+  // Disabled: bg=bg-disabled(#d1d5db), icon=disabled(#6b7280)
+  // ===================
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--border-radius-4, 4px);
+    background-color: var(--bg-interactive-primary);            // #2563eb (Default=filled)
+    color: var(--icon-interactive-inverse);                     // #ffffff
+    transition: background-color 0.15s ease, color 0.15s ease;
+    z-index: 1;
+    flex-shrink: 0;
+
+    &--sm { width: 32px; height: 32px; }
+    &--lg { width: 40px; height: 40px; }
+
+    &--prev { left: var(--spacing-8, 8px); }
+    &--next { right: var(--spacing-8, 8px); }
+
+    &:hover:not(.carousel__arrow--disabled) {
+      background-color: var(--bg-interactive-primary-hovered);  // #1d4ed8
+    }
+
+    &:active:not(.carousel__arrow--disabled) {
+      background-color: var(--bg-interactive-primary-pressed);  // #1e40af
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--border-focus-ring);
+    }
+
+    &--disabled {
+      background-color: var(--bg-disabled);                     // #d1d5db
+      color: var(--icon-disabled);                              // #6b7280
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+
+  // ===================
+  // INDICATOR
+  // ===================
+  &__indicator {
+    position: absolute;
+    bottom: var(--spacing-24, 24px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-8, 8px);
+    z-index: 1;
+  }
+
+  // ===================
+  // DOT
+  // Figma: 8×8px, circle
+  // Default: bg-interactive-secondary(#f3f4f6)
+  // Hover: bg-interactive-secondary-hovered(#e5e7eb)
+  // Selected: bg-interactive-primary(#2563eb)
+  // ===================
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--border-radius-circle, 99999px);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    background-color: var(--bg-interactive-secondary);          // #f3f4f6
+    transition: background-color 0.15s ease, transform 0.15s ease;
+
+    &:hover:not(.carousel__dot--selected) {
+      background-color: var(--bg-interactive-secondary-hovered); // #e5e7eb
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--border-focus-ring);
+    }
+
+    &--selected {
+      background-color: var(--bg-interactive-primary);           // #2563eb
+      cursor: default;
+    }
+  }
+}

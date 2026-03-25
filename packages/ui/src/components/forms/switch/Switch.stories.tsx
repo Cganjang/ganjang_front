@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Switch from "@ui/components/forms/switch/Switch";
+import Switch from "./Switch";
 
 const meta = {
   title: "Forms/Switch",
@@ -77,28 +77,73 @@ export const AllStates: Story = {
       {/* 아이콘 없음 */}
       <div>
         <h3
-          style={{ margin: "0 0 1rem 0", fontSize: "14px", fontWeight: "600", color: "#6b7280" }}
+          style={{
+            margin: "0 0 1rem 0",
+            fontSize: "14px",
+            fontWeight: "600",
+            color: "#6b7280",
+          }}
         >
           아이콘 없음 (IsIcon=OFF)
         </h3>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
+        >
           <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
-            <span style={{ width: "80px", fontSize: "13px", color: "#6b7280" }}>OFF</span>
+            <span style={{ width: "80px", fontSize: "13px", color: "#6b7280" }}>
+              OFF
+            </span>
             <Switch />
             <Switch disabled />
             <Switch error />
           </div>
           <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
-            <span style={{ width: "80px", fontSize: "13px", color: "#6b7280" }}>ON</span>
+            <span style={{ width: "80px", fontSize: "13px", color: "#6b7280" }}>
+              ON
+            </span>
             <Switch defaultChecked />
             <Switch defaultChecked disabled />
             <Switch defaultChecked error />
           </div>
-          <div style={{ display: "flex", gap: "1.5rem", alignItems: "center", marginTop: "0.25rem" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "1.5rem",
+              alignItems: "center",
+              marginTop: "0.25rem",
+            }}
+          >
             <span style={{ width: "80px" }} />
-            <span style={{ width: "48px", textAlign: "center", fontSize: "11px", color: "#9ca3af" }}>Default</span>
-            <span style={{ width: "48px", textAlign: "center", fontSize: "11px", color: "#9ca3af" }}>Disabled</span>
-            <span style={{ width: "48px", textAlign: "center", fontSize: "11px", color: "#9ca3af" }}>Error</span>
+            <span
+              style={{
+                width: "48px",
+                textAlign: "center",
+                fontSize: "11px",
+                color: "#9ca3af",
+              }}
+            >
+              Default
+            </span>
+            <span
+              style={{
+                width: "48px",
+                textAlign: "center",
+                fontSize: "11px",
+                color: "#9ca3af",
+              }}
+            >
+              Disabled
+            </span>
+            <span
+              style={{
+                width: "48px",
+                textAlign: "center",
+                fontSize: "11px",
+                color: "#9ca3af",
+              }}
+            >
+              Error
+            </span>
           </div>
         </div>
       </div>
@@ -106,28 +151,73 @@ export const AllStates: Story = {
       {/* 아이콘 있음 */}
       <div>
         <h3
-          style={{ margin: "0 0 1rem 0", fontSize: "14px", fontWeight: "600", color: "#6b7280" }}
+          style={{
+            margin: "0 0 1rem 0",
+            fontSize: "14px",
+            fontWeight: "600",
+            color: "#6b7280",
+          }}
         >
           아이콘 있음 (IsIcon=ON)
         </h3>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
+        >
           <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
-            <span style={{ width: "80px", fontSize: "13px", color: "#6b7280" }}>OFF</span>
+            <span style={{ width: "80px", fontSize: "13px", color: "#6b7280" }}>
+              OFF
+            </span>
             <Switch showIcon />
             <Switch showIcon disabled />
             <Switch showIcon error />
           </div>
           <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
-            <span style={{ width: "80px", fontSize: "13px", color: "#6b7280" }}>ON</span>
+            <span style={{ width: "80px", fontSize: "13px", color: "#6b7280" }}>
+              ON
+            </span>
             <Switch showIcon defaultChecked />
             <Switch showIcon defaultChecked disabled />
             <Switch showIcon defaultChecked error />
           </div>
-          <div style={{ display: "flex", gap: "1.5rem", alignItems: "center", marginTop: "0.25rem" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "1.5rem",
+              alignItems: "center",
+              marginTop: "0.25rem",
+            }}
+          >
             <span style={{ width: "80px" }} />
-            <span style={{ width: "48px", textAlign: "center", fontSize: "11px", color: "#9ca3af" }}>Default</span>
-            <span style={{ width: "48px", textAlign: "center", fontSize: "11px", color: "#9ca3af" }}>Disabled</span>
-            <span style={{ width: "48px", textAlign: "center", fontSize: "11px", color: "#9ca3af" }}>Error</span>
+            <span
+              style={{
+                width: "48px",
+                textAlign: "center",
+                fontSize: "11px",
+                color: "#9ca3af",
+              }}
+            >
+              Default
+            </span>
+            <span
+              style={{
+                width: "48px",
+                textAlign: "center",
+                fontSize: "11px",
+                color: "#9ca3af",
+              }}
+            >
+              Disabled
+            </span>
+            <span
+              style={{
+                width: "48px",
+                textAlign: "center",
+                fontSize: "11px",
+                color: "#9ca3af",
+              }}
+            >
+              Error
+            </span>
           </div>
         </div>
       </div>
@@ -142,22 +232,41 @@ export const LabelDirection: Story = {
     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
       <div>
         <h3
-          style={{ margin: "0 0 0.75rem 0", fontSize: "14px", fontWeight: "600", color: "#6b7280" }}
+          style={{
+            margin: "0 0 0.75rem 0",
+            fontSize: "14px",
+            fontWeight: "600",
+            color: "#6b7280",
+          }}
         >
           Label Right (기본)
         </h3>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-          <Switch label="Label" labelDirection="right" defaultChecked showIcon />
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
+        >
+          <Switch
+            label="Label"
+            labelDirection="right"
+            defaultChecked
+            showIcon
+          />
           <Switch label="Label" labelDirection="right" showIcon />
         </div>
       </div>
       <div>
         <h3
-          style={{ margin: "0 0 0.75rem 0", fontSize: "14px", fontWeight: "600", color: "#6b7280" }}
+          style={{
+            margin: "0 0 0.75rem 0",
+            fontSize: "14px",
+            fontWeight: "600",
+            color: "#6b7280",
+          }}
         >
           Label Left
         </h3>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
+        >
           <Switch label="Label" labelDirection="left" defaultChecked showIcon />
           <Switch label="Label" labelDirection="left" showIcon />
         </div>
@@ -218,7 +327,9 @@ export const UsageExample: Story = {
           >
             설정
           </h3>
-          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+          >
             <div
               style={{
                 display: "flex",
@@ -227,12 +338,22 @@ export const UsageExample: Story = {
               }}
             >
               <div>
-                <div style={{ fontSize: "14px", fontWeight: "500" }}>다크 모드</div>
-                <div style={{ fontSize: "12px", color: "#6b7280" }}>어두운 테마를 사용합니다</div>
+                <div style={{ fontSize: "14px", fontWeight: "500" }}>
+                  다크 모드
+                </div>
+                <div style={{ fontSize: "12px", color: "#6b7280" }}>
+                  어두운 테마를 사용합니다
+                </div>
               </div>
               <Switch checked={darkMode} onChange={setDarkMode} showIcon />
             </div>
-            <hr style={{ border: "none", borderTop: "1px solid #f3f4f6", margin: 0 }} />
+            <hr
+              style={{
+                border: "none",
+                borderTop: "1px solid #f3f4f6",
+                margin: 0,
+              }}
+            />
             <div
               style={{
                 display: "flex",
@@ -242,11 +363,23 @@ export const UsageExample: Story = {
             >
               <div>
                 <div style={{ fontSize: "14px", fontWeight: "500" }}>알림</div>
-                <div style={{ fontSize: "12px", color: "#6b7280" }}>푸시 알림을 받습니다</div>
+                <div style={{ fontSize: "12px", color: "#6b7280" }}>
+                  푸시 알림을 받습니다
+                </div>
               </div>
-              <Switch checked={notifications} onChange={setNotifications} showIcon />
+              <Switch
+                checked={notifications}
+                onChange={setNotifications}
+                showIcon
+              />
             </div>
-            <hr style={{ border: "none", borderTop: "1px solid #f3f4f6", margin: 0 }} />
+            <hr
+              style={{
+                border: "none",
+                borderTop: "1px solid #f3f4f6",
+                margin: 0,
+              }}
+            />
             <div
               style={{
                 display: "flex",
@@ -255,12 +388,22 @@ export const UsageExample: Story = {
               }}
             >
               <div>
-                <div style={{ fontSize: "14px", fontWeight: "500" }}>자동 저장</div>
-                <div style={{ fontSize: "12px", color: "#6b7280" }}>변경사항을 자동 저장합니다</div>
+                <div style={{ fontSize: "14px", fontWeight: "500" }}>
+                  자동 저장
+                </div>
+                <div style={{ fontSize: "12px", color: "#6b7280" }}>
+                  변경사항을 자동 저장합니다
+                </div>
               </div>
               <Switch checked={autoSave} onChange={setAutoSave} />
             </div>
-            <hr style={{ border: "none", borderTop: "1px solid #f3f4f6", margin: 0 }} />
+            <hr
+              style={{
+                border: "none",
+                borderTop: "1px solid #f3f4f6",
+                margin: 0,
+              }}
+            />
             <div
               style={{
                 display: "flex",
@@ -269,8 +412,18 @@ export const UsageExample: Story = {
               }}
             >
               <div>
-                <div style={{ fontSize: "14px", fontWeight: "500", color: "#6b7280" }}>분석 데이터</div>
-                <div style={{ fontSize: "12px", color: "#9ca3af" }}>사용 불가</div>
+                <div
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: "500",
+                    color: "#6b7280",
+                  }}
+                >
+                  분석 데이터
+                </div>
+                <div style={{ fontSize: "12px", color: "#9ca3af" }}>
+                  사용 불가
+                </div>
               </div>
               <Switch disabled showIcon />
             </div>

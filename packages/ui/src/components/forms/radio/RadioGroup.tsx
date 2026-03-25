@@ -1,5 +1,5 @@
 import React from "react";
-import type { RadioProps } from "@ui/components/forms/radio/Radio";
+import type { RadioProps } from "./Radio";
 import "./Radio.scss";
 
 export interface RadioGroupProps {

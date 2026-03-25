@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Chips from "@ui/components/data-display/chips/Chips";
+import Chips from "./Chips";
 
 const meta = {
   title: "Data Display/Chips",
@@ -101,17 +101,29 @@ export const AllVariants: Story = {
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       {/* Default Chip — Selected=False / Selected=True */}
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
           Chip (Default)
         </h3>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-          <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
-            <span style={{ fontSize: "12px", color: "#6b7280", width: "80px" }}>Unselected</span>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
+        >
+          <div
+            style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}
+          >
+            <span style={{ fontSize: "12px", color: "#6b7280", width: "80px" }}>
+              Unselected
+            </span>
             <Chips label="Label" leadingIcon="map-pin" />
             <Chips label="Label" leadingIcon="map-pin" disabled />
           </div>
-          <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
-            <span style={{ fontSize: "12px", color: "#6b7280", width: "80px" }}>Selected</span>
+          <div
+            style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}
+          >
+            <span style={{ fontSize: "12px", color: "#6b7280", width: "80px" }}>
+              Selected
+            </span>
             <Chips label="Label" leadingIcon="map-pin" selected />
             <Chips label="Label" leadingIcon="map-pin" selected disabled />
           </div>
@@ -120,15 +132,40 @@ export const AllVariants: Story = {
 
       {/* Status Chip — filled × transparent × outline */}
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
           Status Chip
         </h3>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
+        >
           {(["filled", "transparent", "outline"] as const).map((sv) => (
-            <div key={sv} style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
-              <span style={{ fontSize: "12px", color: "#6b7280", width: "80px" }}>{sv}</span>
-              {(["information", "success", "error", "warning", "neutral"] as const).map((s) => (
-                <Chips key={s} variant="status" status={s} styleVariant={sv} label="status chip" />
+            <div
+              key={sv}
+              style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}
+            >
+              <span
+                style={{ fontSize: "12px", color: "#6b7280", width: "80px" }}
+              >
+                {sv}
+              </span>
+              {(
+                [
+                  "information",
+                  "success",
+                  "error",
+                  "warning",
+                  "neutral",
+                ] as const
+              ).map((s) => (
+                <Chips
+                  key={s}
+                  variant="status"
+                  status={s}
+                  styleVariant={sv}
+                  label="status chip"
+                />
               ))}
             </div>
           ))}
@@ -184,7 +221,14 @@ export const UsageExample: Story = {
       setChips((prev) => prev.filter((c) => c.id !== id));
 
     return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", minWidth: "320px" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "1.5rem",
+          minWidth: "320px",
+        }}
+      >
         {/* 필터 칩 */}
         <div
           style={{
@@ -193,7 +237,13 @@ export const UsageExample: Story = {
             borderRadius: "8px",
           }}
         >
-          <div style={{ fontSize: "13px", color: "#6b7280", marginBottom: "0.75rem" }}>
+          <div
+            style={{
+              fontSize: "13px",
+              color: "#6b7280",
+              marginBottom: "0.75rem",
+            }}
+          >
             지역 필터
           </div>
           <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
@@ -218,14 +268,40 @@ export const UsageExample: Story = {
             borderRadius: "8px",
           }}
         >
-          <div style={{ fontSize: "13px", color: "#6b7280", marginBottom: "0.75rem" }}>
+          <div
+            style={{
+              fontSize: "13px",
+              color: "#6b7280",
+              marginBottom: "0.75rem",
+            }}
+          >
             배포 상태
           </div>
           <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
-            <Chips variant="status" status="success" styleVariant="filled" label="배포 완료" />
-            <Chips variant="status" status="warning" styleVariant="filled" label="검토 중" />
-            <Chips variant="status" status="error" styleVariant="outline" label="배포 실패" />
-            <Chips variant="status" status="information" styleVariant="transparent" label="대기 중" />
+            <Chips
+              variant="status"
+              status="success"
+              styleVariant="filled"
+              label="배포 완료"
+            />
+            <Chips
+              variant="status"
+              status="warning"
+              styleVariant="filled"
+              label="검토 중"
+            />
+            <Chips
+              variant="status"
+              status="error"
+              styleVariant="outline"
+              label="배포 실패"
+            />
+            <Chips
+              variant="status"
+              status="information"
+              styleVariant="transparent"
+              label="대기 중"
+            />
           </div>
         </div>
       </div>

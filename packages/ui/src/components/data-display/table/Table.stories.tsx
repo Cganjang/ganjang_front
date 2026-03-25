@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { type ColumnDef } from "@tanstack/react-table";
-import Avatar from "@ui/components/data-display/avatar/Avatar";
-import Chips from "@ui/components/data-display/chips/Chips";
-import Table from "@ui/components/data-display/table/Table";
-import Icon from "@ui/components/base/icon/Icon";
+import Avatar from "../avatar/Avatar";
+import Chips from "../chips/Chips";
+import Table from "./Table";
+import type { TableProps } from "./Table";
+import Icon from "../../base/icon/Icon";
 
 // ===================
 // 샘플 데이터 타입
@@ -21,28 +22,139 @@ interface User {
 }
 
 const USERS: User[] = [
-  { id: 1, name: "오민준", school: "경희대학교", gender: "남자", email: "ha345@kakao.com", phone: "010-8901-4567", address: "경기도 광명시", status: "배송완료" },
-  { id: 2, name: "박서아", school: "안동대학교", gender: "남자", email: "seo567@gmail.com", phone: "010-7890-3456", address: "경기도 남양주시", status: "배송 준비중" },
-  { id: 3, name: "이서현", school: "단국대학교", gender: "여자", email: "sohn678@gmail.com", phone: "010-5678-9012", address: "경기도 의정부시", status: "배송 준비중" },
-  { id: 4, name: "최수아", school: "숭실대학교", gender: "여자", email: "lee@gmail.com", phone: "010-6789-0123", address: "부산광역시 해운대구", status: "배송 준비중" },
-  { id: 5, name: "윤수민", school: "한남대학교", gender: "남자", email: "song345@gmail.com", phone: "010-4567-8901", address: "충청남도 천안시", status: "배송 준비중" },
-  { id: 6, name: "김민재", school: "영지대학교", gender: "남자", email: "sohn678@gmail.com", phone: "010-5678-1234", address: "경상북도 경주시", status: "배송 준비중" },
-  { id: 7, name: "오예린", school: "한양대학교", gender: "여자", email: "lee@gmail.com", phone: "010-4567-8901", address: "경기도 평택시", status: "배송 준비중" },
-  { id: 8, name: "이준호", school: "덕어여자대학교", gender: "여자", email: "ahn890@naver.com", phone: "010-3456-7890", address: "경기도 안양시", status: "반품 요청" },
-  { id: 9, name: "박지훈", school: "서울대학교", gender: "남자", email: "park123@gmail.com", phone: "010-1234-5678", address: "서울시 관악구", status: "배송완료" },
-  { id: 10, name: "김채원", school: "연세대학교", gender: "여자", email: "kim456@naver.com", phone: "010-9876-5432", address: "서울시 서대문구", status: "배송완료" },
-  { id: 11, name: "이도현", school: "고려대학교", gender: "남자", email: "lee789@gmail.com", phone: "010-2345-6789", address: "서울시 성북구", status: "배송 준비중" },
-  { id: 12, name: "최유나", school: "이화여자대학교", gender: "여자", email: "choi012@gmail.com", phone: "010-3456-7890", address: "서울시 마포구", status: "반품 요청" },
+  {
+    id: 1,
+    name: "오민준",
+    school: "경희대학교",
+    gender: "남자",
+    email: "ha345@kakao.com",
+    phone: "010-8901-4567",
+    address: "경기도 광명시",
+    status: "배송완료",
+  },
+  {
+    id: 2,
+    name: "박서아",
+    school: "안동대학교",
+    gender: "남자",
+    email: "seo567@gmail.com",
+    phone: "010-7890-3456",
+    address: "경기도 남양주시",
+    status: "배송 준비중",
+  },
+  {
+    id: 3,
+    name: "이서현",
+    school: "단국대학교",
+    gender: "여자",
+    email: "sohn678@gmail.com",
+    phone: "010-5678-9012",
+    address: "경기도 의정부시",
+    status: "배송 준비중",
+  },
+  {
+    id: 4,
+    name: "최수아",
+    school: "숭실대학교",
+    gender: "여자",
+    email: "lee@gmail.com",
+    phone: "010-6789-0123",
+    address: "부산광역시 해운대구",
+    status: "배송 준비중",
+  },
+  {
+    id: 5,
+    name: "윤수민",
+    school: "한남대학교",
+    gender: "남자",
+    email: "song345@gmail.com",
+    phone: "010-4567-8901",
+    address: "충청남도 천안시",
+    status: "배송 준비중",
+  },
+  {
+    id: 6,
+    name: "김민재",
+    school: "영지대학교",
+    gender: "남자",
+    email: "sohn678@gmail.com",
+    phone: "010-5678-1234",
+    address: "경상북도 경주시",
+    status: "배송 준비중",
+  },
+  {
+    id: 7,
+    name: "오예린",
+    school: "한양대학교",
+    gender: "여자",
+    email: "lee@gmail.com",
+    phone: "010-4567-8901",
+    address: "경기도 평택시",
+    status: "배송 준비중",
+  },
+  {
+    id: 8,
+    name: "이준호",
+    school: "덕어여자대학교",
+    gender: "여자",
+    email: "ahn890@naver.com",
+    phone: "010-3456-7890",
+    address: "경기도 안양시",
+    status: "반품 요청",
+  },
+  {
+    id: 9,
+    name: "박지훈",
+    school: "서울대학교",
+    gender: "남자",
+    email: "park123@gmail.com",
+    phone: "010-1234-5678",
+    address: "서울시 관악구",
+    status: "배송완료",
+  },
+  {
+    id: 10,
+    name: "김채원",
+    school: "연세대학교",
+    gender: "여자",
+    email: "kim456@naver.com",
+    phone: "010-9876-5432",
+    address: "서울시 서대문구",
+    status: "배송완료",
+  },
+  {
+    id: 11,
+    name: "이도현",
+    school: "고려대학교",
+    gender: "남자",
+    email: "lee789@gmail.com",
+    phone: "010-2345-6789",
+    address: "서울시 성북구",
+    status: "배송 준비중",
+  },
+  {
+    id: 12,
+    name: "최유나",
+    school: "이화여자대학교",
+    gender: "여자",
+    email: "choi012@gmail.com",
+    phone: "010-3456-7890",
+    address: "서울시 마포구",
+    status: "반품 요청",
+  },
 ];
 
 // ===================
 // 상태 → Chips props 매핑
 // ===================
 const statusChipsProps = (status: User["status"]) => {
-  const map: Record<User["status"], { status: "success" | "information" | "error"; label: string }> = {
-    "배송완료":   { status: "success",     label: "배송완료" },
+  const map: Record<
+    User["status"],
+    { status: "success" | "information" | "error"; label: string }
+  > = {
+    배송완료: { status: "success", label: "배송완료" },
     "배송 준비중": { status: "information", label: "배송 준비중" },
-    "반품 요청":  { status: "error",       label: "반품 요청" },
+    "반품 요청": { status: "error", label: "반품 요청" },
   };
   return map[status];
 };
@@ -60,7 +172,9 @@ const userColumns: ColumnDef<User, unknown>[] = [
         <Avatar type="initial" size="sm" initial={row.original.name[0]} />
         <div className="table-cell-profile__text">
           <span className="table-cell-profile__name">{row.original.name}</span>
-          <span className="table-cell-profile__desc">{row.original.school}</span>
+          <span className="table-cell-profile__desc">
+            {row.original.school}
+          </span>
         </div>
       </div>
     ),
@@ -111,15 +225,35 @@ const actionColumns: ColumnDef<User, unknown>[] = [
     cell: ({ row }) => (
       <div className="table-cell-action">
         <button
-          style={{ background: "none", border: "none", cursor: "pointer", padding: "4px", borderRadius: "4px", color: "#4b5563" }}
-          onClick={(e) => { e.stopPropagation(); alert(`편집: ${row.original.name}`); }}
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            padding: "4px",
+            borderRadius: "4px",
+            color: "#4b5563",
+          }}
+          onClick={(e) => {
+            e.stopPropagation();
+            alert(`편집: ${row.original.name}`);
+          }}
           aria-label="편집"
         >
           <Icon name="pencil" size={16} />
         </button>
         <button
-          style={{ background: "none", border: "none", cursor: "pointer", padding: "4px", borderRadius: "4px", color: "#dc2626" }}
-          onClick={(e) => { e.stopPropagation(); alert(`삭제: ${row.original.name}`); }}
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            padding: "4px",
+            borderRadius: "4px",
+            color: "#dc2626",
+          }}
+          onClick={(e) => {
+            e.stopPropagation();
+            alert(`삭제: ${row.original.name}`);
+          }}
           aria-label="삭제"
         >
           <Icon name="trash-2" size={16} />
@@ -134,7 +268,7 @@ const actionColumns: ColumnDef<User, unknown>[] = [
 // ===================
 const meta = {
   title: "Data Display/Table",
-  component: Table,
+  component: Table as React.ComponentType<TableProps<User>>,
   parameters: {
     layout: "padded",
     docs: {
@@ -189,7 +323,7 @@ TanStack Table 기반의 데이터 테이블 컴포넌트입니다.
     onRowClick: { action: "row clicked" },
     onRowSelectionChange: { action: "selection changed" },
   },
-} satisfies Meta<typeof Table>;
+} as Meta<TableProps<User>>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -259,10 +393,20 @@ export const UsageExample: Story = {
 
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <h3 style={{ margin: 0, fontSize: "16px", fontWeight: 600 }}>사용자 목록</h3>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <h3 style={{ margin: 0, fontSize: "16px", fontWeight: 600 }}>
+            사용자 목록
+          </h3>
           {selected.length > 0 && (
-            <span style={{ fontSize: "13px", color: "#2563eb", fontWeight: 500 }}>
+            <span
+              style={{ fontSize: "13px", color: "#2563eb", fontWeight: 500 }}
+            >
               {selected.length}명 선택됨
             </span>
           )}

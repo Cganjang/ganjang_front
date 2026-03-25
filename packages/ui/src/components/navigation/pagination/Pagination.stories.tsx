@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Pagination from "@ui/components/navigation/pagination/Pagination";
+import Pagination from "./Pagination";
 
 const meta = {
   title: "Navigation/Pagination",
@@ -47,6 +47,9 @@ Figma 디자인 시스템을 기반으로 제작되었습니다.
       description: "페이지 변경 핸들러",
     },
   },
+  args: {
+    onChange: () => {},
+  },
 } satisfies Meta<typeof Pagination>;
 
 export default meta;
@@ -78,7 +81,13 @@ export const AllVariants: Story = {
       <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
         {/* 일반형 — 전체 페이지 표시 */}
         <div>
-          <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+          <h3
+            style={{
+              margin: "0 0 1rem 0",
+              fontSize: "16px",
+              fontWeight: "600",
+            }}
+          >
             일반형 (1 / 7)
           </h3>
           <Pagination
@@ -91,7 +100,13 @@ export const AllVariants: Story = {
 
         {/* Ellipsis형 — … 표시 */}
         <div>
-          <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+          <h3
+            style={{
+              margin: "0 0 1rem 0",
+              fontSize: "16px",
+              fontWeight: "600",
+            }}
+          >
             Ellipsis형 (4 / 20)
           </h3>
           <Pagination
@@ -104,7 +119,13 @@ export const AllVariants: Story = {
 
         {/* 처음/끝 버튼 없음 */}
         <div>
-          <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+          <h3
+            style={{
+              margin: "0 0 1rem 0",
+              fontSize: "16px",
+              fontWeight: "600",
+            }}
+          >
             showFirstLast=false
           </h3>
           <Pagination
@@ -151,7 +172,14 @@ export const UsageExample: Story = {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
     return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", minWidth: "480px" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "1.5rem",
+          minWidth: "480px",
+        }}
+      >
         {/* 테이블 영역 */}
         <div
           style={{

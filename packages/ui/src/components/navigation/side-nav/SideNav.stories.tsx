@@ -1,32 +1,37 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import SideNav from "@ui/components/navigation/side-nav/SideNav";
+import SideNav from "./SideNav";
 
 const SAMPLE_GROUPS = [
   {
     items: [
-      { value: "home",      label: "홈",      icon: "home"        as const },
-      { value: "orders",    label: "구매목록", icon: "inbox"       as const },
-      { value: "products",  label: "상품",     icon: "tag"         as const },
-      { value: "customers", label: "고객",     icon: "user"        as const, badge: "10+" },
-      { value: "analytics", label: "분석",     icon: "bar-chart-2" as const },
-      { value: "marketing", label: "마케팅",   icon: "target"      as const },
+      { value: "home", label: "홈", icon: "home" as const },
+      { value: "orders", label: "구매목록", icon: "inbox" as const },
+      { value: "products", label: "상품", icon: "tag" as const },
+      {
+        value: "customers",
+        label: "고객",
+        icon: "user" as const,
+        badge: "10+",
+      },
+      { value: "analytics", label: "분석", icon: "bar-chart-2" as const },
+      { value: "marketing", label: "마케팅", icon: "target" as const },
     ],
   },
   {
     heading: "세일즈 채널",
     items: [
       { value: "instagram", label: "인스타그램", icon: "instagram" as const },
-      { value: "facebook",  label: "페이스북",   icon: "facebook"  as const },
-      { value: "youtube",   label: "유투브",     icon: "youtube"   as const },
-      { value: "twitter",   label: "트위터",     icon: "twitter"   as const },
+      { value: "facebook", label: "페이스북", icon: "facebook" as const },
+      { value: "youtube", label: "유투브", icon: "youtube" as const },
+      { value: "twitter", label: "트위터", icon: "twitter" as const },
     ],
   },
   {
     heading: "탭",
     items: [
-      { value: "add-app",   label: "앱 추가하기", icon: "plus-circle" as const },
-      { value: "settings",  label: "앱세팅",      icon: "settings"    as const },
+      { value: "add-app", label: "앱 추가하기", icon: "plus-circle" as const },
+      { value: "settings", label: "앱세팅", icon: "settings" as const },
     ],
   },
 ];
@@ -64,6 +69,9 @@ Figma 디자인 시스템을 기반으로 제작되었습니다.
       description: "메뉴 변경 핸들러",
     },
   },
+  args: {
+    onChange: () => {},
+  },
 } satisfies Meta<typeof SideNav>;
 
 export default meta;
@@ -92,37 +100,73 @@ export const AllVariants: Story = {
       <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}>
         {/* Full */}
         <div>
-          <div style={{ fontSize: "12px", color: "#6b7280", marginBottom: "0.5rem" }}>full</div>
+          <div
+            style={{
+              fontSize: "12px",
+              color: "#6b7280",
+              marginBottom: "0.5rem",
+            }}
+          >
+            full
+          </div>
           <SideNav
             groups={SAMPLE_GROUPS}
             value={value}
             type="full"
             onChange={setValue}
-            styleOverride={{ border: "1px solid #e5e7eb", borderRadius: "8px", overflow: "hidden" }}
+            styleOverride={{
+              border: "1px solid #e5e7eb",
+              borderRadius: "8px",
+              overflow: "hidden",
+            }}
           />
         </div>
 
         {/* Icon only */}
         <div>
-          <div style={{ fontSize: "12px", color: "#6b7280", marginBottom: "0.5rem" }}>icon-only</div>
+          <div
+            style={{
+              fontSize: "12px",
+              color: "#6b7280",
+              marginBottom: "0.5rem",
+            }}
+          >
+            icon-only
+          </div>
           <SideNav
             groups={SAMPLE_GROUPS}
             value={value}
             type="icon-only"
             onChange={setValue}
-            styleOverride={{ border: "1px solid #e5e7eb", borderRadius: "8px", overflow: "hidden" }}
+            styleOverride={{
+              border: "1px solid #e5e7eb",
+              borderRadius: "8px",
+              overflow: "hidden",
+            }}
           />
         </div>
 
         {/* Icon & Label */}
         <div>
-          <div style={{ fontSize: "12px", color: "#6b7280", marginBottom: "0.5rem" }}>icon-label</div>
+          <div
+            style={{
+              fontSize: "12px",
+              color: "#6b7280",
+              marginBottom: "0.5rem",
+            }}
+          >
+            icon-label
+          </div>
           <SideNav
             groups={SAMPLE_GROUPS}
             value={value}
             type="icon-label"
             onChange={setValue}
-            styleOverride={{ border: "1px solid #e5e7eb", borderRadius: "8px", overflow: "hidden" }}
+            styleOverride={{
+              border: "1px solid #e5e7eb",
+              borderRadius: "8px",
+              overflow: "hidden",
+            }}
           />
         </div>
       </div>
@@ -136,11 +180,21 @@ export const WithDisabled: Story = {
     groups: [
       {
         items: [
-          { value: "home",      label: "홈",      icon: "home"        as const },
-          { value: "orders",    label: "구매목록", icon: "inbox"       as const },
-          { value: "products",  label: "상품",     icon: "tag"         as const, disabled: true },
-          { value: "customers", label: "고객",     icon: "user"        as const },
-          { value: "analytics", label: "분석",     icon: "bar-chart-2" as const, disabled: true },
+          { value: "home", label: "홈", icon: "home" as const },
+          { value: "orders", label: "구매목록", icon: "inbox" as const },
+          {
+            value: "products",
+            label: "상품",
+            icon: "tag" as const,
+            disabled: true,
+          },
+          { value: "customers", label: "고객", icon: "user" as const },
+          {
+            value: "analytics",
+            label: "분석",
+            icon: "bar-chart-2" as const,
+            disabled: true,
+          },
         ],
       },
     ],
@@ -194,7 +248,14 @@ export const UsageExample: Story = {
         />
 
         {/* 콘텐츠 영역 */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", borderLeft: "1px solid #e5e7eb" }}>
+        <div
+          style={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            borderLeft: "1px solid #e5e7eb",
+          }}
+        >
           {/* 헤더 */}
           <div
             style={{

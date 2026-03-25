@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Spinner from "@ui/components/feedback/spinner/Spinner";
+import Spinner from "./Spinner";
 
 const meta = {
   title: "Feedback/Spinner",
@@ -61,14 +61,27 @@ export const AllVariants: Story = {
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       {(["primary", "secondary"] as const).map((type) => (
         <div key={type}>
-          <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600", textTransform: "capitalize" }}>
+          <h3
+            style={{
+              margin: "0 0 1rem 0",
+              fontSize: "16px",
+              fontWeight: "600",
+              textTransform: "capitalize",
+            }}
+          >
             {type}
           </h3>
           <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
             {(["sm", "md", "lg", "xl"] as const).map((size) => (
               <div key={size} style={{ textAlign: "center" }}>
                 <Spinner type={type} size={size} />
-                <div style={{ marginTop: "8px", fontSize: "12px", color: "#6b7280" }}>
+                <div
+                  style={{
+                    marginTop: "8px",
+                    fontSize: "12px",
+                    color: "#6b7280",
+                  }}
+                >
                   {size}
                 </div>
               </div>
@@ -87,7 +100,14 @@ export const UsageExample: Story = {
     type: "primary",
   },
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", minWidth: "280px" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "1.5rem",
+        minWidth: "280px",
+      }}
+    >
       {/* 버튼 내 로딩 */}
       <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
         <Spinner size="sm" type="primary" />
@@ -107,7 +127,9 @@ export const UsageExample: Story = {
         }}
       >
         <Spinner size="lg" type="primary" />
-        <span style={{ fontSize: "14px", color: "#6b7280" }}>데이터를 불러오는 중입니다</span>
+        <span style={{ fontSize: "14px", color: "#6b7280" }}>
+          데이터를 불러오는 중입니다
+        </span>
       </div>
 
       {/* Secondary — 어두운 배경 시나리오 */}

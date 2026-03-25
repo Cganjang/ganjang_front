@@ -11,9 +11,9 @@ import {
   type RowSelectionState,
   type ColumnFiltersState,
 } from "@tanstack/react-table";
-import Icon from "@ui/components/base/icon/Icon";
-import Checkbox from "@ui/components/forms/checkbox/Checkbox";
-import Pagination from "@ui/components/navigation/pagination/Pagination";
+import Icon from "../../base/icon/Icon";
+import Checkbox from "../../forms/checkbox/Checkbox";
+import Pagination from "../../navigation/pagination/Pagination";
 import "./Table.scss";
 
 export interface TableProps<TData> {

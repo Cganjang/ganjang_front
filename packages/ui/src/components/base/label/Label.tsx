@@ -1,6 +1,6 @@
 import React from "react";
 import "./Label.scss";
-import Icon from "@ui/components/base/icon/Icon";
+import Icon from "../icon/Icon";
 
 export interface LabelProps {
   /**
@@ -86,7 +86,9 @@ const Label: React.FC<LabelProps> = ({
       )}
 
       {type === "required" && (
-        <span className="label__required" aria-hidden="true">*</span>
+        <span className="label__required" aria-hidden="true">
+          *
+        </span>
       )}
 
       {isInfoIcon && (

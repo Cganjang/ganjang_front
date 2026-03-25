@@ -1,8 +1,8 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Button from "@ui/components/base/button/Button";
-import Icon from "@ui/components/base/icon/Icon";
-import Avatar from "@ui/components/data-display/avatar/Avatar";
+import Button from "./Button";
+import Icon from "../icon/Icon";
+import Avatar from "../../data-display/avatar/Avatar";
 
 const meta = {
   title: "Base/Button",
@@ -278,21 +278,21 @@ export const WithLeadingIcon: Story = {
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
         <Button variant="filled" type="primary">
-          <Icon name="check" size="sm" />
+          <Icon name="check" />
           저장
         </Button>
         <Button variant="outline" type="secondary">
-          <Icon name="chevron-right" size="sm" />
+          <Icon name="chevron-right" />
           다음
         </Button>
         <Button variant="filled" type="destructive">
-          <Icon name="x" size="sm" />
+          <Icon name="x" />
           삭제
         </Button>
       </div>
       <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
         <Button variant="filled" type="primary" disabled>
-          <Icon name="check" size="sm" />
+          <Icon name="check" />
           저장 (비활성)
         </Button>
         <Button variant="filled" type="primary" loading>

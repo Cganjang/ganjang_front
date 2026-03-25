@@ -1,8 +1,14 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Badge from "@ui/components/data-display/badge/Badge";
+import Badge from "./Badge";
 
-const STATUSES = ["default", "information", "warning", "success", "important"] as const;
+const STATUSES = [
+  "default",
+  "information",
+  "warning",
+  "success",
+  "important",
+] as const;
 
 const meta = {
   title: "Data Display/Badge",
@@ -70,12 +76,20 @@ export const AllVariants: Story = {
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       {/* Dot */}
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>Dot</h3>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
+          Dot
+        </h3>
         <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
           {STATUSES.map((status) => (
             <div key={status} style={{ textAlign: "center" }}>
               <Badge type="dot" status={status} />
-              <div style={{ fontSize: "11px", marginTop: "6px", color: "#6b7280" }}>{status}</div>
+              <div
+                style={{ fontSize: "11px", marginTop: "6px", color: "#6b7280" }}
+              >
+                {status}
+              </div>
             </div>
           ))}
         </div>
@@ -83,12 +97,20 @@ export const AllVariants: Story = {
 
       {/* Number */}
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>Number</h3>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
+          Number
+        </h3>
         <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
           {STATUSES.map((status) => (
             <div key={status} style={{ textAlign: "center" }}>
               <Badge type="number" status={status} content={999} />
-              <div style={{ fontSize: "11px", marginTop: "6px", color: "#6b7280" }}>{status}</div>
+              <div
+                style={{ fontSize: "11px", marginTop: "6px", color: "#6b7280" }}
+              >
+                {status}
+              </div>
             </div>
           ))}
         </div>
@@ -96,12 +118,20 @@ export const AllVariants: Story = {
 
       {/* Letter */}
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>Letter</h3>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
+          Letter
+        </h3>
         <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
           {STATUSES.map((status) => (
             <div key={status} style={{ textAlign: "center" }}>
               <Badge type="letter" status={status} content="999+" />
-              <div style={{ fontSize: "11px", marginTop: "6px", color: "#6b7280" }}>{status}</div>
+              <div
+                style={{ fontSize: "11px", marginTop: "6px", color: "#6b7280" }}
+              >
+                {status}
+              </div>
             </div>
           ))}
         </div>
@@ -134,13 +164,40 @@ export const UsageExample: Story = {
         }}
       >
         {[
-          { label: "메시지", type: "number" as const, status: "important" as const, content: 3 },
-          { label: "알림", type: "number" as const, status: "information" as const, content: 1234 },
+          {
+            label: "메시지",
+            type: "number" as const,
+            status: "important" as const,
+            content: 3,
+          },
+          {
+            label: "알림",
+            type: "number" as const,
+            status: "information" as const,
+            content: 1234,
+          },
           { label: "온라인", type: "dot" as const, status: "success" as const },
-          { label: "새 기능", type: "letter" as const, status: "information" as const, content: "NEW" },
-          { label: "점검 예정", type: "letter" as const, status: "warning" as const, content: "예정" },
+          {
+            label: "새 기능",
+            type: "letter" as const,
+            status: "information" as const,
+            content: "NEW",
+          },
+          {
+            label: "점검 예정",
+            type: "letter" as const,
+            status: "warning" as const,
+            content: "예정",
+          },
         ].map(({ label, ...props }) => (
-          <div key={label} style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div
+            key={label}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
             <span style={{ fontSize: "14px" }}>{label}</span>
             <Badge {...props} />
           </div>

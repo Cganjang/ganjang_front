@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Icon from "@ui/components/base/icon/Icon";
+import Icon from "./Icon";
 
 const meta = {
   title: "Base/Icon",
@@ -69,7 +69,9 @@ export const Sizes: Story = {
         <div key={size} style={{ textAlign: "center" }}>
           <Icon name="star" size={size} />
           <div style={{ fontSize: "12px", marginTop: "6px", color: "#6b7280" }}>
-            {size} ({size === "sm" ? 16 : size === "md" ? 24 : size === "lg" ? 32 : 48}px)
+            {size} (
+            {size === "sm" ? 16 : size === "md" ? 24 : size === "lg" ? 32 : 48}
+            px)
           </div>
         </div>
       ))}
@@ -106,21 +108,73 @@ export const CommonIcons: Story = {
   },
   render: () => {
     const icons = [
-      "plus", "minus", "x", "check", "search", "settings",
-      "trash-2", "edit-2", "copy", "download", "upload", "share-2",
-      "arrow-left", "arrow-right", "arrow-up", "arrow-down",
-      "chevron-left", "chevron-right", "chevron-up", "chevron-down",
-      "info", "alert-circle", "alert-triangle", "check-circle",
-      "user", "users", "mail", "phone", "calendar", "clock",
-      "folder", "file", "image", "link", "lock", "eye",
+      "plus",
+      "minus",
+      "x",
+      "check",
+      "search",
+      "settings",
+      "trash-2",
+      "edit-2",
+      "copy",
+      "download",
+      "upload",
+      "share-2",
+      "arrow-left",
+      "arrow-right",
+      "arrow-up",
+      "arrow-down",
+      "chevron-left",
+      "chevron-right",
+      "chevron-up",
+      "chevron-down",
+      "info",
+      "alert-circle",
+      "alert-triangle",
+      "check-circle",
+      "user",
+      "users",
+      "mail",
+      "phone",
+      "calendar",
+      "clock",
+      "folder",
+      "file",
+      "image",
+      "link",
+      "lock",
+      "eye",
     ] as const;
 
     return (
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "16px", maxWidth: "600px" }}>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "16px",
+          maxWidth: "600px",
+        }}
+      >
         {icons.map((name) => (
-          <div key={name} style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "72px" }}>
+          <div
+            key={name}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "72px",
+            }}
+          >
             <Icon name={name} size="md" />
-            <div style={{ fontSize: "10px", marginTop: "6px", color: "#6b7280", textAlign: "center", wordBreak: "break-all" }}>
+            <div
+              style={{
+                fontSize: "10px",
+                marginTop: "6px",
+                color: "#6b7280",
+                textAlign: "center",
+                wordBreak: "break-all",
+              }}
+            >
               {name}
             </div>
           </div>
@@ -153,7 +207,14 @@ export const UsageExample: Story = {
     size: "sm",
   },
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1rem", minWidth: "280px" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+        minWidth: "280px",
+      }}
+    >
       <div
         style={{
           display: "flex",
@@ -165,7 +226,9 @@ export const UsageExample: Story = {
         }}
       >
         <Icon name="search" size="sm" color="#6b7280" />
-        <span style={{ fontSize: "14px", color: "#9ca3af" }}>검색어를 입력하세요</span>
+        <span style={{ fontSize: "14px", color: "#9ca3af" }}>
+          검색어를 입력하세요
+        </span>
       </div>
 
       <div style={{ display: "flex", gap: "8px" }}>

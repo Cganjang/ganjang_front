@@ -1,5 +1,5 @@
 import React, { useId } from "react";
-import Icon from "@ui/components/base/icon/Icon";
+import Icon from "../../base/icon/Icon";
 import "./Switch.scss";
 
 export interface SwitchProps {

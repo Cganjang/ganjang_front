@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Header from "@ui/components/layout/header/Header";
+import Header from "./Header";
 
 const NAV_ITEMS = [
   { value: "label1", label: "Label" },
@@ -65,7 +65,8 @@ export const Default: Story = {
     navItems: NAV_ITEMS,
     activeNav: "label2",
     hasNotification: true,
-    userSrc: "https://images.unsplash.com/photo-1494790108755-2616b612b5c8?w=150",
+    userSrc:
+      "https://images.unsplash.com/photo-1494790108755-2616b612b5c8?w=150",
   },
 };
 
@@ -83,7 +84,9 @@ export const AllVariants: Story = {
       <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
         {/* 프로필 이미지 있는 경우 */}
         <div>
-          <div style={{ fontSize: "12px", color: "#6b7280", padding: "0 0 8px 0" }}>
+          <div
+            style={{ fontSize: "12px", color: "#6b7280", padding: "0 0 8px 0" }}
+          >
             With Profile Image + Notification
           </div>
           <Header
@@ -98,7 +101,9 @@ export const AllVariants: Story = {
 
         {/* 이니셜 아바타 */}
         <div>
-          <div style={{ fontSize: "12px", color: "#6b7280", padding: "0 0 8px 0" }}>
+          <div
+            style={{ fontSize: "12px", color: "#6b7280", padding: "0 0 8px 0" }}
+          >
             With Initial Avatar, No Notification
           </div>
           <Header
@@ -112,17 +117,21 @@ export const AllVariants: Story = {
 
         {/* 커스텀 로고 */}
         <div>
-          <div style={{ fontSize: "12px", color: "#6b7280", padding: "0 0 8px 0" }}>
+          <div
+            style={{ fontSize: "12px", color: "#6b7280", padding: "0 0 8px 0" }}
+          >
             Custom Logo
           </div>
           <Header
             logo={
-              <div style={{
-                fontSize: "16px",
-                fontWeight: "800",
-                color: "#2563eb",
-                letterSpacing: "-0.5px",
-              }}>
+              <div
+                style={{
+                  fontSize: "16px",
+                  fontWeight: "800",
+                  color: "#2563eb",
+                  letterSpacing: "-0.5px",
+                }}
+              >
                 ganjang
               </div>
             }
@@ -144,7 +153,8 @@ export const UsageExample: Story = {
     navItems: NAV_ITEMS,
     activeNav: "label2",
     hasNotification: true,
-    userSrc: "https://images.unsplash.com/photo-1494790108755-2616b612b5c8?w=150",
+    userSrc:
+      "https://images.unsplash.com/photo-1494790108755-2616b612b5c8?w=150",
   },
   render: () => {
     const [activeNav, setActiveNav] = useState("label2");
@@ -158,7 +168,16 @@ export const UsageExample: Story = {
     };
 
     return (
-      <div style={{ display: "flex", flexDirection: "column", height: "400px", border: "1px solid #e5e7eb", borderRadius: "8px", overflow: "hidden" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          height: "400px",
+          border: "1px solid #e5e7eb",
+          borderRadius: "8px",
+          overflow: "hidden",
+        }}
+      >
         {/* Header */}
         <div style={{ borderBottom: "1px solid #e5e7eb" }}>
           <Header
@@ -172,15 +191,17 @@ export const UsageExample: Story = {
         </div>
 
         {/* 콘텐츠 */}
-        <div style={{
-          flex: 1,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: "16px",
-          color: "#6b7280",
-          background: "#f9fafb",
-        }}>
+        <div
+          style={{
+            flex: 1,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "16px",
+            color: "#6b7280",
+            background: "#f9fafb",
+          }}
+        >
           {CONTENT[activeNav]}
         </div>
       </div>

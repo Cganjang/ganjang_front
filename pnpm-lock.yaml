@@ -20,7 +20,7 @@ importers:
 
   apps/admin:
     dependencies:
-      '@repo/ui':
+      '@weavekit/ui':
         specifier: workspace:^
         version: link:../../packages/ui
       react:

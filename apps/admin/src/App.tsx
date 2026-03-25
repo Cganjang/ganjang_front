@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import "@repo/ui/styles";
+import "@weavekit/ui/styles";
 import viteLogo from "/vite.svg";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
-import { Button, Label, Divider } from "@repo/ui";
+import { Button, Label, Divider } from "@weavekit/ui";
 
 function App() {
   const [count, setCount] = useState(0);

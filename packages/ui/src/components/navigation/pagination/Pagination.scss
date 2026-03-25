@@ -1,0 +1,108 @@
+// Figma 디자인 기반 Pagination 컴포넌트 스타일
+// Page: Default, Hover, Selected, More(…)
+// Control: Default, Hover, Active(파랑), Disabled
+// 버튼 크기: 32×32px, border-radius 4px, gap 4px
+
+.pagination {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-4, 4px);
+
+  // ===================
+  // PAGE 버튼 (숫자)
+  // ===================
+  &__page {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--border-radius-4, 4px);
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-interactive-secondary);               // #4b5563
+
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    &:hover:not(.pagination__page--selected) {
+      background-color: var(--bg-interactive-secondary-hovered); // #e5e7eb
+      color: var(--text-interactive-secondary-hovered);          // #374151
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--border-focus-ring);
+    }
+
+    // Selected
+    &--selected {
+      background-color: var(--bg-interactive-selected);     // #eff6ff
+      color: var(--text-interactive-selected);              // #2563eb
+      cursor: default;
+    }
+  }
+
+  // ===================
+  // DOTS (…)
+  // ===================
+  &__dots {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+
+    font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    color: var(--text-interactive-secondary);               // #4b5563
+    cursor: default;
+    user-select: none;
+  }
+
+  // ===================
+  // CONTROL 버튼 (← → « »)
+  // ===================
+  &__control {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--border-radius-4, 4px);
+    border: none;
+    background: none;                                          // Default: 배경 없음 (Figma)
+    color: var(--icon-interactive-secondary);                  // #4b5563
+    cursor: pointer;
+
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    &:hover:not(.pagination__control--disabled) {
+      background-color: var(--bg-interactive-secondary-hovered); // #e5e7eb (Hover)
+      color: var(--text-interactive-secondary-hovered);          // #374151
+    }
+
+    &:active:not(.pagination__control--disabled) {
+      background-color: var(--bg-interactive-selected);          // #eff6ff (Active)
+      color: var(--icon-interactive-primary);                    // #2563eb
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--border-focus-ring);
+    }
+
+    // Disabled
+    &--disabled {
+      background-color: var(--bg-disabled);                      // #d1d5db
+      color: var(--icon-disabled);                               // #6b7280
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+}

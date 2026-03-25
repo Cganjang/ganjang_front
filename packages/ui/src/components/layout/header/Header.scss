@@ -1,0 +1,209 @@
+// Figma 디자인 기반 Header 컴포넌트 스타일
+// Height: 40px, padding: 0 24px, gap: 40px (leading-nav), 12px (function)
+// NavItem: h-40px, p-4, gap-4, rounded-4
+// Selected: bg-interactive-selected + border-bottom 1.5px primary
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-40, 40px);
+  padding: 0 var(--spacing-24, 24px);
+  height: 40px;
+  background-color: var(--bg-primary);                          // #ffffff
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// ===================
+// LOGO
+// ===================
+.header__leading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.header__logo-box {
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--bg-brand);                            // #2563eb
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.header__logo-text {
+  font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--bg-brand);                                       // #2563eb
+  line-height: 1;
+}
+
+// ===================
+// NAVIGATION
+// ===================
+.header__nav {
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+  min-width: 0;
+  gap: 0;
+}
+
+.header__nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-bottom: 1.5px solid transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  transition: background-color 0.15s ease, color 0.15s ease;
+
+  &:hover:not(.header__nav-item--selected):not(.header__nav-item--disabled) {
+    .header__nav-item-inner {
+      background-color: var(--bg-interactive-secondary-hovered); // #e5e7eb
+    }
+  }
+
+  &:active:not(.header__nav-item--disabled) {
+    .header__nav-item-inner {
+      background-color: var(--bg-interactive-secondary-pressed);
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+    .header__nav-item-inner {
+      box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--border-focus-ring);
+    }
+  }
+
+  // Selected
+  &--selected {
+    background-color: var(--bg-interactive-selected);           // #eff6ff
+    border-bottom-color: var(--border-interactive-primary);     // #2563eb
+
+    .header__nav-label {
+      color: var(--text-interactive-primary);                   // #2563eb
+    }
+
+    .header__nav-chevron {
+      color: var(--text-interactive-primary);
+    }
+  }
+
+  // Disabled
+  &--disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+
+    .header__nav-label {
+      color: var(--text-disabled);
+    }
+  }
+}
+
+.header__nav-item-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4, 4px);
+  padding: var(--spacing-4, 4px);
+  border-radius: var(--border-radius-4, 4px);
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.header__nav-label {
+  font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--text-secondary);                                 // #1f2937
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+.header__nav-chevron {
+  color: var(--icon-secondary);                                 // #1f2937
+  flex-shrink: 0;
+  transition: color 0.15s ease;
+}
+
+// ===================
+// FUNCTION (우측 아이콘 버튼)
+// ===================
+.header__function {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12, 12px);
+  flex-shrink: 0;
+}
+
+.header__fn-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 40px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-bottom: 1.5px solid transparent;
+  cursor: pointer;
+  position: relative;
+  color: var(--icon-secondary);                                 // #1f2937
+  transition: color 0.15s ease;
+  flex-shrink: 0;
+
+  &:hover:not(:disabled) {
+    .header__fn-inner {
+      background-color: var(--bg-interactive-secondary-hovered);
+    }
+  }
+
+  &:active:not(:disabled) {
+    .header__fn-inner {
+      background-color: var(--bg-interactive-secondary-pressed);
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+    .header__fn-inner {
+      box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--border-focus-ring);
+    }
+  }
+
+  // Selected
+  &--selected {
+    background-color: var(--bg-interactive-selected);
+    border-bottom-color: var(--border-interactive-primary);
+    color: var(--icon-interactive-primary);                     // #2563eb
+  }
+}
+
+// ===================
+// NOTIFICATION DOT
+// ===================
+.header__notification-dot {
+  position: absolute;
+  top: 6px;
+  right: 2px;
+  display: flex;
+}

@@ -44,7 +44,8 @@ const Icon: React.FC<IconComponentProps> = ({
   styleOverride,
 }) => {
   const pascalName = toPascalCase(name);
-  const LucideIcon = (LucideIcons as Record<string, React.FC<LucideIcons.LucideProps>>)[pascalName];
+  // lucide-react 모듈에 FC<LucideProps>와 호환되지 않는 Icon export가 포함되어 있어 unknown을 거쳐 캐스팅
+  const LucideIcon = (LucideIcons as unknown as Record<string, React.FC<LucideIcons.LucideProps>>)[pascalName];
   const iconSize = getIconSize(size);
 
   if (!LucideIcon) {

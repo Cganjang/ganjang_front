@@ -23,6 +23,11 @@ export type { BadgeProps } from "./badge";
 export { default as Link } from "./link";
 export type { LinkProps } from "./link";
 
+export { default as Radio } from "./radio";
+export type { RadioProps } from "./radio";
+export { RadioGroup } from "./radio";
+export type { RadioGroupProps } from "./radio";
+
 // 나중에 추가될 컴포넌트들
 // export { default as Input } from './Input'
 // export type { InputProps } from './Input'

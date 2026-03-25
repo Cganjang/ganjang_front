@@ -1,0 +1,224 @@
+@use "../../../styles/index.scss" as *;
+
+// =============================
+// Tooltip
+// Figma: max-width 240px, px-12 py-8, border-radius 4
+// Styles: Inverse (dark), Base (light + shadow)
+// Placements: 12 directions + none
+// Arrow: 24×6 triangle (CSS border trick)
+// =============================
+
+$arrow-size: 6px;
+
+// =============================
+// Wrapper (inline positioning context)
+// =============================
+
+.tooltip-wrapper {
+  display: inline-flex;
+  position: relative;
+}
+
+// =============================
+// Tooltip bubble
+// =============================
+
+.tooltip {
+  position: absolute;
+  z-index: 1000;
+  padding: var(--spacing-8) var(--spacing-12);
+  border-radius: var(--border-radius-4);
+  pointer-events: none;
+  white-space: normal;
+  animation: tooltip-fade-in 0.15s ease-in-out;
+
+  // =============================
+  // Styles
+  // =============================
+
+  &--inverse {
+    background-color: var(--bg-inverse-bolder);
+    color: var(--text-interactive-inverse);
+
+    .tooltip__arrow--top,
+    .tooltip__arrow--bottom { border-top-color: var(--bg-inverse-bolder); border-bottom-color: var(--bg-inverse-bolder); }
+    .tooltip__arrow--left,
+    .tooltip__arrow--right { border-left-color: var(--bg-inverse-bolder); border-right-color: var(--bg-inverse-bolder); }
+  }
+
+  &--base {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    box-shadow:
+      0 0 2px 0 var(--shadow-subtle),
+      0 2px 4px 0 var(--shadow-default);
+
+    .tooltip__arrow--top,
+    .tooltip__arrow--bottom { border-top-color: var(--bg-primary); border-bottom-color: var(--bg-primary); }
+    .tooltip__arrow--left,
+    .tooltip__arrow--right { border-left-color: var(--bg-primary); border-right-color: var(--bg-primary); }
+  }
+
+  // =============================
+  // Content text
+  // =============================
+
+  &__content {
+    font-family:
+      "Pretendard Variable",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  // =============================
+  // Arrow (CSS border triangle)
+  // =============================
+
+  &__arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: $arrow-size solid transparent;
+
+    &--top {
+      bottom: -$arrow-size;
+      border-bottom: none;
+    }
+
+    &--bottom {
+      top: -$arrow-size;
+      border-top: none;
+    }
+
+    &--left {
+      right: -$arrow-size;
+      border-right: none;
+    }
+
+    &--right {
+      left: -$arrow-size;
+      border-left: none;
+    }
+  }
+
+  // =============================
+  // Placement: Top
+  // =============================
+
+  &--top,
+  &--top-start,
+  &--top-end {
+    bottom: calc(100% + var(--tooltip-offset));
+  }
+
+  &--top {
+    left: 50%;
+    transform: translateX(-50%);
+    .tooltip__arrow { left: 50%; transform: translateX(-50%); }
+  }
+
+  &--top-start {
+    left: 0;
+    .tooltip__arrow { left: 12px; }
+  }
+
+  &--top-end {
+    right: 0;
+    .tooltip__arrow { right: 12px; }
+  }
+
+  // =============================
+  // Placement: Bottom
+  // =============================
+
+  &--bottom,
+  &--bottom-start,
+  &--bottom-end {
+    top: calc(100% + var(--tooltip-offset));
+  }
+
+  &--bottom {
+    left: 50%;
+    transform: translateX(-50%);
+    .tooltip__arrow { left: 50%; transform: translateX(-50%); }
+  }
+
+  &--bottom-start {
+    left: 0;
+    .tooltip__arrow { left: 12px; }
+  }
+
+  &--bottom-end {
+    right: 0;
+    .tooltip__arrow { right: 12px; }
+  }
+
+  // =============================
+  // Placement: Left
+  // =============================
+
+  &--left,
+  &--left-start,
+  &--left-end {
+    right: calc(100% + var(--tooltip-offset));
+  }
+
+  &--left {
+    top: 50%;
+    transform: translateY(-50%);
+    .tooltip__arrow { top: 50%; transform: translateY(-50%); }
+  }
+
+  &--left-start {
+    top: 0;
+    .tooltip__arrow { top: 8px; }
+  }
+
+  &--left-end {
+    bottom: 0;
+    .tooltip__arrow { bottom: 8px; }
+  }
+
+  // =============================
+  // Placement: Right
+  // =============================
+
+  &--right,
+  &--right-start,
+  &--right-end {
+    left: calc(100% + var(--tooltip-offset));
+  }
+
+  &--right {
+    top: 50%;
+    transform: translateY(-50%);
+    .tooltip__arrow { top: 50%; transform: translateY(-50%); }
+  }
+
+  &--right-start {
+    top: 0;
+    .tooltip__arrow { top: 8px; }
+  }
+
+  &--right-end {
+    bottom: 0;
+    .tooltip__arrow { bottom: 8px; }
+  }
+}
+
+// =============================
+// Animation
+// =============================
+
+@keyframes tooltip-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

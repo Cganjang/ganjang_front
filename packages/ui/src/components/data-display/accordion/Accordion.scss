@@ -1,0 +1,185 @@
+@use "../../../styles/index.scss" as *;
+
+// =============================
+// Accordion
+// =============================
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  // =============================
+  // Variant: default (divider)
+  // =============================
+
+  &--default {
+    .accordion__item {
+      border-bottom: 1px solid var(--border-secondary);
+
+      &:first-child {
+        border-top: 1px solid var(--border-secondary);
+      }
+    }
+  }
+
+  // =============================
+  // Variant: bordered (box)
+  // =============================
+
+  &--bordered {
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--border-radius-8);
+    overflow: hidden;
+
+    .accordion__item + .accordion__item {
+      border-top: 1px solid var(--border-secondary);
+    }
+  }
+
+  // =============================
+  // Disabled (전체)
+  // =============================
+
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// =============================
+// AccordionItem
+// =============================
+
+.accordion__item {
+  &--disabled {
+    .accordion__header {
+      cursor: not-allowed;
+      color: var(--text-disabled);
+    }
+
+    .accordion__chevron {
+      color: var(--icon-disabled);
+    }
+  }
+}
+
+// =============================
+// Header (trigger)
+// =============================
+
+.accordion__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--spacing-16) var(--spacing-16);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  gap: var(--spacing-8);
+  transition: background-color 0.15s ease-in-out;
+
+  &:hover:not(:disabled) {
+    background-color: var(--bg-interactive-secondary);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--bg-interactive-secondary-hovered);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--border-focus-ring);
+    border-radius: var(--border-radius-4);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.accordion__header-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+  min-width: 0;
+  gap: var(--spacing-2);
+}
+
+.accordion__title {
+  font-family:
+    "Pretendard Variable",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+.accordion__subtitle {
+  font-family:
+    "Pretendard Variable",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--text-tertiary);
+}
+
+// =============================
+// Chevron icon
+// =============================
+
+.accordion__chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--icon-tertiary);
+  transition: transform 0.2s ease-in-out;
+
+  &--open {
+    transform: rotate(180deg);
+  }
+}
+
+// =============================
+// Panel (collapsible content)
+// =============================
+
+.accordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease-in-out;
+  overflow: hidden;
+
+  .accordion__item--expanded & {
+    grid-template-rows: 1fr;
+  }
+}
+
+.accordion__content {
+  min-height: 0;
+  padding: 0 var(--spacing-16);
+  font-family:
+    "Pretendard Variable",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-secondary);
+
+  .accordion__item--expanded & {
+    padding-bottom: var(--spacing-16);
+  }
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import Icon from "../../base/icon/Icon";
-import Avatar from "../../base/avatar/Avatar";
-import Badge from "../../base/badge/Badge";
+import Avatar from "../../data-display/avatar/Avatar";
+import Badge from "../../data-display/badge/Badge";
 import "./Header.scss";
 
 // ===================
@@ -110,27 +110,24 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const classNames = ["header", className].filter(Boolean).join(" ");
 
-  const getNavItemClass = (item: HeaderNavItem) => [
-    "header__nav-item",
-    activeNav === item.value && "header__nav-item--selected",
-    item.disabled && "header__nav-item--disabled",
-  ]
-    .filter(Boolean)
-    .join(" ");
+  const getNavItemClass = (item: HeaderNavItem) =>
+    [
+      "header__nav-item",
+      activeNav === item.value && "header__nav-item--selected",
+      item.disabled && "header__nav-item--disabled",
+    ]
+      .filter(Boolean)
+      .join(" ");
 
-  const getFunctionItemClass = (isSelected = false) => [
-    "header__fn-item",
-    isSelected && "header__fn-item--selected",
-  ]
-    .filter(Boolean)
-    .join(" ");
+  const getFunctionItemClass = (isSelected = false) =>
+    ["header__fn-item", isSelected && "header__fn-item--selected"]
+      .filter(Boolean)
+      .join(" ");
 
   return (
     <header className={classNames} style={styleOverride}>
       {/* 로고 */}
-      <div className="header__leading">
-        {logo ?? <DefaultLogo />}
-      </div>
+      <div className="header__leading">{logo ?? <DefaultLogo />}</div>
 
       {/* 네비게이션 */}
       <nav className="header__nav" aria-label="Main Navigation">
@@ -151,7 +148,11 @@ const Header: React.FC<HeaderProps> = ({
             <span className="header__nav-item-inner">
               <span className="header__nav-label">{item.label}</span>
               {item.hasSubmenu && (
-                <Icon name="chevron-down" size={16} className="header__nav-chevron" />
+                <Icon
+                  name="chevron-down"
+                  size={16}
+                  className="header__nav-chevron"
+                />
               )}
             </span>
           </button>

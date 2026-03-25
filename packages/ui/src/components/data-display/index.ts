@@ -10,3 +10,5 @@ export type { ChipsProps } from "./chips";
 
 export { default as Carousel } from "./carousel";
 export type { CarouselProps, CarouselSlide } from "./carousel";
+export { default as Table } from "./table";
+export type { TableProps } from "./table";

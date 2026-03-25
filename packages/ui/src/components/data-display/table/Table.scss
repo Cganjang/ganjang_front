@@ -1,0 +1,250 @@
+// Figma 디자인 기반 Table 컴포넌트 스타일
+// Cell h=48px, p=8px, border-bottom #9ca3af
+// Header h=48px, border-bottom 1.5px #9ca3af
+// Selected row: bg-interactive-selected (#eff6ff)
+
+// ===================
+// WRAPPER
+// ===================
+.table-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8, 8px);
+  width: 100%;
+
+  // 검색 툴바
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--spacing-8, 8px);
+  }
+
+  &__search {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__search-icon {
+    position: absolute;
+    left: 8px;
+    color: var(--icon-secondary);
+    pointer-events: none;
+  }
+
+  &__search-input {
+    height: 32px;
+    padding: 0 8px 0 32px;
+    font-family: "Pretendard Variable", -apple-system, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--border-radius-4, 4px);
+    background: var(--bg-primary);
+    outline: none;
+    min-width: 200px;
+
+    &::placeholder { color: var(--text-disabled); }
+
+    &:focus {
+      border-color: var(--border-interactive-primary);
+      box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--border-focus-ring);
+    }
+  }
+
+  // 스크롤 영역
+  &__scroll {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  // 페이지네이션 영역
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--spacing-8, 8px);
+  }
+
+  &__count {
+    font-family: "Pretendard Variable", -apple-system, sans-serif;
+    font-size: 13px;
+    color: var(--text-tertiary);
+  }
+}
+
+// ===================
+// TABLE
+// ===================
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  // ===================
+  // HEAD
+  // ===================
+  &__head {}
+
+  // ===================
+  // TH
+  // Figma: h-48px, p-8px, border-bottom 1.5px #9ca3af
+  // font: 14px medium, text-primary (#111827)
+  // ===================
+  &__th {
+    height: 48px;
+    padding: 0 var(--spacing-8, 8px);
+    border-bottom: 1.5px solid var(--border-primary);             // #9ca3af
+    text-align: left;
+    vertical-align: middle;
+    white-space: nowrap;
+
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);                                   // #111827
+    background: var(--bg-primary);
+
+    &--sortable {
+      cursor: pointer;
+      user-select: none;
+
+      &:hover {
+        background-color: var(--bg-interactive-secondary-hovered); // #e5e7eb
+      }
+    }
+
+    &--sorted {
+      color: var(--text-interactive-primary);
+    }
+  }
+
+  &__th-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-4, 4px);
+  }
+
+  &__sort-icon {
+    display: inline-flex;
+    align-items: center;
+    color: var(--icon-secondary);
+
+    &--idle {
+      color: var(--text-disabled);
+    }
+  }
+
+  // ===================
+  // BODY
+  // ===================
+  &__body {}
+
+  // ===================
+  // ROW
+  // ===================
+  &__row {
+    &--body {
+      transition: background-color 0.1s ease;
+    }
+
+    &--selected {
+      background-color: var(--bg-interactive-selected);           // #eff6ff
+    }
+
+    &--clickable {
+      cursor: pointer;
+
+      &:hover:not(.table__row--selected) {
+        background-color: var(--bg-interactive-secondary-hovered); // #e5e7eb
+      }
+    }
+  }
+
+  // ===================
+  // TD
+  // Figma: h-48px, p-8px, border-bottom 1px #9ca3af
+  // font: 14px medium
+  // ===================
+  &__td {
+    height: 48px;
+    padding: 0 var(--spacing-8, 8px);
+    border-bottom: 1px solid var(--border-primary);               // #9ca3af
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);                                   // #111827
+    white-space: nowrap;
+
+    &--empty {
+      text-align: center;
+      color: var(--text-disabled);
+      font-weight: 400;
+      padding: 32px 8px;
+    }
+  }
+}
+
+// ===================
+// CELL 유형별 헬퍼 클래스
+// 사용자가 cell render 시 활용할 수 있는 공통 스타일
+// ===================
+
+// Profile 셀: Avatar + 이름 + 설명
+.table-cell-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__desc {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-tertiary);                                  // #374151
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+// Text 셀: 텍스트 + 선택적 description
+.table-cell-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  &__label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  &__desc {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-tertiary);
+  }
+}
+
+// Action 셀: 버튼들
+.table-cell-action {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

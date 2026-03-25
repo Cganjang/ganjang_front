@@ -80,7 +80,7 @@ const SLIDES_5 = [
 const SLIDES_3 = SLIDES_5.slice(0, 3);
 
 const meta = {
-  title: "DataDisplay/Carousel",
+  title: "Data Display/Carousel",
   component: Carousel,
   parameters: {
     layout: "padded",

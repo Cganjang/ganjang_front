@@ -25,7 +25,7 @@
     "typecheck": "tsc",
     "build:vite": "vite build",
     "build": "pnpm clean && pnpm typecheck && pnpm build:vite",
-    "dev": "pnpm clean && pnpm typecheck && vite build --watch",
+    "dev": "pnpm typecheck && vite build --watch",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",
@@ -57,12 +57,12 @@
     "playwright": "^1.54.1",
     "sass": "^1.89.2",
     "storybook": "^9.0.18",
-
     "typescript": "5.8.2",
     "vite": "^7.0.4",
     "vitest": "^3.2.4"
   },
   "dependencies": {
+    "@tanstack/react-table": "^8.21.3",
     "lucide-react": "^0.577.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"

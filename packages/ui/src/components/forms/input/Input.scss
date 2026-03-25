@@ -1,0 +1,196 @@
+@use "../../../styles/index.scss" as *;
+
+// =============================
+// Input (TextField)
+// Figma: 240×89 (full), field 240×40
+// States: Default, Hover, Press, Focus, Filled, Error, Disabled
+// =============================
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  width: 240px;
+  position: relative;
+
+  // =============================
+  // Field (input wrapper)
+  // =============================
+
+  &__field {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    height: 40px;
+    padding: var(--spacing-8);
+    border-radius: var(--border-radius-4);
+    border: 1px solid var(--border-interactive-secondary);
+    background-color: var(--bg-primary);
+    transition: border-color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+  }
+
+  // =============================
+  // Native input
+  // =============================
+
+  &__native {
+    flex: 1 0 0;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family:
+      "Pretendard Variable",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-primary);
+    padding: 0;
+
+    &::placeholder {
+      color: var(--text-interactive-secondary);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      color: var(--text-disabled);
+
+      &::placeholder {
+        color: var(--text-disabled);
+      }
+    }
+  }
+
+  // =============================
+  // Icons
+  // =============================
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--icon-tertiary);
+
+    &--leading {
+      color: var(--icon-interactive-secondary);
+    }
+
+    &--trailing {
+      color: var(--icon-interactive-secondary);
+    }
+  }
+
+  // =============================
+  // Help message
+  // =============================
+
+  &__help {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    height: 24px;
+
+    &-text {
+      font-family:
+        "Pretendard Variable",
+        -apple-system,
+        BlinkMacSystemFont,
+        sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    // Normal
+    &--normal {
+      color: var(--text-primary);
+
+      .input__help-text {
+        color: var(--text-primary);
+      }
+    }
+
+    // Success
+    &--success {
+      color: var(--icon-success);
+
+      .input__help-text {
+        color: var(--text-success);
+      }
+    }
+
+    // Error
+    &--error {
+      color: var(--icon-danger);
+
+      .input__help-text {
+        color: var(--text-danger);
+      }
+    }
+  }
+
+  // =============================
+  // State: Hover
+  // =============================
+
+  &:not(.input--disabled):not(.input--error):not(.input--focus) {
+    .input__field:hover {
+      border-color: var(--border-interactive-secondary-hovered);
+    }
+
+    .input__field:active {
+      border-color: var(--border-interactive-secondary-pressed);
+    }
+  }
+
+  // =============================
+  // State: Focus
+  // =============================
+
+  &--focus:not(.input--disabled):not(.input--error) {
+    .input__field {
+      border-color: var(--border-focus-ring);
+    }
+  }
+
+  // =============================
+  // State: Filled (unfocused, has value)
+  // =============================
+
+  &--filled:not(.input--disabled):not(.input--error) {
+    .input__field {
+      border-color: var(--border-interactive-secondary);
+    }
+  }
+
+  // =============================
+  // State: Error
+  // =============================
+
+  &--error {
+    .input__field {
+      border-color: var(--border-danger);
+    }
+  }
+
+  // =============================
+  // State: Disabled
+  // =============================
+
+  &--disabled {
+    cursor: not-allowed;
+
+    .input__field {
+      background-color: var(--bg-disabled);
+      border-color: var(--border-disabled);
+    }
+
+    .input__icon {
+      color: var(--icon-disabled);
+    }
+  }
+}

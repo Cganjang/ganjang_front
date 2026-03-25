@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Chips from "./Chips";
 
 const meta = {
-  title: "Base/Chips",
+  title: "Data Display/Chips",
   component: Chips,
   parameters: {
     layout: "centered",

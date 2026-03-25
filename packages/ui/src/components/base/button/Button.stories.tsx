@@ -2,7 +2,7 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import Button from "./Button";
 import Icon from "../icon/Icon";
-import Avatar from "../avatar/Avatar";
+import Avatar from "@ui/components/data-display/avatar/Avatar";
 
 const meta = {
   title: "Base/Button",

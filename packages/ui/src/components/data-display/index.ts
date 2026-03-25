@@ -1,2 +1,9 @@
-// data-display 관련 컴포넌트
-// -card,table,badge 등
+// Data Display Components — 데이터 표시 컴포넌트
+export { default as Avatar } from "./avatar";
+export type { AvatarProps } from "./avatar";
+
+export { default as Badge } from "./badge";
+export type { BadgeProps } from "./badge";
+
+export { default as Chips } from "./chips";
+export type { ChipsProps } from "./chips";

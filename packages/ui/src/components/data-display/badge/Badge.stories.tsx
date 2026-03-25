@@ -5,7 +5,7 @@ import Badge from "./Badge";
 const STATUSES = ["default", "information", "warning", "success", "important"] as const;
 
 const meta = {
-  title: "Base/Badge",
+  title: "Data Display/Badge",
   component: Badge,
   parameters: {
     layout: "centered",

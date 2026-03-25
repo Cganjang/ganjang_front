@@ -1,0 +1,220 @@
+@use "../../../styles/index.scss" as *;
+
+// =============================
+// Textarea
+// Figma: 189×176 (full), field 189×127
+// States: Default, Hover, Press, Focus, Filled, Error, Disabled
+// =============================
+
+.textarea {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  width: 240px;
+  position: relative;
+
+  // =============================
+  // Header (Label + Count)
+  // =============================
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-0);
+    width: 100%;
+
+    > :first-child {
+      flex: 1 0 0;
+    }
+  }
+
+  &__count {
+    flex-shrink: 0;
+    display: flex;
+    gap: var(--spacing-2);
+    align-items: baseline;
+    font-family:
+      "Pretendard Variable",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-tertiary);
+    white-space: nowrap;
+
+    &-separator {
+      color: var(--text-tertiary);
+    }
+
+    &--error {
+      color: var(--text-danger);
+
+      .textarea__count-separator {
+        color: var(--text-danger);
+      }
+    }
+  }
+
+  // =============================
+  // Field (textarea wrapper)
+  // =============================
+
+  &__field {
+    position: relative;
+    display: flex;
+    border-radius: var(--border-radius-4);
+    border: 1px solid var(--border-interactive-secondary);
+    background-color: var(--bg-primary);
+    transition: border-color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+  }
+
+  // =============================
+  // Native textarea
+  // =============================
+
+  &__native {
+    flex: 1 0 0;
+    min-width: 0;
+    min-height: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: var(--spacing-8) var(--spacing-12);
+    font-family:
+      "Pretendard Variable",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-primary);
+
+    &::placeholder {
+      color: var(--text-interactive-secondary);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      color: var(--text-disabled);
+      resize: none;
+
+      &::placeholder {
+        color: var(--text-disabled);
+      }
+    }
+  }
+
+  // =============================
+  // Help message
+  // =============================
+
+  &__help {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    height: 24px;
+
+    &-text {
+      font-family:
+        "Pretendard Variable",
+        -apple-system,
+        BlinkMacSystemFont,
+        sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    &--normal {
+      color: var(--text-primary);
+
+      .textarea__help-text {
+        color: var(--text-primary);
+      }
+    }
+
+    &--success {
+      color: var(--icon-success);
+
+      .textarea__help-text {
+        color: var(--text-success);
+      }
+    }
+
+    &--error {
+      color: var(--icon-danger);
+
+      .textarea__help-text {
+        color: var(--text-danger);
+      }
+    }
+  }
+
+  // =============================
+  // State: Hover
+  // =============================
+
+  &:not(.textarea--disabled):not(.textarea--error):not(.textarea--focus) {
+    .textarea__field:hover {
+      border-color: var(--border-interactive-secondary-hovered);
+    }
+
+    .textarea__field:active {
+      border-color: var(--border-interactive-secondary-pressed);
+    }
+  }
+
+  // =============================
+  // State: Focus
+  // =============================
+
+  &--focus:not(.textarea--disabled):not(.textarea--error) {
+    .textarea__field {
+      border-color: var(--border-focus-ring);
+    }
+  }
+
+  // =============================
+  // State: Filled
+  // =============================
+
+  &--filled:not(.textarea--disabled):not(.textarea--error) {
+    .textarea__field {
+      border-color: var(--border-interactive-secondary);
+    }
+  }
+
+  // =============================
+  // State: Error
+  // =============================
+
+  &--error {
+    .textarea__field {
+      border-color: var(--border-danger);
+    }
+  }
+
+  // =============================
+  // State: Disabled
+  // =============================
+
+  &--disabled {
+    cursor: not-allowed;
+
+    .textarea__field {
+      background-color: var(--bg-disabled);
+      border-color: var(--border-disabled);
+    }
+
+    .textarea__count {
+      color: var(--text-disabled);
+
+      .textarea__count-separator {
+        color: var(--text-disabled);
+      }
+    }
+  }
+}

@@ -14,7 +14,7 @@ const SAMPLE_AVATARS = [
 ];
 
 const meta = {
-  title: "Base/AvatarGroup",
+  title: "Data Display/AvatarGroup",
   component: AvatarGroup,
   parameters: {
     layout: "centered",

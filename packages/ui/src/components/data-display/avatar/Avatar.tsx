@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Icon, { IconName } from "../icon/Icon";
+import Icon, { IconName } from "@ui/components/base/icon/Icon";
 import "./Avatar.scss";
 
 export interface AvatarProps {

@@ -15,3 +15,6 @@ export type { InputProps } from "./input";
 
 export { default as Textarea } from "./textarea";
 export type { TextareaProps } from "./textarea";
+
+export { default as Select } from "./select";
+export type { SelectProps, SelectOptionItem } from "./select";

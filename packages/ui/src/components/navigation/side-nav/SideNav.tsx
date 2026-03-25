@@ -64,7 +64,9 @@ export const SideNavItem: React.FC<SideNavItemProps> = ({
         aria-current={selected ? "page" : undefined}
       >
         <span className="side-nav-item__icon-wrapper">
-          {icon && <Icon name={icon} size={24} className="side-nav-item__icon" />}
+          {icon && (
+            <Icon name={icon} size={24} className="side-nav-item__icon" />
+          )}
           {badge !== undefined && (
             <span className="side-nav-item__badge-dot">
               <Badge type="dot" status="default" />
@@ -85,7 +87,9 @@ export const SideNavItem: React.FC<SideNavItemProps> = ({
         aria-current={selected ? "page" : undefined}
       >
         <span className="side-nav-item__icon-wrapper">
-          {icon && <Icon name={icon} size={24} className="side-nav-item__icon" />}
+          {icon && (
+            <Icon name={icon} size={24} className="side-nav-item__icon" />
+          )}
           {badge !== undefined && (
             <span className="side-nav-item__badge-dot">
               <Badge type="dot" status="default" />
@@ -118,7 +122,10 @@ export const SideNavItem: React.FC<SideNavItemProps> = ({
           type="number"
           status="default"
           content={badge}
-          styleOverride={{ backgroundColor: "var(--bg-inverse-bolder)", color: "var(--text-interactive-inverse)" }}
+          styleOverride={{
+            backgroundColor: "var(--bg-inverse-bolder)",
+            color: "var(--text-interactive-inverse)",
+          }}
         />
       )}
     </button>
@@ -141,9 +148,7 @@ export const SideNavGroup: React.FC<SideNavGroupProps> = ({
 }) => (
   <div className="side-nav-group">
     {showDivider && <Divider size="sm" margin="xs" />}
-    {heading && (
-      <div className="side-nav-group__heading">{heading}</div>
-    )}
+    {heading && <div className="side-nav-group__heading">{heading}</div>}
     <div className="side-nav-group__items">{children}</div>
   </div>
 );
@@ -197,11 +202,7 @@ const SideNav: React.FC<SideNavProps> = ({
   className = "",
   styleOverride,
 }) => {
-  const classNames = [
-    "side-nav",
-    `side-nav--${type}`,
-    className,
-  ]
+  const classNames = ["side-nav", `side-nav--${type}`, className]
     .filter(Boolean)
     .join(" ");
 

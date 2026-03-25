@@ -1,2 +1,2 @@
-// 폼 관련 컴포넌트
-// -formfield, select, checkbox 등
+export { default as Checkbox, CheckGroup } from "./checkbox";
+export type { CheckboxProps, CheckGroupProps, CheckGroupItem } from "./checkbox";

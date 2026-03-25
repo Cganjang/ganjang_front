@@ -1,61 +1,63 @@
+// Figma 디자인 기반 Link 컴포넌트 스타일
+// Type: primary(파랑), secondary(회색)
+// Style: underline, standalone
+// States: Default, Hover, Press, Focus, Visited, Disabled
+
 .link {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 2px 4px;
+  gap: var(--spacing-4, 4px);
+  padding: var(--spacing-2, 2px) var(--spacing-4, 4px);
+  border-radius: var(--border-radius-4);
+
   font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.2;
   text-decoration: none;
-  transition: all 0.2s ease;
+
   cursor: pointer;
-  border-radius: var(--border-radius-4);
+  transition: color 0.15s ease, background-color 0.15s ease;
 
-  // Primary 타입
+  // ===================
+  // TYPE
+  // ===================
+
+  // Primary: 파랑 계열
   &--primary {
-    color: var(--text-interactive-primary);
+    color: var(--text-interactive-primary);                   // #2563eb
 
     &:hover:not(.link--disabled) {
-      color: var(--text-interactive-primary-hovered);
+      color: var(--text-interactive-primary-hovered);         // #1d4ed8
     }
-
     &:active:not(.link--disabled) {
-      color: var(--text-interactive-primary-pressed);
+      color: var(--text-interactive-primary-pressed);         // #1e40af
     }
-
     &:visited:not(.link--disabled) {
-      color: #4338ca;
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--border-focus-ring);
-      outline-offset: 2px;
+      color: var(--text-interactive-visited);                 // #4338ca
     }
   }
 
-  // Secondary 타입
+  // Secondary: 회색 계열
   &--secondary {
-    color: var(--text-interactive-secondary);
+    color: var(--text-interactive-secondary);                 // #4b5563
 
     &:hover:not(.link--disabled) {
-      color: var(--text-interactive-secondary-hovered);
+      color: var(--text-interactive-secondary-hovered);       // #374151
     }
-
     &:active:not(.link--disabled) {
-      color: var(--text-interactive-secondary-pressed);
+      color: var(--text-interactive-secondary-pressed);       // #1f2937
     }
-
     &:visited:not(.link--disabled) {
-      color: #4338ca;
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--border-focus-ring);
-      outline-offset: 2px;
+      color: var(--text-interactive-visited);                 // #4338ca
     }
   }
 
+  // ===================
+  // STYLE
+  // ===================
+
+  // Underline: 밑줄, hover 시 두께 증가
   &--underline {
     text-decoration: underline;
     text-decoration-thickness: 1px;
@@ -64,37 +66,47 @@
     &:hover:not(.link--disabled) {
       text-decoration-thickness: 2px;
     }
-  }
-
-  &--standalone {
-    text-decoration: none;
-  }
-
-  &:hover:not(.link--disabled) {
-    background-color: var(--bg-interactive-secondary-hovered);
-  }
-
-  &:active:not(.link--disabled) {
-    background-color: var(--bg-interactive-secondary-pressed);
-  }
-
-  &--disabled {
-    color: var(--text-disabled);
-    cursor: not-allowed;
-    text-decoration: none;
-
-    &:hover {
-      background-color: transparent;
+    &.link--disabled {
+      text-decoration: none;
     }
   }
 
+  // Standalone: 밑줄 없음, hover 시 배경 강조
+  &--standalone {
+    text-decoration: none;
+
+    &:hover:not(.link--disabled) {
+      background-color: var(--bg-interactive-secondary-hovered); // #e5e7eb
+    }
+    &:active:not(.link--disabled) {
+      background-color: var(--bg-interactive-secondary-pressed); // #d1d5db
+    }
+  }
+
+  // Focus
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--border-focus-ring);
+  }
+
+  // ===================
+  // DISABLED
+  // ===================
+  &--disabled {
+    color: var(--text-disabled);                              // #6b7280
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  // ===================
+  // ELEMENTS
+  // ===================
   &__leading-icon,
   &__trailing-icon {
     flex-shrink: 0;
   }
 
   &__content {
-    flex: 1;
     min-width: 0;
   }
 }

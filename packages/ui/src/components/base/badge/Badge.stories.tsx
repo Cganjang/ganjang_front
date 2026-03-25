@@ -110,25 +110,7 @@ export const AllVariants: Story = {
   ),
 };
 
-// 3. 숫자 오버플로우
-export const NumberOverflow: Story = {
-  args: {
-    type: "number",
-    status: "important",
-    content: 100,
-    max: 99,
-  },
-  render: () => (
-    <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-      <Badge type="number" status="important" content={50} max={99} />
-      <Badge type="number" status="important" content={99} max={99} />
-      <Badge type="number" status="important" content={100} max={99} />
-      <Badge type="number" status="important" content={9999} max={999} />
-    </div>
-  ),
-};
-
-// 4. 실제 사용 예시
+// 3. 실제 사용 예시
 export const UsageExample: Story = {
   args: {
     type: "number",

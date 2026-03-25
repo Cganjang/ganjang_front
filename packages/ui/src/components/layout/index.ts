@@ -1,2 +1,2 @@
-// 레이아웃 관련 컴포넌트
-// -grid, container, header
+export { default as Header } from "./header";
+export type { HeaderProps, HeaderNavItem } from "./header";

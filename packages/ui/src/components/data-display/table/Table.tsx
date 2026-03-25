@@ -215,7 +215,7 @@ function Table<TData>({
                           : flexRender(
                               header.column.columnDef.header,
                               header.getContext()
-                            )}
+                            ) as React.ReactNode}
                         {canSort && (
                           <span className="table__sort-icon">
                             {sortDir === "asc" ? (
@@ -261,7 +261,7 @@ function Table<TData>({
                 >
                   {row.getVisibleCells().map((cell) => (
                     <td key={cell.id} className="table__td">
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      {flexRender(cell.column.columnDef.cell, cell.getContext()) as React.ReactNode}
                     </td>
                   ))}
                 </tr>

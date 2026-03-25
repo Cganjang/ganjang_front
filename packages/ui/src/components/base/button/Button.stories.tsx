@@ -1,7 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Button from "./Button";
-import Icon from "../icon/Icon";
+import Button from "@ui/components/base/button/Button";
+import Icon from "@ui/components/base/icon/Icon";
 import Avatar from "@ui/components/data-display/avatar/Avatar";
 
 const meta = {

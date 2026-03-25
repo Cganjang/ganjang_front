@@ -1,5 +1,5 @@
 import React from "react";
-import Avatar, { AvatarProps } from "./Avatar";
+import Avatar, { AvatarProps } from "@ui/components/data-display/avatar/Avatar";
 import "./AvatarGroup.scss";
 
 export interface AvatarGroupProps {

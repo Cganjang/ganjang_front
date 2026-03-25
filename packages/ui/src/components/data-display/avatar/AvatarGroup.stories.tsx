@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import AvatarGroup from "./AvatarGroup";
+import AvatarGroup from "@ui/components/data-display/avatar/AvatarGroup";
 const SAMPLE_AVATARS = [
   { type: "initial" as const, initial: "B" },
   { type: "initial" as const, initial: "B" },

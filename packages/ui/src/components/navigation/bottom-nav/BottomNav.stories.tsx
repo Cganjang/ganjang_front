@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import BottomNav from "./BottomNav";
+import BottomNav from "@ui/components/navigation/bottom-nav/BottomNav";
 
 const SAMPLE_ITEMS_5 = [
   { value: "home", icon: "home" as const, label: "홈" },

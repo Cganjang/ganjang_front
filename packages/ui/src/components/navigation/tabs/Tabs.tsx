@@ -1,5 +1,5 @@
 import React from "react";
-import Icon, { IconName } from "../../base/icon/Icon";
+import Icon, { IconName } from "@ui/components/base/icon/Icon";
 import "./Tabs.scss";
 
 export interface TabItem {
@@ -58,23 +58,21 @@ const Tabs: React.FC<TabsProps> = ({
   className = "",
   styleOverride,
 }) => {
-  const classNames = [
-    "tabs",
-    `tabs--${variant}`,
-    className,
-  ]
+  const classNames = ["tabs", `tabs--${variant}`, className]
     .filter(Boolean)
     .join(" ");
 
   const handleKeyDown = (
     e: React.KeyboardEvent<HTMLButtonElement>,
-    item: TabItem,
-    index: number
+    item: TabItem
+    // index: number
   ) => {
     if (item.disabled) return;
 
     const enabledItems = items.filter((i) => !i.disabled);
-    const currentEnabledIndex = enabledItems.findIndex((i) => i.value === value);
+    const currentEnabledIndex = enabledItems.findIndex(
+      (i) => i.value === value
+    );
 
     let nextItem: TabItem | undefined;
 
@@ -107,7 +105,7 @@ const Tabs: React.FC<TabsProps> = ({
       role="tablist"
       aria-orientation="horizontal"
     >
-      {items.map((item, index) => {
+      {items.map((item) => {
         const isSelected = item.value === value;
 
         const tabClassNames = [
@@ -128,7 +126,7 @@ const Tabs: React.FC<TabsProps> = ({
             disabled={item.disabled}
             tabIndex={isSelected ? 0 : -1}
             onClick={() => !item.disabled && onChange(item.value)}
-            onKeyDown={(e) => handleKeyDown(e, item, index)}
+            onKeyDown={(e) => handleKeyDown(e, item)}
           >
             {item.icon && (
               <Icon name={item.icon} size={16} className="tabs__icon" />

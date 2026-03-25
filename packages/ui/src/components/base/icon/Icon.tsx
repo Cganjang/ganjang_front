@@ -1,7 +1,7 @@
 import React from "react";
 import * as LucideIcons from "lucide-react";
-import { IconProps } from "./types";
-import { getIconSize } from "./utils";
+import { IconProps } from "@ui/components/base/icon/types";
+import { getIconSize } from "@ui/components/base/icon/utils";
 
 // kebab-case → PascalCase 변환 (예: "arrow-left" → "ArrowLeft")
 const toPascalCase = (name: string): string =>

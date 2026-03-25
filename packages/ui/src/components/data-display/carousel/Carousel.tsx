@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
-import Icon from "../../base/icon/Icon";
+import Icon from "@ui/components/base/icon/Icon";
 import "./Carousel.scss";
 
 export interface CarouselSlide {

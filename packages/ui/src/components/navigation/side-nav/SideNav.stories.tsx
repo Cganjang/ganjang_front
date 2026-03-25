@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import SideNav from "./SideNav";
+import SideNav from "@ui/components/navigation/side-nav/SideNav";
 
 const SAMPLE_GROUPS = [
   {

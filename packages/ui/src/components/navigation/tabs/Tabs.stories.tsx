@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Tabs from "./Tabs";
+import Tabs from "@ui/components/navigation/tabs/Tabs";
 
 const SAMPLE_ITEMS = [
   { value: "overview", label: "Overview", icon: "heart" as const },

@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Chips from "./Chips";
+import Chips from "@ui/components/data-display/chips/Chips";
 
 const meta = {
   title: "Data Display/Chips",

@@ -1,7 +1,7 @@
 import React from "react";
 import Icon from "../../base/icon/Icon";
-import Avatar from "../../base/avatar/Avatar";
-import Badge from "../../base/badge/Badge";
+import Avatar from "../../data-display/avatar/Avatar";
+import Badge from "../../data-display/badge/Badge";
 import "./Header.scss";
 
 // ===================

@@ -1,6 +1,6 @@
 import React from "react";
 import Icon, { IconName } from "../../base/icon/Icon";
-import Badge from "../../base/badge/Badge";
+import Badge from "../../data-display/badge/Badge";
 import Divider from "../../base/divider/Divider";
 import "./SideNav.scss";
 

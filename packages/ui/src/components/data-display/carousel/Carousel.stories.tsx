@@ -3,31 +3,146 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Carousel from "./Carousel";
 
 // 슬라이드 1 — 히어로 배너 (텍스트 + 파랑 배경)
-const heroBannerSlide = (key: string, bg: string, color: string, title: string, sub: string) => ({
+const heroBannerSlide = (
+  key: string,
+  bg: string,
+  color: string,
+  title: string,
+  sub: string
+) => ({
   key,
   content: (
-    <div style={{ width: "100%", height: "360px", background: bg, display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center", gap: "12px", padding: "40px", boxSizing: "border-box" as const }}>
-      <p style={{ fontSize: "13px", fontWeight: 500, letterSpacing: "3px", color, opacity: 0.6, margin: 0 }}>SUBTITLE</p>
-      <h2 style={{ fontSize: "40px", fontWeight: 700, color, margin: 0, textAlign: "center" as const }}>{title}</h2>
+    <div
+      style={{
+        width: "100%",
+        height: "360px",
+        background: bg,
+        display: "flex",
+        flexDirection: "column" as const,
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "12px",
+        padding: "40px",
+        boxSizing: "border-box" as const,
+      }}
+    >
+      <p
+        style={{
+          fontSize: "13px",
+          fontWeight: 500,
+          letterSpacing: "3px",
+          color,
+          opacity: 0.6,
+          margin: 0,
+        }}
+      >
+        SUBTITLE
+      </p>
+      <h2
+        style={{
+          fontSize: "40px",
+          fontWeight: 700,
+          color,
+          margin: 0,
+          textAlign: "center" as const,
+        }}
+      >
+        {title}
+      </h2>
       <p style={{ fontSize: "15px", color, opacity: 0.75, margin: 0 }}>{sub}</p>
     </div>
   ),
 });
 
 // 슬라이드 2 — 상품 카드
-const productCardSlide = (key: string, name: string, price: string, badge: string, bg: string) => ({
+const productCardSlide = (
+  key: string,
+  name: string,
+  price: string,
+  badge: string,
+  bg: string
+) => ({
   key,
   content: (
-    <div style={{ width: "100%", height: "360px", background: "#f9fafb", display: "flex", alignItems: "center", justifyContent: "center", padding: "32px", boxSizing: "border-box" as const }}>
-      <div style={{ display: "flex", gap: "32px", alignItems: "center", maxWidth: "600px", width: "100%" }}>
-        <div style={{ width: "200px", height: "200px", background: bg, borderRadius: "12px", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "48px" }}>
+    <div
+      style={{
+        width: "100%",
+        height: "360px",
+        background: "#f9fafb",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "32px",
+        boxSizing: "border-box" as const,
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          gap: "32px",
+          alignItems: "center",
+          maxWidth: "600px",
+          width: "100%",
+        }}
+      >
+        <div
+          style={{
+            width: "200px",
+            height: "200px",
+            background: bg,
+            borderRadius: "12px",
+            flexShrink: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "48px",
+          }}
+        >
           🛍️
         </div>
-        <div style={{ display: "flex", flexDirection: "column" as const, gap: "12px" }}>
-          <span style={{ fontSize: "11px", fontWeight: 600, color: "#2563eb", background: "#eff6ff", padding: "2px 8px", borderRadius: "99px", alignSelf: "flex-start" as const }}>{badge}</span>
-          <h3 style={{ fontSize: "24px", fontWeight: 700, margin: 0, color: "#111827" }}>{name}</h3>
-          <p style={{ fontSize: "28px", fontWeight: 700, color: "#2563eb", margin: 0 }}>{price}</p>
-          <p style={{ fontSize: "13px", color: "#6b7280", margin: 0 }}>지금 주문하면 내일 도착</p>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column" as const,
+            gap: "12px",
+          }}
+        >
+          <span
+            style={{
+              fontSize: "11px",
+              fontWeight: 600,
+              color: "#2563eb",
+              background: "#eff6ff",
+              padding: "2px 8px",
+              borderRadius: "99px",
+              alignSelf: "flex-start" as const,
+            }}
+          >
+            {badge}
+          </span>
+          <h3
+            style={{
+              fontSize: "24px",
+              fontWeight: 700,
+              margin: 0,
+              color: "#111827",
+            }}
+          >
+            {name}
+          </h3>
+          <p
+            style={{
+              fontSize: "28px",
+              fontWeight: 700,
+              color: "#2563eb",
+              margin: 0,
+            }}
+          >
+            {price}
+          </p>
+          <p style={{ fontSize: "13px", color: "#6b7280", margin: 0 }}>
+            지금 주문하면 내일 도착
+          </p>
         </div>
       </div>
     </div>
@@ -35,14 +150,67 @@ const productCardSlide = (key: string, name: string, price: string, badge: strin
 });
 
 // 슬라이드 3 — 공지 / 알림
-const announcementSlide = (key: string, icon: string, title: string, desc: string, bg: string) => ({
+const announcementSlide = (
+  key: string,
+  icon: string,
+  title: string,
+  desc: string,
+  bg: string
+) => ({
   key,
   content: (
-    <div style={{ width: "100%", height: "360px", background: bg, display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center", gap: "20px", padding: "40px", boxSizing: "border-box" as const }}>
+    <div
+      style={{
+        width: "100%",
+        height: "360px",
+        background: bg,
+        display: "flex",
+        flexDirection: "column" as const,
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "20px",
+        padding: "40px",
+        boxSizing: "border-box" as const,
+      }}
+    >
       <div style={{ fontSize: "56px" }}>{icon}</div>
-      <h3 style={{ fontSize: "24px", fontWeight: 700, margin: 0, color: "#111827", textAlign: "center" as const }}>{title}</h3>
-      <p style={{ fontSize: "15px", color: "#4b5563", margin: 0, textAlign: "center" as const, maxWidth: "400px" }}>{desc}</p>
-      <button style={{ marginTop: "8px", padding: "10px 24px", background: "#2563eb", color: "#fff", border: "none", borderRadius: "6px", fontSize: "14px", fontWeight: 500, cursor: "pointer" }}>자세히 보기</button>
+      <h3
+        style={{
+          fontSize: "24px",
+          fontWeight: 700,
+          margin: 0,
+          color: "#111827",
+          textAlign: "center" as const,
+        }}
+      >
+        {title}
+      </h3>
+      <p
+        style={{
+          fontSize: "15px",
+          color: "#4b5563",
+          margin: 0,
+          textAlign: "center" as const,
+          maxWidth: "400px",
+        }}
+      >
+        {desc}
+      </p>
+      <button
+        style={{
+          marginTop: "8px",
+          padding: "10px 24px",
+          background: "#2563eb",
+          color: "#fff",
+          border: "none",
+          borderRadius: "6px",
+          fontSize: "14px",
+          fontWeight: 500,
+          cursor: "pointer",
+        }}
+      >
+        자세히 보기
+      </button>
     </div>
   ),
 });
@@ -51,8 +219,30 @@ const announcementSlide = (key: string, icon: string, title: string, desc: strin
 const statsSlide = {
   key: "stats",
   content: (
-    <div style={{ width: "100%", height: "360px", background: "#1e3a8a", display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center", gap: "32px", padding: "40px", boxSizing: "border-box" as const }}>
-      <h3 style={{ fontSize: "20px", fontWeight: 600, color: "#bfdbfe", margin: 0 }}>이번 달 성과</h3>
+    <div
+      style={{
+        width: "100%",
+        height: "360px",
+        background: "#1e3a8a",
+        display: "flex",
+        flexDirection: "column" as const,
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "32px",
+        padding: "40px",
+        boxSizing: "border-box" as const,
+      }}
+    >
+      <h3
+        style={{
+          fontSize: "20px",
+          fontWeight: 600,
+          color: "#bfdbfe",
+          margin: 0,
+        }}
+      >
+        이번 달 성과
+      </h3>
       <div style={{ display: "flex", gap: "48px" }}>
         {[
           { label: "신규 가입", value: "1,284", unit: "명" },
@@ -60,8 +250,22 @@ const statsSlide = {
           { label: "전환율", value: "3.8", unit: "%" },
         ].map(({ label, value, unit }) => (
           <div key={label} style={{ textAlign: "center" as const }}>
-            <p style={{ fontSize: "36px", fontWeight: 700, color: "#ffffff", margin: 0 }}>{value}<span style={{ fontSize: "18px" }}>{unit}</span></p>
-            <p style={{ fontSize: "13px", color: "#93c5fd", margin: "4px 0 0" }}>{label}</p>
+            <p
+              style={{
+                fontSize: "36px",
+                fontWeight: 700,
+                color: "#ffffff",
+                margin: 0,
+              }}
+            >
+              {value}
+              <span style={{ fontSize: "18px" }}>{unit}</span>
+            </p>
+            <p
+              style={{ fontSize: "13px", color: "#93c5fd", margin: "4px 0 0" }}
+            >
+              {label}
+            </p>
           </div>
         ))}
       </div>
@@ -70,17 +274,35 @@ const statsSlide = {
 };
 
 const SLIDES_5 = [
-  heroBannerSlide("hero1", "#dbeafe", "#1e3a8a", "새로운 디자인 시스템", "Figma 기반으로 제작된 컴포넌트 라이브러리"),
+  heroBannerSlide(
+    "hero1",
+    "#dbeafe",
+    "#1e3a8a",
+    "새로운 디자인 시스템",
+    "Figma 기반으로 제작된 컴포넌트 라이브러리"
+  ),
   productCardSlide("product", "Pro 플랜", "₩29,000 / 월", "인기", "#e0f2fe"),
-  announcementSlide("notice", "🎉", "v2.0 업데이트 출시", "새로운 컴포넌트 20종과 다크 모드 지원이 추가되었습니다.", "#fefce8"),
+  announcementSlide(
+    "notice",
+    "🎉",
+    "v2.0 업데이트 출시",
+    "새로운 컴포넌트 20종과 다크 모드 지원이 추가되었습니다.",
+    "#fefce8"
+  ),
   statsSlide,
-  heroBannerSlide("hero2", "#1e3a8a", "#ffffff", "함께 만들어가는 디자인", "모든 팀원이 하나의 언어로 소통합니다"),
+  heroBannerSlide(
+    "hero2",
+    "#1e3a8a",
+    "#ffffff",
+    "함께 만들어가는 디자인",
+    "모든 팀원이 하나의 언어로 소통합니다"
+  ),
 ];
 
 const SLIDES_3 = SLIDES_5.slice(0, 3);
 
 const meta = {
-  title: "DataDisplay/Carousel",
+  title: "Data Display/Carousel",
   component: Carousel,
   parameters: {
     layout: "padded",
@@ -151,28 +373,36 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "3rem" }}>
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
           Arrow sm (32px) — 5 slides
         </h3>
         <Carousel slides={SLIDES_5} arrowSize="sm" />
       </div>
 
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
           Arrow lg (40px) — 3 slides
         </h3>
         <Carousel slides={SLIDES_3} arrowSize="lg" />
       </div>
 
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
           Indicator only (no arrows)
         </h3>
         <Carousel slides={SLIDES_3} showArrows={false} />
       </div>
 
       <div>
-        <h3 style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}>
+        <h3
+          style={{ margin: "0 0 1rem 0", fontSize: "16px", fontWeight: "600" }}
+        >
           Arrows only (no indicator)
         </h3>
         <Carousel slides={SLIDES_3} showIndicator={false} />
@@ -201,7 +431,14 @@ export const UsageExample: Story = {
     const [current, setCurrent] = useState(0);
 
     return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "1rem", maxWidth: "800px" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "1rem",
+          maxWidth: "800px",
+        }}
+      >
         <Carousel
           slides={SLIDES_5}
           arrowSize="lg"

@@ -1,31 +1,30 @@
 @use "../../../styles/index.scss" as *;
 
 // =============================
-// Tooltip
+// Tooltip (Portal 기반)
 // Figma: max-width 240px, px-12 py-8, border-radius 4
 // Styles: Inverse (dark), Base (light + shadow)
-// Placements: 12 directions + none
-// Arrow: 24×6 triangle (CSS border trick)
+// Arrow: CSS border triangle
 // =============================
 
 $arrow-size: 4px;
 
 // =============================
-// Wrapper (inline positioning context)
+// Wrapper (trigger)
 // =============================
 
 .tooltip-wrapper {
   display: inline-flex;
-  position: relative;
+  width: fit-content;
 }
 
 // =============================
-// Tooltip bubble
+// Tooltip bubble (rendered in portal on body)
 // =============================
 
 .tooltip {
   position: absolute;
-  z-index: 1000;
+  z-index: 9999;
   width: max-content;
   padding: var(--spacing-8) var(--spacing-12);
   border-radius: var(--border-radius-4);
@@ -41,14 +40,16 @@ $arrow-size: 4px;
     background-color: var(--bg-inverse-bolder);
     color: var(--text-interactive-inverse);
 
-    .tooltip__arrow--top,
-    .tooltip__arrow--bottom {
+    .tooltip__arrow--top {
       border-top-color: var(--bg-inverse-bolder);
+    }
+    .tooltip__arrow--bottom {
       border-bottom-color: var(--bg-inverse-bolder);
     }
-    .tooltip__arrow--left,
-    .tooltip__arrow--right {
+    .tooltip__arrow--left {
       border-left-color: var(--bg-inverse-bolder);
+    }
+    .tooltip__arrow--right {
       border-right-color: var(--bg-inverse-bolder);
     }
   }
@@ -60,14 +61,16 @@ $arrow-size: 4px;
       0 0 2px 0 var(--shadow-subtle),
       0 2px 4px 0 var(--shadow-default);
 
-    .tooltip__arrow--top,
-    .tooltip__arrow--bottom {
+    .tooltip__arrow--top {
       border-top-color: var(--bg-primary);
+    }
+    .tooltip__arrow--bottom {
       border-bottom-color: var(--bg-primary);
     }
-    .tooltip__arrow--left,
-    .tooltip__arrow--right {
+    .tooltip__arrow--left {
       border-left-color: var(--bg-primary);
+    }
+    .tooltip__arrow--right {
       border-right-color: var(--bg-primary);
     }
   }
@@ -88,7 +91,7 @@ $arrow-size: 4px;
   }
 
   // =============================
-  // Arrow (CSS border triangle)
+  // Arrow
   // =============================
 
   &__arrow {
@@ -97,156 +100,62 @@ $arrow-size: 4px;
     height: 0;
     border: $arrow-size solid transparent;
 
+    // Side: tooltip is above → arrow at bottom pointing down
     &--top {
       bottom: -$arrow-size;
       border-bottom: none;
     }
 
+    // Side: tooltip is below → arrow at top pointing up
     &--bottom {
       top: -$arrow-size;
       border-top: none;
     }
 
+    // Side: tooltip is left → arrow at right pointing right
     &--left {
       right: -$arrow-size;
       border-right: none;
     }
 
+    // Side: tooltip is right → arrow at left pointing left
     &--right {
       left: -$arrow-size;
       border-left: none;
     }
-  }
 
-  // =============================
-  // Placement: Top
-  // =============================
+    // Horizontal alignment (for top/bottom)
+    &--top,
+    &--bottom {
+      &.tooltip__arrow--align-center {
+        left: 50%;
+        transform: translateX(-50%);
+      }
 
-  &--top,
-  &--top-start,
-  &--top-end {
-    bottom: calc(100% + var(--tooltip-offset));
-  }
+      &.tooltip__arrow--align-start {
+        left: 16px;
+      }
 
-  &--top {
-    left: 50%;
-    transform: translateX(-50%);
-    .tooltip__arrow {
-      left: 50%;
-      transform: translateX(-50%);
+      &.tooltip__arrow--align-end {
+        right: 16px;
+      }
     }
-  }
 
-  &--top-start {
-    left: 0;
-    .tooltip__arrow {
-      left: 12px;
-    }
-  }
+    // Vertical alignment (for left/right)
+    &--left,
+    &--right {
+      &.tooltip__arrow--align-center {
+        top: 50%;
+        transform: translateY(-50%);
+      }
 
-  &--top-end {
-    right: 0;
-    .tooltip__arrow {
-      right: 12px;
-    }
-  }
+      &.tooltip__arrow--align-start {
+        top: 10px;
+      }
 
-  // =============================
-  // Placement: Bottom
-  // =============================
-
-  &--bottom,
-  &--bottom-start,
-  &--bottom-end {
-    top: calc(100% + var(--tooltip-offset));
-  }
-
-  &--bottom {
-    left: 50%;
-    transform: translateX(-50%);
-    .tooltip__arrow {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  }
-
-  &--bottom-start {
-    left: 0;
-    .tooltip__arrow {
-      left: 12px;
-    }
-  }
-
-  &--bottom-end {
-    right: 0;
-    .tooltip__arrow {
-      right: 12px;
-    }
-  }
-
-  // =============================
-  // Placement: Left
-  // =============================
-
-  &--left,
-  &--left-start,
-  &--left-end {
-    right: calc(100% + var(--tooltip-offset));
-  }
-
-  &--left {
-    top: 50%;
-    transform: translateY(-50%);
-    .tooltip__arrow {
-      top: 50%;
-      transform: translateY(-50%);
-    }
-  }
-
-  &--left-start {
-    top: 0;
-    .tooltip__arrow {
-      top: 8px;
-    }
-  }
-
-  &--left-end {
-    bottom: 0;
-    .tooltip__arrow {
-      bottom: 8px;
-    }
-  }
-
-  // =============================
-  // Placement: Right
-  // =============================
-
-  &--right,
-  &--right-start,
-  &--right-end {
-    left: calc(100% + var(--tooltip-offset));
-  }
-
-  &--right {
-    top: 50%;
-    transform: translateY(-50%);
-    .tooltip__arrow {
-      top: 50%;
-      transform: translateY(-50%);
-    }
-  }
-
-  &--right-start {
-    top: 0;
-    .tooltip__arrow {
-      top: 8px;
-    }
-  }
-
-  &--right-end {
-    bottom: 0;
-    .tooltip__arrow {
-      bottom: 8px;
+      &.tooltip__arrow--align-end {
+        bottom: 10px;
+      }
     }
   }
 }

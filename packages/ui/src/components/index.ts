@@ -16,5 +16,5 @@ export * from "./layout";
 // Navigation Components (Tabs, BottomNav, Pagination, SideNav)
 export * from "./navigation";
 
-// Overlay Components (나중에 추가)
-// export * from './overlay'
+// Overlay Components (Tooltip, Modal)
+export * from "./overlay";

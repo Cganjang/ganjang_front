@@ -1,2 +1,5 @@
-// 오버레이 관련 컴포넌트
-// -modal, dropdown,tooltips 등
+// 오버레이 — Tooltip, Modal 등
+export { default as Tooltip } from "./tooltip";
+export type { TooltipProps, TooltipPlacement } from "./tooltip";
+export { default as Modal } from "./modal";
+export type { ModalProps } from "./modal";

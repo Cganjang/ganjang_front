@@ -1,0 +1,98 @@
+@use "../../../styles/index.scss" as *;
+
+// ProgressBar — 트랙 + 채움, Figma 토큰 기반
+// Track: bg-tertiary, Fill: type별 시맨틱 배경
+
+.progress-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+
+  &__track {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    background-color: var(--bg-tertiary);
+    border-radius: var(--border-radius-circle);
+  }
+
+  &__fill {
+    height: 100%;
+    border-radius: inherit;
+    transition: width 0.2s ease;
+  }
+
+  &__value {
+    flex-shrink: 0;
+    font-family:
+      "Pretendard Variable",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-tertiary);
+    min-width: 2.5rem;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  // ---- size (track height) ----
+  &--sm .progress-bar__track {
+    height: var(--spacing-4);
+  }
+
+  &--md .progress-bar__track {
+    height: var(--spacing-8);
+  }
+
+  &--lg .progress-bar__track {
+    height: var(--spacing-12);
+  }
+
+  // ---- type (fill color) ----
+  &--primary .progress-bar__fill {
+    background-color: var(--bg-interactive-primary);
+  }
+
+  &--success .progress-bar__fill {
+    background-color: var(--bg-success-bold);
+  }
+
+  &--warning .progress-bar__fill {
+    background-color: var(--bg-warning-bold);
+  }
+
+  &--error .progress-bar__fill {
+    background-color: var(--bg-danger-bold);
+  }
+
+  &--neutral .progress-bar__fill {
+    background-color: var(--bg-inverse-bold);
+  }
+
+  // ---- indeterminate ----
+  &--indeterminate .progress-bar__fill {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 35%;
+    transition: none;
+    animation: progress-bar-indeterminate 1.2s ease-in-out infinite;
+  }
+}
+
+@keyframes progress-bar-indeterminate {
+  0% {
+    left: -35%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}

@@ -12,3 +12,9 @@ export { default as Carousel } from "./carousel";
 export type { CarouselProps, CarouselSlide } from "./carousel";
 export { default as Table } from "./table";
 export type { TableProps } from "./table";
+
+export { Accordion, AccordionItem } from "./accordion";
+export type { AccordionProps, AccordionItemProps } from "./accordion";
+
+export { default as Card } from "./card";
+export type { CardProps } from "./card";

@@ -1,0 +1,374 @@
+@use "../../../styles/index.scss" as *;
+
+// =============================
+// Alert (Figma: Status × Style matrix)
+// Padding: 12px, radius: 8px, gap: 4px / 8px
+// Title: 14px medium, Description: 12px medium
+// =============================
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  padding: var(--spacing-12);
+  border-radius: var(--border-radius-8);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  &__main {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: flex-start;
+    gap: var(--spacing-8);
+    min-width: 0;
+  }
+
+  &__icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    color: inherit;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    min-width: 0;
+  }
+
+  &__title {
+    margin: 0;
+    font-family:
+      "Pretendard Variable",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  &__description {
+    margin: 0;
+    font-family:
+      "Pretendard Variable",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-tertiary);
+  }
+
+  &__close {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: inherit;
+
+    &:focus-visible {
+      outline: 2px solid var(--border-focus-ring);
+      outline-offset: 2px;
+      border-radius: var(--border-radius-4);
+    }
+  }
+
+  // =============================
+  // Filled
+  // =============================
+
+  &--filled {
+    &.alert--information {
+      background-color: var(--bg-info);
+      color: var(--text-interactive-inverse);
+
+      .alert__icon {
+        color: var(--text-interactive-inverse);
+      }
+
+      .alert__title {
+        color: var(--text-interactive-inverse);
+      }
+
+      .alert__description {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .alert__close {
+        color: var(--text-interactive-inverse);
+      }
+    }
+
+    &.alert--error {
+      background-color: var(--bg-danger-bold);
+      color: var(--text-interactive-inverse);
+
+      .alert__icon {
+        color: var(--text-interactive-inverse);
+      }
+
+      .alert__title {
+        color: var(--text-interactive-inverse);
+      }
+
+      .alert__description {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .alert__close {
+        color: var(--text-interactive-inverse);
+      }
+    }
+
+    &.alert--warning {
+      background-color: var(--bg-warning-bold);
+      color: var(--text-primary);
+
+      .alert__icon {
+        color: var(--text-primary);
+      }
+
+      .alert__title {
+        color: var(--text-primary);
+      }
+
+      .alert__description {
+        color: var(--text-tertiary);
+      }
+
+      .alert__close {
+        color: var(--text-primary);
+      }
+    }
+
+    &.alert--success {
+      background-color: var(--bg-success-bold);
+      color: var(--text-interactive-inverse);
+
+      .alert__icon {
+        color: var(--text-interactive-inverse);
+      }
+
+      .alert__title {
+        color: var(--text-interactive-inverse);
+      }
+
+      .alert__description {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .alert__close {
+        color: var(--text-interactive-inverse);
+      }
+    }
+
+    // Figma 토큰은 연한 파랑 배경 — 가독성을 위해 진한 텍스트 사용
+    &.alert--brand {
+      background-color: var(--bg-interactive-selected-pressed);
+      color: var(--text-primary);
+
+      .alert__title {
+        color: var(--text-primary);
+      }
+
+      .alert__description {
+        color: var(--text-tertiary);
+      }
+
+      .alert__icon {
+        color: var(--icon-brand);
+      }
+
+      .alert__close {
+        color: var(--icon-tertiary);
+      }
+    }
+
+    &.alert--neutral {
+      background-color: var(--bg-inverse-bolder);
+      color: var(--text-interactive-inverse);
+
+      .alert__icon {
+        color: var(--text-interactive-inverse);
+      }
+
+      .alert__title {
+        color: var(--text-interactive-inverse);
+      }
+
+      .alert__description {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .alert__close {
+        color: var(--text-interactive-inverse);
+      }
+    }
+  }
+
+  // =============================
+  // Outline
+  // =============================
+
+  &--outline {
+    border: 1px solid transparent;
+
+    & .alert__description {
+      color: var(--text-tertiary);
+    }
+
+    &.alert--information {
+      background-color: var(--bg-info-subtle);
+      border-color: var(--border-info);
+
+      .alert__title {
+        color: var(--text-primary);
+      }
+
+      .alert__icon {
+        color: var(--icon-info);
+      }
+    }
+
+    &.alert--error {
+      background-color: var(--bg-danger-subtile);
+      border-color: var(--border-danger);
+
+      .alert__title {
+        color: var(--text-primary);
+      }
+
+      .alert__icon {
+        color: var(--icon-danger);
+      }
+    }
+
+    &.alert--warning {
+      background-color: var(--bg-warning-subtile);
+      border-color: var(--border-warning);
+
+      .alert__title {
+        color: var(--text-primary);
+      }
+
+      .alert__icon {
+        color: var(--icon-warning);
+      }
+    }
+
+    &.alert--success {
+      background-color: var(--bg-success-subtile);
+      border-color: var(--border-success);
+
+      .alert__title {
+        color: var(--text-primary);
+      }
+
+      .alert__icon {
+        color: var(--icon-success);
+      }
+    }
+
+    &.alert--brand {
+      background-color: var(--bg-info-subtle);
+      border-color: var(--border-info);
+
+      .alert__title {
+        color: var(--text-primary);
+      }
+
+      .alert__icon {
+        color: var(--icon-brand);
+      }
+    }
+
+    &.alert--neutral {
+      background-color: var(--bg-interactive-secondary);
+      border-color: var(--border-info);
+
+      .alert__title {
+        color: var(--text-primary);
+      }
+
+      .alert__icon {
+        color: var(--icon-secondary);
+      }
+    }
+
+    .alert__close {
+      color: var(--icon-tertiary);
+    }
+  }
+
+  // =============================
+  // Transparent
+  // =============================
+
+  &--transparent {
+    .alert__description {
+      color: var(--text-tertiary);
+    }
+
+    &.alert--information .alert__title {
+      color: var(--text-info-bold);
+    }
+
+    &.alert--error .alert__title {
+      color: var(--text-danger-bold);
+    }
+
+    &.alert--warning .alert__title {
+      color: var(--text-warning-bold);
+    }
+
+    &.alert--success .alert__title {
+      color: var(--text-success-bold);
+    }
+
+    &.alert--brand .alert__title {
+      color: var(--text-info-bold);
+    }
+
+    &.alert--neutral .alert__title {
+      color: var(--text-primary);
+    }
+
+    &.alert--information .alert__icon {
+      color: var(--icon-info);
+    }
+
+    &.alert--error .alert__icon {
+      color: var(--icon-danger);
+    }
+
+    &.alert--warning .alert__icon {
+      color: var(--icon-warning);
+    }
+
+    &.alert--success .alert__icon {
+      color: var(--icon-success);
+    }
+
+    &.alert--brand .alert__icon {
+      color: var(--icon-brand);
+    }
+
+    &.alert--neutral .alert__icon {
+      color: var(--icon-secondary);
+    }
+  }
+}

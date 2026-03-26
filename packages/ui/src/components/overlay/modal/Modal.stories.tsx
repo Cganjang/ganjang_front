@@ -73,7 +73,11 @@ export const Default: Story = {
               >
                 취소
               </Button>
-              <Button type="primary" variant="filled" onClick={() => setOpen(false)}>
+              <Button
+                type="primary"
+                variant="filled"
+                onClick={() => setOpen(false)}
+              >
                 확인
               </Button>
             </>
@@ -97,7 +101,14 @@ export const Sizes: Story = {
     const [open, setOpen] = useState(false);
     const [size, setSize] = useState<"sm" | "md" | "lg" | "xl">("md");
     return (
-      <div style={{ padding: 24, display: "flex", flexDirection: "column", gap: 12 }}>
+      <div
+        style={{
+          padding: 24,
+          display: "flex",
+          flexDirection: "column",
+          gap: 12,
+        }}
+      >
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           {(["sm", "md", "lg", "xl"] as const).map((s) => (
             <Button
@@ -142,7 +153,8 @@ export const LongContent: Story = {
         >
           {Array.from({ length: 40 }, (_, i) => (
             <p key={i} style={{ margin: "0 0 12px" }}>
-              줄 {i + 1}. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              줄 {i + 1}. Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit.
             </p>
           ))}
         </Modal>

@@ -88,10 +88,7 @@ const Tooltip: React.FC<TooltipProps> = ({
 
   const [side] = placement.split("-") as [string];
 
-  const wrapperClassNames = [
-    "tooltip-wrapper",
-    className,
-  ]
+  const wrapperClassNames = ["tooltip-wrapper", className]
     .filter(Boolean)
     .join(" ");
 

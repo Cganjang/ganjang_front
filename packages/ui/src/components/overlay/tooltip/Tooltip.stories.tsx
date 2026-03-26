@@ -31,10 +31,18 @@ Figma 디자인 시스템 기반 Tooltip 컴포넌트입니다.
     placement: {
       control: { type: "select" },
       options: [
-        "top", "top-start", "top-end",
-        "bottom", "bottom-start", "bottom-end",
-        "left", "left-start", "left-end",
-        "right", "right-start", "right-end",
+        "top",
+        "top-start",
+        "top-end",
+        "bottom",
+        "bottom-start",
+        "bottom-end",
+        "left",
+        "left-start",
+        "left-end",
+        "right",
+        "right-start",
+        "right-end",
       ],
       description: "배치 방향",
     },
@@ -69,22 +77,23 @@ Figma 디자인 시스템 기반 Tooltip 컴포넌트입니다.
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const TriggerButton = React.forwardRef<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement>>(
-  (props, ref) => (
-    <button
-      ref={ref}
-      style={{
-        padding: "8px 16px",
-        border: "1px solid #e5e7eb",
-        borderRadius: "4px",
-        background: "white",
-        cursor: "pointer",
-        fontSize: "14px",
-      }}
-      {...props}
-    />
-  ),
-);
+const TriggerButton = React.forwardRef<
+  HTMLButtonElement,
+  React.ButtonHTMLAttributes<HTMLButtonElement>
+>((props, ref) => (
+  <button
+    ref={ref}
+    style={{
+      padding: "8px 16px",
+      border: "1px solid #e5e7eb",
+      borderRadius: "4px",
+      background: "white",
+      cursor: "pointer",
+      fontSize: "14px",
+    }}
+    {...props}
+  />
+));
 TriggerButton.displayName = "TriggerButton";
 
 // 1. 기본 상태
@@ -108,13 +117,26 @@ export const Variants: Story = {
   },
   render: () => (
     <div style={{ display: "flex", gap: "3rem", padding: "4rem" }}>
-      <Tooltip content="Inverse 스타일 (어두운 배경)" variant="inverse" placement="top">
+      <Tooltip
+        content="Inverse 스타일 (어두운 배경)"
+        variant="inverse"
+        placement="top"
+      >
         <TriggerButton>Inverse</TriggerButton>
       </Tooltip>
-      <Tooltip content="Base 스타일 (밝은 배경 + 그림자)" variant="base" placement="top">
+      <Tooltip
+        content="Base 스타일 (밝은 배경 + 그림자)"
+        variant="base"
+        placement="top"
+      >
         <TriggerButton>Base</TriggerButton>
       </Tooltip>
-      <Tooltip content="화살표 없는 툴팁" variant="inverse" placement="top" showArrow={false}>
+      <Tooltip
+        content="화살표 없는 툴팁"
+        variant="inverse"
+        placement="top"
+        showArrow={false}
+      >
         <TriggerButton>No Arrow</TriggerButton>
       </Tooltip>
     </div>
@@ -170,7 +192,11 @@ export const AllPlacementsInverse: Story = {
         <TriggerButton>right-end</TriggerButton>
       </Tooltip>
 
-      <Tooltip content="Bottom Start" placement="bottom-start" variant="inverse">
+      <Tooltip
+        content="Bottom Start"
+        placement="bottom-start"
+        variant="inverse"
+      >
         <TriggerButton>bottom-start</TriggerButton>
       </Tooltip>
       <Tooltip content="Bottom Center" placement="bottom" variant="inverse">
@@ -232,7 +258,8 @@ export const AllPlacementsBase: Story = {
 // 5. 긴 텍스트 (max-width 테스트)
 export const LongContent: Story = {
   args: {
-    content: "Supporting text with max width of tooltipBase. This is a longer text to test wrapping behavior.",
+    content:
+      "Supporting text with max width of tooltipBase. This is a longer text to test wrapping behavior.",
   },
   render: (args) => (
     <div style={{ padding: "4rem", display: "flex", gap: "3rem" }}>
@@ -252,7 +279,14 @@ export const UsageExample: Story = {
     content: "Tooltip",
   },
   render: () => (
-    <div style={{ display: "flex", gap: "2rem", padding: "4rem", alignItems: "center" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "2rem",
+        padding: "4rem",
+        alignItems: "center",
+      }}
+    >
       <Tooltip content="복사하기" placement="top">
         <button
           style={{
@@ -289,7 +323,11 @@ export const UsageExample: Story = {
           💾
         </button>
       </Tooltip>
-      <Tooltip content="이 기능은 Pro 플랜에서만 사용할 수 있습니다. 업그레이드하시겠습니까?" placement="right" variant="base">
+      <Tooltip
+        content="이 기능은 Pro 플랜에서만 사용할 수 있습니다. 업그레이드하시겠습니까?"
+        placement="right"
+        variant="base"
+      >
         <button
           style={{
             padding: "8px 16px",

@@ -8,7 +8,7 @@
 // Arrow: 24×6 triangle (CSS border trick)
 // =============================
 
-$arrow-size: 6px;
+$arrow-size: 4px;
 
 // =============================
 // Wrapper (inline positioning context)
@@ -26,6 +26,7 @@ $arrow-size: 6px;
 .tooltip {
   position: absolute;
   z-index: 1000;
+  width: max-content;
   padding: var(--spacing-8) var(--spacing-12);
   border-radius: var(--border-radius-4);
   pointer-events: none;
@@ -41,9 +42,15 @@ $arrow-size: 6px;
     color: var(--text-interactive-inverse);
 
     .tooltip__arrow--top,
-    .tooltip__arrow--bottom { border-top-color: var(--bg-inverse-bolder); border-bottom-color: var(--bg-inverse-bolder); }
+    .tooltip__arrow--bottom {
+      border-top-color: var(--bg-inverse-bolder);
+      border-bottom-color: var(--bg-inverse-bolder);
+    }
     .tooltip__arrow--left,
-    .tooltip__arrow--right { border-left-color: var(--bg-inverse-bolder); border-right-color: var(--bg-inverse-bolder); }
+    .tooltip__arrow--right {
+      border-left-color: var(--bg-inverse-bolder);
+      border-right-color: var(--bg-inverse-bolder);
+    }
   }
 
   &--base {
@@ -54,9 +61,15 @@ $arrow-size: 6px;
       0 2px 4px 0 var(--shadow-default);
 
     .tooltip__arrow--top,
-    .tooltip__arrow--bottom { border-top-color: var(--bg-primary); border-bottom-color: var(--bg-primary); }
+    .tooltip__arrow--bottom {
+      border-top-color: var(--bg-primary);
+      border-bottom-color: var(--bg-primary);
+    }
     .tooltip__arrow--left,
-    .tooltip__arrow--right { border-left-color: var(--bg-primary); border-right-color: var(--bg-primary); }
+    .tooltip__arrow--right {
+      border-left-color: var(--bg-primary);
+      border-right-color: var(--bg-primary);
+    }
   }
 
   // =============================
@@ -118,17 +131,24 @@ $arrow-size: 6px;
   &--top {
     left: 50%;
     transform: translateX(-50%);
-    .tooltip__arrow { left: 50%; transform: translateX(-50%); }
+    .tooltip__arrow {
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 
   &--top-start {
     left: 0;
-    .tooltip__arrow { left: 12px; }
+    .tooltip__arrow {
+      left: 12px;
+    }
   }
 
   &--top-end {
     right: 0;
-    .tooltip__arrow { right: 12px; }
+    .tooltip__arrow {
+      right: 12px;
+    }
   }
 
   // =============================
@@ -144,17 +164,24 @@ $arrow-size: 6px;
   &--bottom {
     left: 50%;
     transform: translateX(-50%);
-    .tooltip__arrow { left: 50%; transform: translateX(-50%); }
+    .tooltip__arrow {
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 
   &--bottom-start {
     left: 0;
-    .tooltip__arrow { left: 12px; }
+    .tooltip__arrow {
+      left: 12px;
+    }
   }
 
   &--bottom-end {
     right: 0;
-    .tooltip__arrow { right: 12px; }
+    .tooltip__arrow {
+      right: 12px;
+    }
   }
 
   // =============================
@@ -170,17 +197,24 @@ $arrow-size: 6px;
   &--left {
     top: 50%;
     transform: translateY(-50%);
-    .tooltip__arrow { top: 50%; transform: translateY(-50%); }
+    .tooltip__arrow {
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 
   &--left-start {
     top: 0;
-    .tooltip__arrow { top: 8px; }
+    .tooltip__arrow {
+      top: 8px;
+    }
   }
 
   &--left-end {
     bottom: 0;
-    .tooltip__arrow { bottom: 8px; }
+    .tooltip__arrow {
+      bottom: 8px;
+    }
   }
 
   // =============================
@@ -196,17 +230,24 @@ $arrow-size: 6px;
   &--right {
     top: 50%;
     transform: translateY(-50%);
-    .tooltip__arrow { top: 50%; transform: translateY(-50%); }
+    .tooltip__arrow {
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 
   &--right-start {
     top: 0;
-    .tooltip__arrow { top: 8px; }
+    .tooltip__arrow {
+      top: 8px;
+    }
   }
 
   &--right-end {
     bottom: 0;
-    .tooltip__arrow { bottom: 8px; }
+    .tooltip__arrow {
+      bottom: 8px;
+    }
   }
 }
 

@@ -38,21 +38,25 @@ $radio-sizes: (
   user-select: none;
   transition: all 0.15s ease-in-out;
 
-  // 네이티브 input 숨김
+  // 네이티브 input: 라벨 전체를 덮는 투명 레이어 (id/htmlFor 정합 + 클릭 영역)
   &__input {
     position: absolute;
-    width: 1px;
-    height: 1px;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
     padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
     border: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 1;
   }
 
   // 커스텀 라디오 인디케이터
   &__indicator {
+    position: relative;
+    z-index: 0;
+    pointer-events: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,6 +78,9 @@ $radio-sizes: (
 
   // 라벨 텍스트
   &__label {
+    position: relative;
+    z-index: 0;
+    pointer-events: none;
     color: var(--text-primary);
     font-family:
       "Pretendard Variable",
@@ -160,6 +167,10 @@ $radio-sizes: (
   &--disabled {
     cursor: not-allowed;
 
+    .radio__input {
+      cursor: not-allowed;
+    }
+
     .radio__indicator {
       border-color: var(--border-disabled);
       background-color: var(--bg-secondary);
@@ -176,28 +187,5 @@ $radio-sizes: (
         background-color: var(--bg-disabled);
       }
     }
-  }
-}
-
-// =============================
-// RadioGroup
-// =============================
-
-.radio-group {
-  display: flex;
-
-  &--vertical {
-    flex-direction: column;
-    gap: var(--spacing-12);
-  }
-
-  &--horizontal {
-    flex-direction: row;
-    gap: var(--spacing-16);
-    flex-wrap: wrap;
-  }
-
-  &--disabled {
-    cursor: not-allowed;
   }
 }

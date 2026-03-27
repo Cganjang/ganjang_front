@@ -175,7 +175,7 @@ export const Error: Story = {
   },
 };
 
-// 5. 실제 사용 예시 — controlled 상태 + CheckGroup 시나리오
+// 5. 실제 사용 예시 — controlled 상태 (여러 Checkbox)
 export const UsageExample: Story = {
   args: {
     label: "Label",

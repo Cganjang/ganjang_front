@@ -36,8 +36,9 @@ const Radio: React.FC<RadioProps> = ({
   className,
   styleOverride,
 }) => {
-  const autoId = useId();
-  const inputId = `radio-${autoId}`;
+  const instanceId = useId();
+  const safeValue = String(value).replace(/[^a-zA-Z0-9_-]/g, "_");
+  const inputId = `radio-${instanceId.replace(/:/g, "")}_v_${safeValue}`;
 
   const classNames = [
     "radio",
@@ -47,6 +48,8 @@ const Radio: React.FC<RadioProps> = ({
   ]
     .filter(Boolean)
     .join(" ");
+
+  const isControlled = checked !== undefined;
 
   return (
     <label
@@ -60,8 +63,11 @@ const Radio: React.FC<RadioProps> = ({
         type="radio"
         name={name}
         value={value}
-        checked={checked}
-        defaultChecked={defaultChecked}
+        {...(isControlled
+          ? { checked }
+          : defaultChecked !== undefined
+            ? { defaultChecked }
+            : {})}
         disabled={disabled}
         onChange={onChange}
         aria-disabled={disabled}

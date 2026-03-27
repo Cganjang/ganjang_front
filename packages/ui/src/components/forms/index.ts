@@ -1,11 +1,9 @@
 // Forms Components — 폼 입력 컴포넌트
-export { default as Checkbox, CheckGroup } from "./checkbox";
-export type { CheckboxProps, CheckGroupProps, CheckGroupItem } from "./checkbox";
+export { default as Checkbox } from "./checkbox";
+export type { CheckboxProps } from "./checkbox";
 
 export { default as Radio } from "./radio";
 export type { RadioProps } from "./radio";
-export { RadioGroup } from "./radio";
-export type { RadioGroupProps } from "./radio";
 
 export { default as Switch } from "./switch";
 export type { SwitchProps } from "./switch";

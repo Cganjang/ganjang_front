@@ -84,9 +84,7 @@ function App() {
 | 컴포넌트 | 설명 |
 |---------|------|
 | `Checkbox` | 체크박스 (indeterminate 지원) |
-| `CheckGroup` | 체크박스 그룹 |
 | `Radio` | 라디오 버튼 |
-| `RadioGroup` | 라디오 그룹 |
 | `Switch` | 토글 스위치 |
 | `Input` | 텍스트 입력 |
 | `Textarea` | 멀티라인 입력 |

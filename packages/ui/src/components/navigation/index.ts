@@ -6,3 +6,5 @@ export { default as Pagination } from "./pagination";
 export type { PaginationProps } from "./pagination";
 export { default as SideNav, SideNavItem, SideNavGroup } from "./side-nav";
 export type { SideNavProps, SideNavItemProps, SideNavItemData, SideNavGroupData } from "./side-nav";
+export { default as Breadcrumbs } from "./breadcrumbs";
+export type { BreadcrumbsProps, BreadcrumbItem } from "./breadcrumbs";

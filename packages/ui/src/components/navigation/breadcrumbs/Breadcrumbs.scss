@@ -1,0 +1,119 @@
+@use "../../../styles/index.scss" as *;
+
+// Breadcrumbs (Figma: Breadcrumbs)
+// 링크: body/md underline, 현재: body/md medium
+// 구분: chevron-right 24px, 항목 간 gap 4px
+
+.breadcrumbs {
+  display: block;
+  width: 100%;
+  min-width: 0;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__segment {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: var(--spacing-4);
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  &__icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-interactive-primary);
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: var(--spacing-2) var(--spacing-4);
+    max-width: 100%;
+
+    font-family:
+      "Pretendard Variable",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.2;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    white-space: nowrap;
+
+    color: var(--text-interactive-primary);
+
+    &:hover {
+      color: var(--text-interactive-primary-hovered);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--border-focus-ring);
+      outline-offset: 2px;
+      border-radius: var(--border-radius-4);
+    }
+  }
+
+  &__text {
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: var(--spacing-2) var(--spacing-4);
+    max-width: 100%;
+
+    font-family:
+      "Pretendard Variable",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  &__current {
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: var(--spacing-2) var(--spacing-4);
+    min-width: 0;
+    max-width: 100%;
+
+    font-family:
+      "Pretendard Variable",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-tertiary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__separator {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-interactive-primary);
+  }
+}

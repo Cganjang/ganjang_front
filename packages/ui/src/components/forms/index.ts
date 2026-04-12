@@ -16,3 +16,6 @@ export type { TextareaProps } from "./textarea";
 
 export { default as Select } from "./select";
 export type { SelectProps, SelectOptionItem } from "./select";
+
+export { RadioButtonGroup } from "./radiobutton";
+export type { RadioButtonGroupProps, RadioButtonOption } from "./radiobutton";

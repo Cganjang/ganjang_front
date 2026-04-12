@@ -1,0 +1,44 @@
+@use "../../../styles/index.scss" as *;
+
+.radio-button-group {
+  display: flex;
+
+  &--vertical {
+    flex-direction: column;
+    gap: var(--spacing-8);
+  }
+
+  &--horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-16);
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+  }
+
+  &__info {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: color 0.15s ease-in-out;
+
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+
+  &--error {
+    .radio__indicator {
+      border-color: var(--border-critical);
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__claude_ai_Figma__use_figma",
+      "Bash(rm packages/ui/src/components/forms/radiobutton/RadioButtonGroup.tsx packages/ui/src/components/forms/radiobutton/RadioButtonGroup.scss packages/ui/src/components/forms/radiobutton/index.ts)",
+      "Bash(git pull *)",
+      "Bash(npx tsc *)",
+      "Bash(pnpm --filter @weavekit/ui build)",
+      "Bash(vercel --prod)",
+      "Bash(vercel link *)"
+    ]
+  }
+}

@@ -5,6 +5,13 @@ import Textarea from "./Textarea";
 const meta = {
   title: "Forms/Textarea",
   component: Textarea,
+  decorators: [
+    (Story, context) => {
+      const [value, setValue] = React.useState<string>(context.args.value ?? "");
+      React.useEffect(() => { setValue(context.args.value ?? ""); }, [context.args.value]);
+      return <Story args={{ ...context.args, value, onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => setValue(e.target.value) }} />;
+    },
+  ],
   parameters: {
     layout: "centered",
     docs: {

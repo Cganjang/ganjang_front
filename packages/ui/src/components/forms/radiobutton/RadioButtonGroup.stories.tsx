@@ -1,10 +1,17 @@
+import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import RadioButtonGroup from "./RadioButtonGroup";
-import { useState } from "react";
 
 const meta: Meta<typeof RadioButtonGroup> = {
   title: "Forms/RadioButtonGroup",
   component: RadioButtonGroup,
+  decorators: [
+    (Story, context) => {
+      const [value, setValue] = React.useState<string>(context.args.value ?? "");
+      React.useEffect(() => { setValue(context.args.value ?? ""); }, [context.args.value]);
+      return <Story args={{ ...context.args, value, onChange: setValue }} />;
+    },
+  ],
   parameters: {
     layout: "centered",
     docs: {

@@ -1,0 +1,237 @@
+@use "../../../styles/index.scss" as *;
+
+// =============================
+// File Upload
+// =============================
+
+.file-upload {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+
+  // =============================
+  // Drop Zone
+  // =============================
+
+  &__zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-8);
+    padding: var(--spacing-24);
+    border: 2px dashed var(--border-secondary);
+    border-radius: var(--border-radius-8);
+    background-color: var(--bg-primary);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+    user-select: none;
+
+    &:hover:not(.file-upload--disabled) {
+      border-color: var(--border-interactive-secondary-hovered);
+      background-color: var(--bg-secondary);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--border-focus-ring);
+      outline-offset: 2px;
+    }
+  }
+
+  // =============================
+  // Icon (Upload Cloud)
+  // =============================
+
+  &__icon {
+    color: var(--icon-interactive-secondary);
+  }
+
+  // =============================
+  // Text
+  // =============================
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+
+  &__text-main {
+    font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  &__text-sub {
+    font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-secondary);
+  }
+
+  // =============================
+  // Hint (Max Size)
+  // =============================
+
+  &__hint {
+    font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-tertiary);
+  }
+
+  // =============================
+  // File List
+  // =============================
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-8);
+    margin-top: var(--spacing-8);
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-8);
+    padding: var(--spacing-8) var(--spacing-12);
+    border-radius: var(--border-radius-4);
+    background-color: var(--bg-secondary);
+    transition: all 0.2s ease-in-out;
+  }
+
+  &__item-name {
+    flex: 1 1 0;
+    min-width: 0;
+    font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-primary);
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  &__item-remove {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: var(--border-radius-4);
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--icon-tertiary);
+    transition: all 0.2s ease-in-out;
+
+    &:hover:not(:disabled) {
+      color: var(--text-danger);
+      background-color: var(--bg-tertiary);
+    }
+
+    &:focus-visible:not(:disabled) {
+      outline: 2px solid var(--border-focus-ring);
+      outline-offset: 2px;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+
+  // =============================
+  // Help Message
+  // =============================
+
+  &__help {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    height: 24px;
+
+    &-text {
+      font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    &--normal {
+      color: var(--icon-tertiary);
+
+      .file-upload__help-text {
+        color: var(--text-secondary);
+      }
+    }
+
+    &--error {
+      color: var(--icon-danger);
+
+      .file-upload__help-text {
+        color: var(--text-danger);
+      }
+    }
+  }
+
+  // =============================
+  // State: Drag Over
+  // =============================
+
+  &--dragover {
+    .file-upload__zone {
+      border-color: var(--border-focus-ring);
+      background-color: var(--bg-secondary);
+    }
+  }
+
+  // =============================
+  // State: Error
+  // =============================
+
+  &--error {
+    .file-upload__zone {
+      border-color: var(--border-danger);
+
+      &:hover {
+        border-color: var(--border-danger);
+        background-color: var(--bg-secondary);
+      }
+    }
+  }
+
+  // =============================
+  // State: Disabled
+  // =============================
+
+  &--disabled {
+    opacity: 0.5;
+
+    .file-upload__zone {
+      cursor: not-allowed;
+      background-color: var(--bg-disabled);
+      border-color: var(--border-disabled);
+
+      &:hover {
+        border-color: var(--border-disabled);
+        background-color: var(--bg-disabled);
+      }
+    }
+
+    .file-upload__item-remove {
+      cursor: not-allowed;
+    }
+  }
+}

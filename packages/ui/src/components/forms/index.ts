@@ -19,3 +19,12 @@ export type { SelectProps, SelectOptionItem } from "./select";
 
 export { RadioButtonGroup } from "./radiobutton";
 export type { RadioButtonGroupProps, RadioButtonOption } from "./radiobutton";
+
+export { default as FileUpload } from "./file-upload";
+export type { FileUploadProps } from "./file-upload";
+
+export { default as Slider } from "./slider";
+export type { SliderProps } from "./slider";
+
+export { default as SearchInput } from "./search-input";
+export type { SearchInputProps } from "./search-input";

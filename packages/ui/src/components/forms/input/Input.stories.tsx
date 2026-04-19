@@ -5,6 +5,13 @@ import Input from "./Input";
 const meta = {
   title: "Forms/Input",
   component: Input,
+  decorators: [
+    (Story, context) => {
+      const [value, setValue] = React.useState<string>(context.args.value ?? "");
+      React.useEffect(() => { setValue(context.args.value ?? ""); }, [context.args.value]);
+      return <Story args={{ ...context.args, value, onChange: (e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value) }} />;
+    },
+  ],
   parameters: {
     layout: "centered",
     docs: {

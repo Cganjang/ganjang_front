@@ -276,7 +276,87 @@ export const UsageExample: Story = {
 
 ---
 
-## 7. 인라인 스타일 규칙
+## 7. Controlled 컴포넌트 처리
+
+`value` / `checked` 같은 controlled prop이 있는 컴포넌트는 반드시 **meta에 decorator**를 추가합니다.
+decorator 없이 `args`에 controlled prop을 넣으면 Controls 패널에서 조작 시 컴포넌트가 멈춥니다.
+
+### boolean controlled prop (Switch, Checkbox)
+
+```tsx
+import React, { useState } from "react";
+
+const meta = {
+  component: Switch,
+  decorators: [
+    (Story, context) => {
+      const [checked, setChecked] = React.useState<boolean>(context.args.checked ?? false);
+      React.useEffect(() => { setChecked(context.args.checked ?? false); }, [context.args.checked]);
+      return <Story args={{ ...context.args, checked, onChange: setChecked }} />;
+    },
+  ],
+  // ...
+};
+```
+
+### string controlled prop — input 이벤트 (Input, Textarea)
+
+```tsx
+decorators: [
+  (Story, context) => {
+    const [value, setValue] = React.useState<string>(context.args.value ?? "");
+    React.useEffect(() => { setValue(context.args.value ?? ""); }, [context.args.value]);
+    return <Story args={{ ...context.args, value, onChange: (e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value) }} />;
+  },
+],
+```
+
+> Textarea는 `React.ChangeEvent<HTMLTextAreaElement>`로 변경합니다.
+
+### string controlled prop — 값 직접 전달 (Select, RadioButtonGroup)
+
+```tsx
+decorators: [
+  (Story, context) => {
+    const [value, setValue] = React.useState<string>(context.args.value ?? "");
+    React.useEffect(() => { setValue(context.args.value ?? ""); }, [context.args.value]);
+    return <Story args={{ ...context.args, value, onChange: setValue }} />;
+  },
+],
+```
+
+### controlled prop을 Controls 패널에서 완전히 숨길 때 (DatePicker 등)
+
+팝업 UI처럼 Controls에서 직접 조작이 불가능한 경우 `control: false`로 비활성화합니다.
+
+```tsx
+argTypes: {
+  value: {
+    control: false,
+    description: "선택된 날짜 (제어 컴포넌트)",
+  },
+},
+```
+
+### 이미 render 내부에서 직접 처리하는 경우 (Radio)
+
+`StatefulRadio` 같은 wrapper 컴포넌트를 `render` 안에서 직접 만들어 사용하는 방식도 허용합니다.
+
+```tsx
+function StatefulRadio(args: RadioProps) {
+  const [checked, setChecked] = useState(args.checked ?? false);
+  return <Radio {...args} checked={checked} onChange={setChecked} />;
+}
+
+export const Default: Story = {
+  args: { label: "Label" },
+  render: (args) => <StatefulRadio {...args} />,
+};
+```
+
+---
+
+## 8. 인라인 스타일 규칙
 
 Stories 내부의 레이아웃용 스타일은 인라인으로 작성합니다. 단, 하드코딩된 색상값은 최소화합니다.
 
@@ -293,7 +373,7 @@ style={{ color: "#6b7280" }}  // 불가피한 경우만 허용
 
 ---
 
-## 8. Cursor 활용 방법
+## 9. Cursor 활용 방법
 
 ```
 @STORYBOOK_CONVENTIONS.md Button.stories.tsx 컨벤션에 맞게 수정해줘

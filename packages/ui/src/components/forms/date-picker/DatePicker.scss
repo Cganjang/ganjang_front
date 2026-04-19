@@ -1,0 +1,347 @@
+@use "../../../styles/index.scss" as *;
+
+// =============================
+// DatePicker
+// Figma: trigger 240×40, calendar popup 240px wide
+// States: Default, Hover, Focus(open), Filled, Error, Disabled
+// =============================
+
+$datepicker-shadow:
+  0 0 2px 0 var(--shadow-subtle),
+  0 2px 8px 0 var(--shadow-default);
+
+.date-picker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  width: 240px;
+  position: relative;
+
+  // =============================
+  // Trigger
+  // =============================
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    height: 40px;
+    padding: var(--spacing-8);
+    border-radius: var(--border-radius-4);
+    border: 1px solid var(--border-interactive-secondary);
+    background-color: var(--bg-primary);
+    cursor: pointer;
+    transition: border-color 0.15s ease-in-out;
+    width: 100%;
+    text-align: left;
+
+    &:hover:not(:disabled) {
+      border-color: var(--border-interactive-secondary-hovered);
+    }
+
+    &:active:not(:disabled) {
+      border-color: var(--border-interactive-secondary-pressed);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: var(--bg-disabled);
+      border-color: var(--border-disabled);
+    }
+  }
+
+  &__value {
+    flex: 1 0 0;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family:
+      "Pretendard Variable",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-primary);
+
+    &--placeholder {
+      color: var(--text-interactive-secondary);
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--icon-interactive-secondary);
+  }
+
+  // =============================
+  // Calendar Popup
+  // =============================
+
+  &__calendar {
+    position: absolute;
+    top: calc(100% + var(--spacing-4));
+    left: 0;
+    z-index: 100;
+    width: 240px;
+    padding: var(--spacing-12);
+    border-radius: var(--border-radius-8);
+    border: 1px solid var(--border-secondary);
+    background-color: var(--bg-primary);
+    box-shadow: $datepicker-shadow;
+  }
+
+  // =============================
+  // Calendar Header
+  // =============================
+
+  &__calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-8);
+  }
+
+  &__calendar-title {
+    font-family:
+      "Pretendard Variable",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  &__nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    border-radius: var(--border-radius-4);
+    cursor: pointer;
+    color: var(--icon-interactive-secondary);
+    padding: 0;
+    transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+
+    &:hover {
+      background-color: var(--bg-interactive-secondary-hovered);
+      color: var(--icon-primary);
+    }
+
+    &:active {
+      background-color: var(--bg-interactive-secondary-pressed);
+    }
+  }
+
+  // =============================
+  // Weekday Labels
+  // =============================
+
+  &__weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: var(--spacing-4);
+  }
+
+  &__weekday {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    font-family:
+      "Pretendard Variable",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+
+    &--sun {
+      color: var(--text-danger);
+    }
+
+    &--sat {
+      color: var(--text-interactive-primary);
+    }
+  }
+
+  // =============================
+  // Date Grid
+  // =============================
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: var(--spacing-2);
+  }
+
+  &__day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    border: none;
+    background: transparent;
+    border-radius: var(--border-radius-circle);
+    cursor: pointer;
+    font-family:
+      "Pretendard Variable",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-primary);
+    padding: 0;
+    transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+
+    &:hover {
+      background-color: var(--bg-interactive-secondary-hovered);
+    }
+
+    &:active {
+      background-color: var(--bg-interactive-secondary-pressed);
+    }
+
+    // 일요일
+    &--sun {
+      color: var(--text-danger);
+    }
+
+    // 토요일
+    &--sat {
+      color: var(--text-interactive-primary);
+    }
+
+    // 오늘 날짜
+    &--today {
+      border: 1.5px solid var(--border-focus-ring);
+      color: var(--text-interactive-primary);
+      font-weight: 600;
+      background-color: transparent;
+
+      &:hover {
+        background-color: var(--bg-interactive-selected-hovered);
+      }
+    }
+
+    // 선택된 날짜
+    &--selected {
+      background-color: var(--bg-interactive-primary);
+      color: var(--text-interactive-inverse);
+      font-weight: 600;
+
+      &:hover {
+        background-color: var(--bg-interactive-primary-hovered);
+      }
+
+      &:active {
+        background-color: var(--bg-interactive-primary-pressed);
+      }
+    }
+
+    // 빈 칸 (이전/다음 달 날짜)
+    &--empty {
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+
+  // =============================
+  // Help message
+  // =============================
+
+  &__help {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    height: 24px;
+
+    &-text {
+      font-family:
+        "Pretendard Variable",
+        -apple-system,
+        BlinkMacSystemFont,
+        sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    &--normal {
+      color: var(--text-primary);
+      .date-picker__help-text { color: var(--text-primary); }
+    }
+
+    &--success {
+      color: var(--icon-success);
+      .date-picker__help-text { color: var(--text-success); }
+    }
+
+    &--error {
+      color: var(--icon-danger);
+      .date-picker__help-text { color: var(--text-danger); }
+    }
+  }
+
+  // =============================
+  // State: Open (Focus)
+  // =============================
+
+  &--open {
+    .date-picker__trigger {
+      border-color: var(--border-focus-ring);
+    }
+  }
+
+  // =============================
+  // State: Filled
+  // =============================
+
+  &--filled:not(.date-picker--disabled):not(.date-picker--error) {
+    .date-picker__trigger {
+      border-color: var(--border-interactive-secondary);
+    }
+  }
+
+  // =============================
+  // State: Error
+  // =============================
+
+  &--error {
+    .date-picker__trigger {
+      border-color: var(--border-danger);
+    }
+  }
+
+  // =============================
+  // State: Disabled
+  // =============================
+
+  &--disabled {
+    cursor: not-allowed;
+
+    .date-picker__value {
+      color: var(--text-disabled);
+
+      &--placeholder {
+        color: var(--text-disabled);
+      }
+    }
+
+    .date-picker__icon {
+      color: var(--icon-disabled);
+    }
+  }
+}

@@ -5,6 +5,13 @@ import Switch from "./Switch";
 const meta = {
   title: "Forms/Switch",
   component: Switch,
+  decorators: [
+    (Story, context) => {
+      const [checked, setChecked] = React.useState<boolean>(context.args.checked ?? false);
+      React.useEffect(() => { setChecked(context.args.checked ?? false); }, [context.args.checked]);
+      return <Story args={{ ...context.args, checked, onChange: setChecked }} />;
+    },
+  ],
   parameters: {
     layout: "centered",
     docs: {

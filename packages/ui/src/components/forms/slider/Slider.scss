@@ -1,0 +1,255 @@
+@use "../../../styles/index.scss" as *;
+
+// =============================
+// Slider (Range Input)
+// =============================
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  width: 240px;
+  position: relative;
+
+  // =============================
+  // Label row
+  // =============================
+
+  &__label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-8);
+  }
+
+  &__label {
+    flex: 1 0 0;
+  }
+
+  &__value {
+    font-family:
+      "Pretendard Variable",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  // =============================
+  // Track wrapper (visual track + fill + input)
+  // =============================
+
+  &__track-wrap {
+    position: relative;
+    height: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  // =============================
+  // Fill (progress bar visual)
+  // =============================
+
+  &__fill {
+    position: absolute;
+    left: 0;
+    height: 4px;
+    border-radius: var(--border-radius-4);
+    background-color: var(--bg-interactive-primary);
+    width: var(--slider-fill-percent, 50%);
+    pointer-events: none;
+    transition: background-color 0.15s ease-in-out;
+    z-index: 1;
+  }
+
+  // =============================
+  // Static track (background)
+  // =============================
+
+  &__track {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: var(--border-radius-4);
+    background-color: var(--bg-secondary);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  // =============================
+  // Range input (native)
+  // =============================
+
+  &__input {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    z-index: 2;
+    transition: opacity 0.15s ease-in-out;
+
+    // =============================
+    // Webkit (Chrome, Safari, Edge)
+    // =============================
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: var(--border-radius-circle);
+      background-color: var(--bg-interactive-primary);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s ease-in-out;
+
+      &:hover:not(:disabled) {
+        transform: scale(1.1);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      }
+
+      &:active:not(:disabled) {
+        transform: scale(0.95);
+      }
+
+      &:focus-visible:not(:disabled) {
+        outline: 2px solid var(--border-focus-ring);
+        outline-offset: 2px;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+    }
+
+    // =============================
+    // Mozilla Firefox
+    // =============================
+
+    &::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: var(--border-radius-circle);
+      background-color: var(--bg-interactive-primary);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s ease-in-out;
+
+      &:hover:not(:disabled) {
+        transform: scale(1.1);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      }
+
+      &:active:not(:disabled) {
+        transform: scale(0.95);
+      }
+
+      &:focus-visible:not(:disabled) {
+        outline: 2px solid var(--border-focus-ring);
+        outline-offset: 2px;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+    }
+
+    // =============================
+    // Track styling for webkit
+    // =============================
+
+    &::-webkit-slider-runnable-track {
+      background: transparent;
+      border: none;
+      outline: none;
+    }
+
+    // =============================
+    // Track styling for firefox
+    // =============================
+
+    &::-moz-range-track {
+      background: transparent;
+      border: none;
+      outline: none;
+    }
+
+    &::-moz-range-progress {
+      background: transparent;
+      border: none;
+    }
+
+    // =============================
+    // Disabled state
+    // =============================
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    // =============================
+    // Focus visible
+    // =============================
+
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  // =============================
+  // State: Error
+  // =============================
+
+  &--error {
+    .slider__fill {
+      background-color: var(--bg-interactive-danger);
+    }
+
+    .slider__value {
+      color: var(--text-danger);
+    }
+
+    .slider__input {
+      &::-webkit-slider-thumb {
+        background-color: var(--bg-interactive-danger);
+      }
+
+      &::-moz-range-thumb {
+        background-color: var(--bg-interactive-danger);
+      }
+    }
+  }
+
+  // =============================
+  // State: Disabled
+  // =============================
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    .slider__input {
+      cursor: not-allowed;
+    }
+
+    .slider__value {
+      color: var(--text-disabled);
+    }
+  }
+}

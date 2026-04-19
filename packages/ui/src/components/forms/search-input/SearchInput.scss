@@ -1,0 +1,171 @@
+@use "../../../styles/index.scss" as *;
+
+// =============================
+// SearchInput
+// =============================
+
+.search-input {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+
+  // =============================
+  // Wrapper (flex container for icons)
+  // =============================
+
+  &__wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    height: 40px;
+    padding: var(--spacing-8);
+    border-radius: var(--border-radius-4);
+    border: 1px solid var(--border-interactive-secondary);
+    background-color: var(--bg-primary);
+    transition: border-color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+    position: relative;
+  }
+
+  // =============================
+  // Leading Icon (search)
+  // =============================
+
+  &__icon-leading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--icon-interactive-secondary);
+  }
+
+  // =============================
+  // Input Field
+  // =============================
+
+  &__field {
+    flex: 1 0 0;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family:
+      "Pretendard Variable",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-primary);
+    padding: 0;
+
+    &::placeholder {
+      color: var(--text-interactive-secondary);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      color: var(--text-disabled);
+
+      &::placeholder {
+        color: var(--text-disabled);
+      }
+    }
+  }
+
+  // =============================
+  // Clear Button
+  // =============================
+
+  &__clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--icon-interactive-secondary);
+    transition: color 0.15s ease-in-out;
+
+    &:hover:not(:disabled) {
+      color: var(--icon-interactive-primary);
+    }
+
+    &:focus-visible:not(:disabled) {
+      outline: 2px solid var(--border-focus-ring);
+      outline-offset: 2px;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      color: var(--icon-disabled);
+    }
+  }
+
+  // =============================
+  // Trailing Icon (spinner)
+  // =============================
+
+  &__icon-trailing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  // =============================
+  // State: Hover
+  // =============================
+
+  &:not(.search-input--disabled):not(.search-input--focused) {
+    .search-input__wrap:hover {
+      border-color: var(--border-interactive-secondary-hovered);
+    }
+
+    .search-input__wrap:active {
+      border-color: var(--border-interactive-secondary-pressed);
+    }
+  }
+
+  // =============================
+  // State: Focus
+  // =============================
+
+  &--focused:not(.search-input--disabled) {
+    .search-input__wrap {
+      border-color: var(--border-focus-ring);
+    }
+  }
+
+  // =============================
+  // State: Filled (has value)
+  // =============================
+
+  &--filled:not(.search-input--disabled):not(.search-input--focused) {
+    .search-input__wrap {
+      border-color: var(--border-interactive-secondary);
+    }
+  }
+
+  // =============================
+  // State: Disabled
+  // =============================
+
+  &--disabled {
+    cursor: not-allowed;
+
+    .search-input__wrap {
+      background-color: var(--bg-disabled);
+      border-color: var(--border-disabled);
+    }
+
+    .search-input__icon-leading {
+      color: var(--icon-disabled);
+    }
+  }
+}
